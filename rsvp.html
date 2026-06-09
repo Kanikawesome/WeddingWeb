@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RSVP — Sarah & James</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green-deep: #0d1f0f; --green-dark: #142b14; --green-mid: #1e4620;
+    --green-accent: #3a7d44; --green-light: #6fbd7a; --gold: #c9a84c; --cream: #f5f0e8;
+    --text-mid: rgba(245,240,232,0.8); --text-dim: rgba(245,240,232,0.5);
+  }
+  body { background: var(--green-deep); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; padding: 4rem 2rem; }
+  .container { max-width: 650px; margin: 4rem auto 0; background: var(--green-dark); padding: 3rem; border: 1px solid rgba(111,189,122,0.2); }
+  h1, h2 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; margin-bottom: 1.5rem; text-align: center; }
+  h1 { font-size: 2.5rem; }
+  p { text-align: center; color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; }
+  
+  .form-group { margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
+  label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green-light); }
+  input[type="text"], textarea {
+    background: rgba(13,31,15,0.6); border: 1px solid rgba(111,189,122,0.2);
+    padding: 0.85rem; color: var(--cream); font-family: inherit; font-size: 0.9rem; transition: border-color 0.3s; width: 100%;
+  }
+  input[type="text"]:focus { border-color: var(--gold); outline: none; }
+  
+  button {
+    width: 100%; padding: 1rem; background: var(--green-accent); color: var(--cream);
+    border: none; font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase; cursor: pointer; transition: background 0.3s; margin-top: 1.5rem;
+  }
+  button:hover { background: var(--green-light); color: var(--green-deep); }
+  
+  .party-member-block {
+    background: rgba(13,31,15,0.4); border: 1px solid rgba(111,189,122,0.15);
+    padding: 2rem; margin-bottom: 2rem; border-left: 3px solid var(--gold);
+  }
+  .member-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--cream); margin-bottom: 1rem; border-bottom: 1px solid rgba(111,189,122,0.1); padding-bottom: 0.5rem; }
+  .event-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(111,189,122,0.05); }
+  .event-info-label { font-size: 0.9rem; color: var(--text-mid); }
+  .radio-opts { display: flex; gap: 1.5rem; }
+  .radio-label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; text-transform: none; color: var(--text-mid); letter-spacing: normal; }
+  
+  #rsvp-form-stage { display: none; }
+  .error-msg { color: #ff6b6b; font-size: 0.85rem; text-align: center; margin-top: 1rem; display: none; }
+
+  .confirm-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:2000}
+  .confirm-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55)}
+  .confirm-card{position:relative;background:var(--green-dark);padding:2rem;border:1px solid rgba(111,189,122,0.15);max-width:460px;width:90%;text-align:center}
+  .confirm-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;margin-bottom:0.5rem}
+  .confirm-card p{color:var(--text-mid);margin-bottom:1rem}
+  .confirm-actions{display:flex;gap:0.75rem;justify-content:center;margin-top:0.75rem}
+  .confirm-actions button { width: auto; margin-top: 0; padding: 0.6rem 1.5rem; }
+  .confirm-go-back{display:block;text-align:center;margin-top:0.75rem;color:var(--text-dim);font-size:0.85rem}
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+ 
+<div class="container">
+  <div id="login-stage">
+    <h1>Find Your Invitation</h1>
+    <p>Please enter your party's unique passkey found on your invitation card to RSVP.</p>
+    <div class="form-group">
+      <label for="passkey-input">Passkey</label>
+      <input type="text" id="passkey-input" placeholder="e.g., SIDDHU25" autocomplete="off">
+    </div>
+    <button id="find-invite-btn">Find Invitation →</button>
+    <div id="login-error" class="error-msg">Passkey not found. Please verify and try again.</div>
+    <a href="index.html" style="display:block; text-align:center; color:var(--text-dim); text-decoration:none; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:1.5rem;">← Back to Home</a>
+  </div>
+ 
+  <div id="rsvp-form-stage">
+    <h2>Your Celebration Party</h2>
+    <p>Please finalize attendance for each guest in your group below.</p>
+    <form id="party-rsvp-form">
+      <div id="party-members-container"></div>
+      <button type="submit" id="submit-rsvp-btn">Submit Party RSVPs</button>
+    </form>
+  </div>
+
+  <div id="change-confirm" class="confirm-modal hidden">
+    <div class="confirm-overlay"></div>
+    <div class="confirm-card" role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+      <h3 id="confirm-title">You've already RSVP'd</h3>
+      <p>Do you want to change your RSVP?</p>
+      <div class="confirm-actions">
+        <button id="confirm-change-btn">Change RSVP</button>
+      </div>
+      <a href="#" id="confirm-go-back" class="confirm-go-back">Go back</a>
+    </div>
+  </div>
+</div>
+ 
+<script>
+  const API_URL = "https://sheetdb.io/api/v1/vfit5gctkigco";
+  let targetedPartyRows = [];
+ 
+  document.getElementById('find-invite-btn').addEventListener('click', async () => {
+    const key = document.getElementById('passkey-input').value.trim().toUpperCase();
+    const errorDiv = document.getElementById('login-error');
+    errorDiv.style.display = 'none';
+    if (!key) return;
+ 
+    try {
+      const response = await fetch(`${API_URL}/search?passkey=${key}`);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      const data = await response.json();
+ 
+      if (data && data.length > 0) {
+        // Safe global sync of local permissions context
+        const partyPermissions = {
+          haldi:     data.some(g => (g.haldi_invited     || "").toString().trim().toUpperCase() === "TRUE"),
+          wedding:   data.some(g => (g.wedding_invited   || "").toString().trim().toUpperCase() === "TRUE"),
+          reception: data.some(g => (g.reception_invited || "").toString().trim().toUpperCase() === "TRUE")
+        };
+        localStorage.setItem('weddingPartyPermissions', JSON.stringify(partyPermissions));
+
+        // Check if ANYONE in the party has submitted an RSVP already
+        const alreadySubmitted = data.some(g => ((g.rsvp_submitted || "").toString().trim().toUpperCase() === "TRUE"));
+
+        if (alreadySubmitted) {
+          showChangeConfirm(data);
+        } else {
+          targetedPartyRows = data;
+          buildPartyForm(targetedPartyRows);
+        }
+      } else {
+        errorDiv.style.display = 'block';
+      }
+    } catch (err) {
+      console.error("API Error:", err);
+      errorDiv.style.display = 'block';
+    }
+  });
+ 
+  function isInvited(guest, event) {
+    const val = (guest[`${event}_invited`] || "").toString().trim().toUpperCase();
+    return val === "TRUE";
+  }
+ 
+  function buildPartyForm(partyList) {
+    document.getElementById('login-stage').style.display = 'none';
+    document.getElementById('rsvp-form-stage').style.display = 'block';
+    
+    const container = document.getElementById('party-members-container');
+    container.innerHTML = '';
+ 
+    partyList.forEach((guest, index) => {
+      let htmlBlock = `
+        <div class="party-member-block" data-index="${index}">
+          <div class="member-name">${guest.name}</div>
+      `;
+ 
+      if (isInvited(guest, 'haldi')) {
+        // Pre-select existing choices if they are overwriting/modifying data records
+        const curHaldi = (guest.haldi_attending || '').trim();
+        htmlBlock += `
+          <div class="event-row">
+            <span class="event-info-label">Haldi Ceremony</span>
+            <div class="radio-opts">
+              <label class="radio-label"><input type="radio" name="haldi_${index}" value="Attending" ${curHaldi === 'Attending' ? 'checked' : ''} required> Accept</label>
+              <label class="radio-label"><input type="radio" name="haldi_${index}" value="Declined" ${curHaldi === 'Declined' ? 'checked' : ''}> Decline</label>
+            </div>
+          </div>`;
+      }
+ 
+      if (isInvited(guest, 'wedding')) {
+        const curWed = (guest.wedding_attending || '').trim();
+        htmlBlock += `
+          <div class="event-row">
+            <span class="event-info-label">Wedding Ceremony</span>
+            <div class="radio-opts">
+              <label class="radio-label"><input type="radio" name="wedding_${index}" value="Attending" ${curWed === 'Attending' ? 'checked' : ''} required> Accept</label>
+              <label class="radio-label"><input type="radio" name="wedding_${index}" value="Declined" ${curWed === 'Declined' ? 'checked' : ''}> Decline</label>
+            </div>
+          </div>`;
+      }
+ 
+      if (isInvited(guest, 'reception')) {
+        const curRec = (guest.reception_attending || '').trim();
+        htmlBlock += `
+          <div class="event-row">
+            <span class="event-info-label">The Reception</span>
+            <div class="radio-opts">
+              <label class="radio-label"><input type="radio" name="reception_${index}" value="Attending" ${curRec === 'Attending' ? 'checked' : ''} required> Accept</label>
+              <label class="radio-label"><input type="radio" name="reception_${index}" value="Declined" ${curRec === 'Declined' ? 'checked' : ''}> Decline</label>
+            </div>
+          </div>`;
+      }
+ 
+      const existingDietary = (guest.dietary_restrictions || '').trim();
+      const dietaryVal = (existingDietary !== 'None' && existingDietary !== 'N/A') ? existingDietary : '';
+ 
+      htmlBlock += `
+          <div class="form-group" style="margin-top:1.25rem;">
+            <label>Dietary Preferences / Notes</label>
+            <input type="text" id="dietary_${index}" placeholder="Allergies, restrictions, etc." value="${dietaryVal}">
+          </div>
+        </div>`;
+ 
+      container.innerHTML += htmlBlock;
+    });
+  }
+ 
+  function showChangeConfirm(data) {
+    const modal = document.getElementById('change-confirm');
+    modal.classList.remove('hidden');
+
+    const changeBtn = document.getElementById('confirm-change-btn');
+    const goBackLink = document.getElementById('confirm-go-back');
+
+    function cleanup() {
+      modal.classList.add('hidden');
+      changeBtn.removeEventListener('click', onChange);
+      goBackLink.removeEventListener('click', onGoBack);
+    }
+
+    function onChange(e) {
+      e.preventDefault();
+      cleanup();
+      targetedPartyRows = data;
+      buildPartyForm(targetedPartyRows);
+    }
+
+    function onGoBack(e) {
+      if (e) e.preventDefault();
+      cleanup();
+      // Establish existing records inside localStorage context so navigation flows smoothly
+      try {
+        const guestResponses = data.map(g => ({
+          name: g.name || 'Guest',
+          haldi_attending: (g.haldi_attending || 'N/A'),
+          wedding_attending: (g.wedding_attending || 'N/A'),
+          reception_attending: (g.reception_attending || 'N/A')
+        }));
+        localStorage.setItem('weddingGuestResponses', JSON.stringify(guestResponses));
+      } catch (err) {
+        console.warn(err);
+      }
+      window.location.href = 'itinerary.html';
+    }
+
+    changeBtn.addEventListener('click', onChange);
+    goBackLink.addEventListener('click', onGoBack);
+  }
+
+  document.getElementById('party-rsvp-form').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const submitBtn = document.getElementById('submit-rsvp-btn');
+    submitBtn.innerText = "Processing Update Customizations...";
+    submitBtn.disabled = true;
+ 
+    try {
+      const guestResponses = [];
+
+      for (let i = 0; i < targetedPartyRows.length; i++) {
+        const guest = targetedPartyRows[i];
+ 
+        const haldiVal     = isInvited(guest, 'haldi') ? (document.querySelector(`input[name="haldi_${i}"]:checked`)?.value || "N/A") : "N/A";
+        const weddingVal   = isInvited(guest, 'wedding') ? (document.querySelector(`input[name="wedding_${i}"]:checked`)?.value || "N/A") : "N/A";
+        const receptionVal = isInvited(guest, 'reception') ? (document.querySelector(`input[name="reception_${i}"]:checked`)?.value || "N/A") : "N/A";
+        const dietaryDetails = document.getElementById(`dietary_${i}`).value.trim() || "None";
+ 
+        guestResponses.push({
+          name: guest.name,
+          haldi_attending: haldiVal,
+          wedding_attending: weddingVal,
+          reception_attending: receptionVal
+        });
+
+        const updatePayload = {
+          rsvp_submitted: "TRUE",
+          haldi_attending: haldiVal,
+          wedding_attending: weddingVal,
+          reception_attending: receptionVal,
+          dietary_restrictions: dietaryDetails
+        };
+ 
+        // Direct Column/Value Target API endpoint definition to bypass object ID row limits
+        // Targets SheetDB row match logic exactly via Name column text matching rules
+        const updateUrl = `${API_URL}/name/${encodeURIComponent(guest.name)}`;
+
+        await fetch(updateUrl, {
+          method: 'PATCH',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({ data: updatePayload })
+        });
+      }
+ 
+      localStorage.setItem('weddingGuestResponses', JSON.stringify(guestResponses));
+
+      document.getElementById('rsvp-form-stage').innerHTML = `
+        <h1>All Done!</h1>
+        <p style="text-align:center; margin-top:2rem;">Your party's RSVPs have been updated successfully.</p>
+        <a href="itinerary.html" style="display:block; text-align:center; color:var(--gold); text-decoration:none; font-size:0.8rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:1.5rem;">View Your Itinerary →</a>
+      `;
+ 
+    } catch (err) {
+      console.error("Submission Error:", err);
+      alert("Error processing updates.");
+      submitBtn.innerText = "Submit Party RSVPs";
+      submitBtn.disabled = false;
+    }
+  });
+</script>
+</body>
+</html>

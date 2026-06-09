@@ -1,0 +1,464 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sharvari &amp; Nikhil — Getting Married</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+
+  :root {
+    --green-deep: #0d1f0f;
+    --green-dark: #142b14;
+    --green-mid: #1e4620;
+    --green-accent: #3a7d44;
+    --green-light: #6fbd7a;
+    --green-pale: #b8deba;
+    --gold: #c9a84c;
+    --cream: #f5f0e8;
+    --text-dim: rgba(245,240,232,0.55);
+    --text-mid: rgba(245,240,232,0.8);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--green-deep);
+    color: var(--cream);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    overflow-x: hidden;
+  }
+
+  /* ==========================================================================
+     VIDEO BACKGROUND CONTAINER (STICKY TO THE HERO TOP AREA ONLY)
+     ========================================================================== */
+  .video-background-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -2;
+    overflow: hidden;
+    background-color: var(--green-deep);
+  }
+
+  .video-background-container video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  .video-dark-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    z-index: -1;
+    background: linear-gradient(
+      to bottom,
+      rgba(0, 0, 0, 0.15) 0%,
+      rgba(0, 0, 0, 0.05) 50%,
+      rgba(13, 31, 15, 0.5) 100%
+    );
+    pointer-events: none;
+  }
+
+  /* Fixed Audio status control toggle overlay button */
+  .audio-control-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    z-index: 150;
+    background: rgba(13, 31, 15, 0.75);
+    border: 1px solid var(--gold);
+    color: var(--gold);
+    padding: 0.6rem 1.2rem;
+    font-family: 'Jost', sans-serif;
+    font-size: 0.7rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    backdrop-filter: blur(4px);
+  }
+  .audio-control-toggle:hover {
+    background: var(--gold);
+    color: var(--green-deep);
+  }
+
+  /* ==========================================================================
+     ALL-WHITE NAVIGATION HEADER STYLING
+     ========================================================================== */
+  nav {
+    position: fixed;
+    top: 0; left: 0; right: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.25rem 3rem;
+    background: transparent;
+    transition: background 0.4s, backdrop-filter 0.4s;
+  }
+
+  .nav-logo {
+    color: #ffffff;
+    font-family: 'Cormorant Garamond', serif;
+    font-style: italic;
+    font-size: 1.4rem;
+    text-decoration: none;
+    letter-spacing: 0.03em;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links {
+    display: flex;
+    gap: 2.5rem;
+    list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255, 255, 255, 0.85);
+    text-decoration: none;
+    font-size: 0.78rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  }
+
+  .nav-links a:hover {
+    color: var(--gold);
+  }
+
+  nav.scrolled {
+    background: rgba(13,31,15,0.85);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(111,189,122,0.1);
+  }
+
+  nav.scrolled .nav-logo,
+  nav.scrolled .nav-links a {
+    color: #f5f0e8;
+    text-shadow: none;
+  }
+
+  /* ==========================================================================
+     ALL-WHITE HERO SECTIONS & TYPOGRAPHY
+     ========================================================================== */
+  .hero {
+    position: relative;
+    height: 100vh;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .hero-content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.2rem;
+  }
+
+  .hero-eyebrow {
+    font-size: 0.72rem;
+    letter-spacing: 0.3em;
+    text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 500;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-names {
+    font-family: 'Cormorant Garamond', serif;
+    font-size: clamp(4rem, 12vw, 9rem);
+    font-weight: 300;
+    line-height: 0.9;
+    letter-spacing: -0.01em;
+    color: #ffffff;
+    text-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-names span {
+    display: block;
+    font-style: italic;
+  }
+
+  .hero-names .ampersand {
+    font-size: 0.55em;
+    color: var(--gold);
+    display: block;
+    line-height: 1.2;
+    text-shadow: none;
+  }
+
+  .hero-date {
+    font-size: 0.9rem;
+    letter-spacing: 0.2em;
+    color: rgba(255, 255, 255, 0.9);
+    text-transform: uppercase;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
+  }
+
+  .hero-cta {
+    margin-top: 0.5rem;
+    display: inline-block;
+    padding: 0.9rem 2.8rem;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff;
+    text-decoration: none;
+    font-size: 0.75rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    transition: all 0.3s ease;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  .hero-cta:hover {
+    background: #ffffff;
+    color: var(--green-deep);
+    border-color: #ffffff;
+    text-shadow: none;
+  }
+
+  /* ==========================================================================
+     INVITATION CONTAINER
+     ========================================================================== */
+  .invite-section {
+    background: var(--green-dark);
+    padding: 7rem 2rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+    z-index: 10;
+  }
+  
+  .invite-card {
+    max-width: 680px;
+    width: 100%;
+    border: 1px solid rgba(111,189,122,0.2);
+    padding: 5rem 4rem;
+    text-align: center;
+    position: relative;
+    background: rgba(13,31,15,0.75);
+    backdrop-filter: blur(6px);
+  }
+  
+  .invite-card::before, .invite-card::after {
+    content: ''; position: absolute; width: 60px; height: 60px; border-color: rgba(201,168,76,0.35); border-style: solid;
+  }
+  .invite-card::before { top: -1px; left: -1px; border-width: 1px 0 0 1px; }
+  .invite-card::after { bottom: -1px; right: -1px; border-width: 0 1px 1px 0; }
+  
+  .invite-label { font-size: 0.65rem; letter-spacing: 0.35em; text-transform: uppercase; color: var(--green-light); margin-bottom: 2rem; }
+  .invite-title { font-family: 'Cormorant Garamond', serif; font-size: 2.5rem; font-weight: 300; font-style: italic; color: var(--cream); line-height: 1.3; margin-bottom: 1.5rem; }
+  .invite-divider { width: 80px; height: 1px; background: linear-gradient(to right, transparent, var(--gold), transparent); margin: 0 auto 1.5rem; }
+  .invite-body { font-family: 'Cormorant Garamond', serif; font-size: 1.25rem; color: var(--text-mid); line-height: 1.9; margin-bottom: 2rem; }
+  
+  .invite-details {
+    display: grid; grid-template-columns: 1fr 1px 1fr; gap: 0; margin: 2.5rem 0;
+    border-top: 1px solid rgba(111,189,122,0.15); border-bottom: 1px solid rgba(111,189,122,0.15); padding: 2rem 0;
+  }
+  .invite-detail-item { padding: 0 2rem; text-align: center; }
+  .invite-detail-item .label { font-size: 0.62rem; letter-spacing: 0.25em; text-transform: uppercase; color: var(--green-light); margin-bottom: 0.5rem; }
+  .invite-detail-item .value { font-family: 'Cormorant Garamond', serif; font-size: 1.3rem; color: var(--cream); line-height: 1.4; }
+  .invite-divider-v { background: rgba(111,189,122,0.2); width: 1px; }
+
+  /* UPDATED: Path explicitly targeted straight to rsvp.html file */
+  .invite-rsvp {
+    display: inline-block; 
+    padding: 0.9rem 3rem; 
+    background: rgba(255, 255, 255, 0.15); 
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    color: #ffffff; 
+    text-decoration: none; 
+    font-size: 0.75rem; 
+    letter-spacing: 0.2em; 
+    text-transform: uppercase; 
+    transition: all 0.3s ease;
+    margin-top: 1rem;
+    text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  }
+  .invite-rsvp:hover { 
+    background: #ffffff; 
+    color: var(--green-deep); 
+    border-color: #ffffff;
+    text-shadow: none;
+  }
+
+  /* ==========================================================================
+     QUICK TILES GRID
+     ========================================================================= */
+  .quick-nav {
+    padding: 5rem 2rem;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 1.5px;
+    background: rgba(111,189,122,0.12);
+    position: relative;
+    z-index: 10;
+  }
+  
+  .quick-tile {
+    background: rgba(13, 31, 15, 0.8);
+    backdrop-filter: blur(4px);
+    padding: 3rem 2.5rem;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    transition: background 0.3s;
+  }
+  .quick-tile:hover { background: var(--green-dark); }
+  .quick-tile .tile-num { font-size: 0.65rem; letter-spacing: 0.2em; color: var(--green-light); font-weight: 400; }
+  .quick-tile .tile-title { font-family: 'Cormorant Garamond', serif; font-size: 1.7rem; font-weight: 300; color: var(--cream); }
+  .quick-tile .tile-desc { font-size: 0.8rem; color: var(--text-dim); line-height: 1.7; }
+  .quick-tile .tile-arrow { font-size: 1.2rem; color: var(--gold); margin-top: auto; }
+
+  footer { padding: 3rem 2rem; text-align: center; border-top: 1px solid rgba(111,189,122,0.1); background: var(--green-deep); position: relative; z-index: 10; }
+  footer p { font-family: 'Cormorant Garamond', serif; font-style: italic; font-size: 1rem; color: var(--text-dim); }
+
+  @media (max-width: 640px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .invite-card { padding: 3rem 1.5rem; }
+    .hero-names { font-size: clamp(3.5rem, 18vw, 7rem); }
+  }
+</style>
+</head>
+<body>
+
+<div class="video-background-container">
+  <video id="bg-video" autoplay loop muted playsinline src="backgroundVideo.mov" type="video/quicktime"></video>
+  <div class="video-dark-overlay"></div>
+</div>
+
+<button id="audio-toggle-btn" class="audio-control-toggle">🔈 Audio: Off</button>
+
+<nav id="main-nav">
+  <a href="index.html" class="nav-logo">S &amp; N</a>
+  <ul class="nav-links">
+    <li><a href="travel.html">Travel &amp; Stay</a></li>
+    <li><a href="itinerary.html">Itinerary</a></li>
+    <li><a href="registry.html">Registry</a></li>
+    <li><a href="gallery.html">Our Story</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="rsvp.html">RSVP</a></li>
+  </ul>
+</nav>
+
+<section class="hero" id="hero">
+  <div class="hero-content">
+    <p class="hero-eyebrow">We're getting married</p>
+    <h1 class="hero-names">
+      <span>Sharvari</span>
+      <span class="ampersand">&amp;</span>
+      <span>Nikhil</span>
+    </h1>
+    <p class="hero-date">December 2026 &nbsp;·&nbsp; Kochi, India</p>
+    <a href="#invitation" class="hero-cta">View Invitation</a>
+  </div>
+</section>
+
+<section class="invite-section" id="invitation">
+  <div class="invite-card">
+    <p class="invite-label">Formal Invitation</p>
+    <h2 class="invite-title">Together with their families<br>you are invited to celebrate</h2>
+    <div class="invite-divider"></div>
+    <p class="invite-body">
+      the marriage of<br>
+      <strong style="font-size:1.6rem; color:var(--cream); font-weight:400;">Sharvari</strong><br>
+      and<br>
+      <strong style="font-size:1.6rem; color:var(--cream); font-weight:400;">Nikhil</strong>
+    </p>
+    <div class="invite-details">
+      <div class="invite-detail-item">
+        <p class="label">Date</p>
+        <p class="value">Weekend of<br>December 5–6, 2026</p>
+      </div>
+      <div class="invite-divider-v"></div>
+      <div class="invite-detail-item">
+        <p class="label">Venue</p>
+        <p class="value">The Backwater Pavilion<br>Kochi, Kerala, India</p>
+      </div>
+    </div>
+    
+    <div style="text-align: center; color: var(--gold); opacity: 0.6; font-size: 0.7rem; letter-spacing: 0.5em; margin: 0 auto 1.5rem;">
+      ✿ &nbsp; ❀ &nbsp; ✿
+    </div>
+    
+    <a href="rsvp.html" class="invite-rsvp">RSVP Online Here →</a>
+  </div>
+</section>
+
+<div style="padding:4rem 2rem 1rem; text-align:center;">
+  <p style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);">Everything You Need</p>
+</div>
+<div class="quick-nav">
+  <a href="travel.html" class="quick-tile">
+    <span class="tile-num">01</span>
+    <span class="tile-title">Travel &amp; Stay</span>
+    <p class="tile-desc">Airport connections, regional stays, local accommodations, and FAQ.</p>
+    <span class="tile-arrow">→</span>
+  </a>
+  <a href="itinerary.html" class="quick-tile">
+    <span class="tile-num">02</span>
+    <span class="tile-title">Itinerary</span>
+    <p class="tile-desc">Weekend schedule, custom events, and what to expect.</p>
+    <span class="tile-arrow">→</span>
+  </a>
+  <a href="registry.html" class="quick-tile">
+    <span class="tile-num">03</span>
+    <span class="tile-title">Registry</span>
+    <p class="tile-desc">Gifts, contributions, and how to celebrate with us.</p>
+    <span class="tile-arrow">→</span>
+  </a>
+  <a href="gallery.html" class="quick-tile">
+    <span class="tile-num">04</span>
+    <span class="tile-title">Our Story</span>
+    <p class="tile-desc">How we met, our journey, and the photos along the way.</p>
+    <span class="tile-arrow">→</span>
+  </a>
+</div>
+
+<footer>
+  <p>Sharvari &amp; Nikhil · December 2026 · Made with love</p>
+</footer>
+
+<script>
+  const nav = document.getElementById('main-nav');
+  const video = document.getElementById('bg-video');
+  const audioBtn = document.getElementById('audio-toggle-btn');
+
+  window.addEventListener('scroll', () => {
+    nav.classList.toggle('scrolled', window.scrollY > 60);
+  });
+
+  audioBtn.addEventListener('click', () => {
+    if (video.muted) {
+      video.muted = false;
+      audioBtn.innerText = "🔊 Audio: On";
+    } else {
+      video.muted = true;
+      audioBtn.innerText = "🔈 Audio: Off";
+    }
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Our Story — Sarah & James</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green-deep: #0d1f0f;
+    --green-dark: #142b14;
+    --green-mid: #1e4620;
+    --green-accent: #3a7d44;
+    --green-light: #6fbd7a;
+    --green-pale: #b8deba;
+    --gold: #c9a84c;
+    --cream: #f5f0e8;
+    --text-dim: rgba(245,240,232,0.5);
+    --text-mid: rgba(245,240,232,0.78);
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--green-deep);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;}
+
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.25rem 3rem;
+    background:rgba(13,31,15,0.9);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(111,189,122,0.1);
+  }
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--cream);text-decoration:none;}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{color:var(--text-mid);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--cream);}
+
+  .page-hero{padding:12rem 2rem 6rem;text-align:center;border-bottom:1px solid rgba(111,189,122,0.1);}
+  .page-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.2rem;}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;font-style:italic;line-height:1;}
+  .page-sub{margin-top:1.2rem;font-size:0.9rem;color:var(--text-dim);letter-spacing:0.1em;}
+
+  main{max-width:1100px;margin:0 auto;padding:5rem 2rem 6rem;}
+
+  /* STORY TIMELINE */
+  .story-section{margin-bottom:6rem;}
+  .story-section h2{
+    font-family:'Cormorant Garamond',serif;font-size:0.65rem;
+    letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);
+    margin-bottom:4rem;
+  }
+
+  .story-item{
+    display:grid;grid-template-columns:1fr 80px 1fr;
+    align-items:center;gap:0;margin-bottom:0;
+    opacity:0;transform:translateY(20px);
+    transition:opacity 0.6s ease,transform 0.6s ease;
+  }
+  .story-item.visible{opacity:1;transform:translateY(0);}
+  .story-item:nth-child(even) .story-text{grid-column:3;grid-row:1;}
+  .story-item:nth-child(even) .story-photo{grid-column:1;grid-row:1;}
+  .story-item:nth-child(even) .story-spine{grid-column:2;grid-row:1;}
+
+  .story-photo {
+    aspect-ratio:4/5;
+    background:var(--green-dark);
+    position:relative;overflow:hidden;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .story-photo img{width:100%;height:100%;object-fit:cover;display:block;}
+  .story-photo .photo-placeholder{
+    display:flex;flex-direction:column;align-items:center;gap:0.75rem;
+    color:rgba(111,189,122,0.4);
+  }
+  .story-photo .photo-placeholder .ph-icon{font-size:2.5rem;}
+  .story-photo .photo-placeholder p{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;}
+
+  .story-spine{
+    display:flex;flex-direction:column;align-items:center;gap:0;
+    position:relative;align-self:stretch;
+  }
+  .story-spine::before{
+    content:'';flex:1;width:1px;
+    background:linear-gradient(to bottom,rgba(111,189,122,0.05),rgba(111,189,122,0.3),rgba(111,189,122,0.05));
+  }
+  .story-spine::after{
+    content:'';flex:1;width:1px;
+    background:linear-gradient(to bottom,rgba(111,189,122,0.05),rgba(111,189,122,0.3),rgba(111,189,122,0.05));
+  }
+  .spine-dot{
+    width:10px;height:10px;border-radius:50%;
+    background:var(--green-accent);
+    box-shadow:0 0 0 4px rgba(58,125,68,0.15);
+    flex-shrink:0;
+  }
+
+  .story-text{padding:3rem 3.5rem;}
+  .story-year{font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+  .story-heading{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:1rem;line-height:1.2;}
+  .story-body{font-size:0.88rem;color:var(--text-mid);line-height:1.85;}
+
+  /* GALLERY GRID */
+  .gallery-section{margin-top:5rem;}
+  .gallery-section h2{
+    font-family:'Cormorant Garamond',serif;font-size:0.65rem;
+    letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);
+    margin-bottom:3rem;
+  }
+  .gallery-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    grid-auto-rows:280px;
+    gap:3px;
+    background:rgba(111,189,122,0.08);
+  }
+  .gallery-cell{
+    overflow:hidden;background:var(--green-dark);
+    position:relative;cursor:pointer;
+  }
+  .gallery-cell.wide{grid-column:span 2;}
+  .gallery-cell.tall{grid-row:span 2;}
+  .gallery-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease;}
+  .gallery-cell:hover img{transform:scale(1.04);}
+  .gallery-placeholder{
+    width:100%;height:100%;display:flex;flex-direction:column;
+    align-items:center;justify-content:center;gap:0.6rem;
+    color:rgba(111,189,122,0.3);
+  }
+  .gallery-placeholder .ph-i{font-size:2rem;}
+  .gallery-placeholder p{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;}
+  .gallery-cell .overlay{
+    position:absolute;inset:0;
+    background:linear-gradient(to top,rgba(13,31,15,0.8),transparent);
+    opacity:0;transition:opacity 0.3s;
+    display:flex;align-items:flex-end;padding:1.25rem;
+  }
+  .gallery-cell:hover .overlay{opacity:1;}
+  .overlay-caption{font-size:0.75rem;color:var(--cream);letter-spacing:0.08em;}
+
+  footer{padding:3rem 2rem;text-align:center;border-top:1px solid rgba(111,189,122,0.1);}
+  footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-dim);}
+
+  @media(max-width:768px){
+    nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+    .story-item{grid-template-columns:1fr;gap:1.5rem;}
+    .story-item:nth-child(even) .story-text{grid-column:1;grid-row:2;}
+    .story-item:nth-child(even) .story-photo{grid-column:1;grid-row:1;}
+    .story-item:nth-child(even) .story-spine{display:none;}
+    .story-spine{display:none;}
+    .story-text{padding:0 0 2rem;}
+    .story-photo{aspect-ratio:16/9;}
+    .gallery-grid{grid-template-columns:repeat(2,1fr);}
+    .gallery-cell.wide{grid-column:span 1;}
+  }
+</style>
+</head>
+<body>
+<nav>
+  <a href="index.html" class="nav-logo">S & N</a>
+  <ul class="nav-links">
+    <li><a href="travel.html">Travel & Stay</a></li>
+    <li><a href="itinerary.html">Itinerary</a></li>
+    <li><a href="registry.html">Registry</a></li>
+    <li><a href="gallery.html" class="active">Our Story</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="rsvp.html">RSVP</a></li>
+  </ul>
+</nav>
+
+<div class="page-hero">
+  <p class="page-eyebrow">A Love Story</p>
+  <h1 class="page-title">Our Story</h1>
+  <p class="page-sub">How it started, how it grew, and how we got here</p>
+</div>
+
+<main>
+  <section class="story-section">
+    <h2>The Journey</h2>
+
+    <div class="story-item">
+      <div class="story-photo">
+        <!-- Replace src with your photo: <img src="photos/how-we-met.jpg" alt="How we met"> -->
+        <div class="photo-placeholder">
+          <span class="ph-icon">📷</span>
+          <p>Add your photo here</p>
+        </div>
+      </div>
+      <div class="story-spine"><div class="spine-dot"></div></div>
+      <div class="story-text">
+        <p class="story-year">2019 · How We Met</p>
+        <h3 class="story-heading">The First Hello</h3>
+        <p class="story-body">
+          [Tell your story here — where you met, what the moment was like, and that first impression. This is your space to share something personal and meaningful with your guests.]
+        </p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <div class="story-text">
+        <p class="story-year">2020 · Getting Serious</p>
+        <h3 class="story-heading">When We Knew</h3>
+        <p class="story-body">
+          [Share the moment — or the slow realization — that this was something more. A trip you took together, a moment at home, a challenge you navigated side by side. Something that showed you who the other person really was.]
+        </p>
+      </div>
+      <div class="story-spine"><div class="spine-dot"></div></div>
+      <div class="story-photo">
+        <div class="photo-placeholder">
+          <span class="ph-icon">📷</span>
+          <p>Add your photo here</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <div class="story-photo">
+        <div class="photo-placeholder">
+          <span class="ph-icon">📷</span>
+          <p>Add your photo here</p>
+        </div>
+      </div>
+      <div class="story-spine"><div class="spine-dot"></div></div>
+      <div class="story-text">
+        <p class="story-year">2022 · Adventures</p>
+        <h3 class="story-heading">Building a Life</h3>
+        <p class="story-body">
+          [Describe a trip, a milestone, or a chapter of your life together — moving in, a great adventure, meeting each other's families. Let guests feel like they're part of your story.]
+        </p>
+      </div>
+    </div>
+
+    <div class="story-item">
+      <div class="story-text">
+        <p class="story-year">2024 · The Proposal</p>
+        <h3 class="story-heading">She Said Yes</h3>
+        <p class="story-body">
+          [Tell the proposal story! Where it happened, how it was planned, whether they suspected anything, and what the moment felt like. This is always the one guests most want to read.]
+        </p>
+      </div>
+      <div class="story-spine"><div class="spine-dot"></div></div>
+      <div class="story-photo">
+        <div class="photo-placeholder">
+          <span class="ph-icon">💍</span>
+          <p>Engagement photo here</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY GRID -->
+  <section class="gallery-section">
+    <h2>Gallery · Add Your Photos Below</h2>
+    <div class="gallery-grid">
+      <!-- Replace each .gallery-placeholder div with: <img src="photos/your-photo.jpg" alt="caption"> -->
+      <div class="gallery-cell wide">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Wide photo (2 cols)</p></div>
+      </div>
+      <div class="gallery-cell tall">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Tall photo (2 rows)</p></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
+      </div>
+      <div class="gallery-cell wide">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Wide photo (2 cols)</p></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
+      </div>
+      <div class="gallery-cell">
+        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
+      </div>
+    </div>
+    <p style="text-align:center;margin-top:1.5rem;font-size:0.75rem;color:var(--text-dim);letter-spacing:0.1em;">To add photos: replace the placeholder divs with &lt;img&gt; tags pointing to your image files.</p>
+  </section>
+</main>
+
+<footer>
+  <p>Sarah &amp; James · October 2025 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
+</footer>
+
+<script>
+  // Scroll reveal for story items
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) { e.target.classList.add('visible'); }
+    });
+  }, { threshold: 0.15 });
+  document.querySelectorAll('.story-item').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>

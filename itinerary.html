@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Itinerary — Sarah & James</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
+  :root {
+    --green-deep: #0d1f0f;
+    --green-dark: #142b14;
+    --green-mid: #1e4620;
+    --green-accent: #3a7d44;
+    --green-light: #6fbd7a;
+    --green-pale: #b8deba;
+    --gold: #c9a84c;
+    --cream: #f5f0e8;
+    --text-dim: rgba(245,240,232,0.5);
+    --text-mid: rgba(245,240,232,0.78);
+  }
+  html{scroll-behavior:smooth;}
+  body{background:var(--green-deep);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;}
+ 
+  nav{
+    position:fixed;top:0;left:0;right:0;z-index:100;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:1.25rem 3rem;
+    background:rgba(13,31,15,0.9);backdrop-filter:blur(12px);
+    border-bottom:1px solid rgba(111,189,122,0.1);
+  }
+  .nav-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--cream);text-decoration:none;}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{color:var(--text-mid);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;}
+  .nav-links a:hover,.nav-links a.active{color:var(--cream);}
+ 
+  .page-hero{padding:12rem 2rem 6rem;text-align:center;border-bottom:1px solid rgba(111,189,122,0.1);}
+  .page-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.2rem;}
+  .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;font-style:italic;line-height:1;}
+  .page-sub{margin-top:1.2rem;font-size:0.9rem;color:var(--text-dim);letter-spacing:0.1em;}
+ 
+  main{max-width:900px;margin:0 auto;padding:5rem 2rem 6rem;}
+ 
+  .day-tabs{display:flex;gap:0;border:1px solid rgba(111,189,122,0.2);margin-bottom:4rem;overflow:hidden;}
+  .day-tab{
+    flex:1;background:none;border:none;color:var(--text-mid);
+    font-family:'Jost',sans-serif;font-weight:300;font-size:0.8rem;
+    letter-spacing:0.12em;padding:0.9rem 1rem;cursor:pointer;
+    transition:all 0.3s;border-right:1px solid rgba(111,189,122,0.2);
+    display:flex;flex-direction:column;align-items:center;gap:0.18rem;
+    text-transform:none;
+  }
+  .day-tab:last-child{border-right:none;}
+  .day-tab:hover{background:rgba(111,189,122,0.07);color:var(--cream);}
+  .day-tab.active{background:var(--green-accent);color:var(--cream);}
+  .day-tab .tab-main{font-size:0.92rem;letter-spacing:0.08em;font-weight:400;}
+  .day-tab .tab-sub{font-size:0.62rem;color:var(--text-dim);letter-spacing:0.06em;text-transform:none;margin-top:0;}
+  /* Tabs hidden when guest has no events that day */
+  .day-tab.tab-hidden{display:none;}
+ 
+  .day-panel{display:none;}
+  .day-panel.active{display:block;}
+  .day-header{margin-bottom:3rem;}
+  .day-header .day-name{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;font-style:italic;}
+  .day-header .day-date{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--green-light);margin-top:0.5rem;}
+ 
+  .timeline{position:relative;padding-left:2.5rem;}
+  .timeline::before{
+    content:'';position:absolute;left:0;top:8px;bottom:8px;
+    width:1px;background:linear-gradient(to bottom,rgba(111,189,122,0.4),rgba(111,189,122,0.05));
+  }
+  .timeline-item{
+    position:relative;padding:0 0 3rem 2rem;
+    opacity:0;transform:translateX(-12px);
+    animation:slideIn 0.5s ease forwards;
+  }
+  .timeline-item:nth-child(1){animation-delay:0.05s;}
+  .timeline-item:nth-child(2){animation-delay:0.15s;}
+  .timeline-item:nth-child(3){animation-delay:0.25s;}
+  .timeline-item:nth-child(4){animation-delay:0.35s;}
+  .timeline-item:nth-child(5){animation-delay:0.45s;}
+  .timeline-item:nth-child(6){animation-delay:0.55s;}
+  .timeline-item::before{
+    content:'';position:absolute;left:-2.5rem;top:6px;
+    width:7px;height:7px;border-radius:50%;
+    background:var(--green-accent);
+    box-shadow:0 0 0 3px rgba(58,125,68,0.2);
+  }
+  .timeline-item.highlight::before{background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,0.2);}
+  .timeline-time{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-light);margin-bottom:0.5rem;font-weight:400;}
+  .timeline-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:0.5rem;}
+  .timeline-location{font-size:0.8rem;color:var(--gold);margin-bottom:0.6rem;}
+  .timeline-desc{font-size:0.85rem;color:var(--text-mid);line-height:1.75;max-width:560px;}
+  .timeline-tag{
+    display:inline-block;margin-top:0.75rem;
+    padding:0.3rem 0.85rem;
+    background:rgba(58,125,68,0.2);border:1px solid rgba(58,125,68,0.3);
+    font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-light);
+  }
+  .timeline-tag.gold-tag{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.3);color:var(--gold);}
+ 
+  .guest-rsvp{margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(111,189,122,0.15);font-size:0.78rem;color:var(--text-dim);}
+  .guest-rsvp-item{display:flex;justify-content:space-between;padding:0.3rem 0;font-size:0.75rem;}
+  .guest-rsvp-yes{color:var(--green-light);}
+  .guest-rsvp-no{color:#ff6b6b;}
+ 
+  .hotel-cta-banner{
+    margin-top:4rem;padding:2.5rem 3rem;
+    background:var(--green-dark);
+    border:1px solid rgba(111,189,122,0.2);
+    display:flex;align-items:center;justify-content:space-between;gap:2rem;
+    flex-wrap:wrap;
+  }
+  .hotel-cta-banner .banner-text h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;margin-bottom:0.4rem;}
+  .hotel-cta-banner .banner-text p{font-size:0.82rem;color:var(--text-mid);}
+  .hotel-cta-banner .banner-btn{
+    white-space:nowrap;
+    padding:0.85rem 2.5rem;background:var(--green-accent);color:var(--cream);
+    text-decoration:none;font-size:0.75rem;letter-spacing:0.18em;text-transform:uppercase;
+    transition:background 0.3s;
+  }
+  .hotel-cta-banner .banner-btn:hover{background:var(--green-light);color:var(--green-deep);}
+ 
+  footer{padding:3rem 2rem;text-align:center;border-top:1px solid rgba(111,189,122,0.1);}
+  footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-dim);}
+ 
+  @keyframes slideIn{to{opacity:1;transform:translateX(0);}}
+ 
+  @media(max-width:640px){
+    nav{padding:1rem 1.5rem;}.nav-links{display:none;}
+    .day-tabs{flex-direction:column;}
+    .day-tab{border-right:none;border-bottom:1px solid rgba(111,189,122,0.2);}
+    .day-tab:last-child{border-bottom:none;}
+    .hotel-cta-banner{flex-direction:column;align-items:flex-start;}
+  }
+ 
+  /* Gate lock screen */
+  .itinerary-gate{
+    position:fixed;inset:0;background:rgba(13,31,15,0.95);backdrop-filter:blur(15px);
+    z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;
+  }
+  .gate-card{
+    max-width:500px;width:100%;border:1px solid rgba(111,189,122,0.2);
+    background:var(--green-dark);padding:4rem 3rem;text-align:center;
+  }
+  .gate-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.2rem;font-weight:300;margin-bottom:1.5rem;color:var(--cream);}
+  .gate-text{font-size:0.95rem;color:var(--text-mid);line-height:1.8;margin-bottom:2.5rem;}
+  .gate-btn{
+    display:inline-block;padding:1rem 2.5rem;background:var(--green-accent);color:var(--cream);
+    text-decoration:none;font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;transition:background 0.3s,color 0.3s;
+  }
+  .gate-btn:hover{background:var(--green-light);color:var(--green-deep);}
+ 
+  .hidden{display:none !important;}
+</style>
+</head>
+<body>
+ 
+<div id="itinerary-gate" class="itinerary-gate">
+  <div class="gate-card">
+    <h2 class="gate-title">Namaste &amp; Welcome</h2>
+    <p class="gate-text">To view your personal schedule of celebrations, please RSVP first using the passkey on your invitation.</p>
+    <a href="rsvp.html" class="gate-btn">Find My Invitation →</a>
+  </div>
+</div>
+ 
+<nav>
+  <a href="index.html" class="nav-logo">S &amp; N</a>
+  <ul class="nav-links">
+    <li><a href="travel.html">Travel &amp; Stay</a></li>
+    <li><a href="itinerary.html" class="active">Itinerary</a></li>
+    <li><a href="registry.html">Registry</a></li>
+    <li><a href="gallery.html">Our Story</a></li>
+    <li><a href="faq.html">FAQ</a></li>
+    <li><a href="rsvp.html">RSVP</a></li>
+  </ul>
+</nav>
+ 
+<div class="page-hero">
+  <p class="page-eyebrow">Weekend of December 5–6, 2025</p>
+  <h1 class="page-title">Itinerary</h1>
+  <p id="page-sub-greeting" class="page-sub">Everything happening — and where to be</p>
+</div>
+ 
+<main>
+  <div class="day-tabs">
+    <button class="day-tab active" data-day="haldi" data-requires="haldi">
+      <span class="tab-main">Haldi — Sat Dec 5</span>
+      <span class="tab-sub">(click to see)</span>
+    </button>
+    <button class="day-tab" data-day="wedding" data-requires="wedding">
+      <span class="tab-main">Wedding — Sun Dec 6 (Morning)</span>
+      <span class="tab-sub">(click to see)</span>
+    </button>
+    <button class="day-tab" data-day="reception" data-requires="reception">
+      <span class="tab-main">Reception — Sun Dec 6 (Evening)</span>
+      <span class="tab-sub">(click to see)</span>
+    </button>
+  </div>
+
+  <!-- CHANGE HERE FOR DETAILS REGARDING EACH PART-->
+  <!-- HALDI: Saturday, December 5 -->
+  <div class="day-panel active" id="panel-haldi">
+    <div class="day-header">
+      <h2 class="day-name">Haldi &amp; Festivities</h2>
+      <p class="day-date">Saturday · December 5, 2025</p>
+    </div>
+    <div class="panel-rsvps" data-event="haldi"></div>
+    <div class="timeline">
+      <div class="timeline-item">
+        <p class="timeline-time">All Day</p>
+        <h3 class="timeline-title">Family Gatherings &amp; Festive Vibes</h3>
+        <p class="timeline-location">Venue Grounds &amp; Hotel Lounges</p>
+        <p class="timeline-desc">A relaxed day of visiting, light rituals, and bright outfits — think all-day color, music, and informal get-togethers leading into the evening ceremony.</p>
+        <span class="timeline-tag">Optional</span>
+      </div>
+      <div class="timeline-item highlight itinerary-haldi">
+        <p class="timeline-time">7:00 PM</p>
+        <h3 class="timeline-title">Haldi Ceremony (replacing Sangeet)</h3>
+        <p class="timeline-location">The Sunset Terrace</p>
+        <p class="timeline-desc">An evening Haldi — turmeric blessings, music, and heartfelt rituals. Dress in bright, festive colors you don't mind getting a little yellow on.</p>
+        <span class="timeline-tag gold-tag">Haldi Event</span>
+      </div>
+      <div class="timeline-item itinerary-haldi">
+        <p class="timeline-time">8:30 PM</p>
+        <h3 class="timeline-title">Casual Dinner &amp; Music</h3>
+        <p class="timeline-location">The Great Hall</p>
+        <p class="timeline-desc">A cozy, informal dinner to follow the Haldi — comfortable seating, light performances, and mixers for friends and family.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEDDING: Sunday Morning, December 6 -->
+  <div class="day-panel" id="panel-wedding">
+    <div class="day-header">
+      <h2 class="day-name">The Wedding</h2>
+      <p class="day-date">Sunday · December 6, 2025</p>
+    </div>
+    <div class="panel-rsvps" data-event="wedding"></div>
+    <div class="timeline">
+      <div class="timeline-item highlight itinerary-wedding">
+        <p class="timeline-time">8:00 AM</p>
+        <h3 class="timeline-title">The Wedding Ceremony</h3>
+        <p class="timeline-location">The Sunset Terrace (Mandap)</p>
+        <p class="timeline-desc">The core rituals begin early — please be seated by 7:45 AM. An intimate, traditional ceremony followed by blessings and family photos.</p>
+        <span class="timeline-tag gold-tag">Main Event</span>
+      </div>
+      <div class="timeline-item itinerary-wedding">
+        <p class="timeline-time">9:30 AM</p>
+        <h3 class="timeline-title">Post-Ceremony Brunch</h3>
+        <p class="timeline-location">The Garden Room</p>
+        <p class="timeline-desc">A relaxed brunch with the newlyweds — light bites, warm drinks, and time to congratulate the couple.</p>
+      </div>
+      <div class="timeline-item itinerary-wedding">
+        <p class="timeline-time">11:00 AM</p>
+        <h3 class="timeline-title">Photo Opportunities &amp; Guest Meetups</h3>
+        <p class="timeline-location">Venue Grounds</p>
+        <p class="timeline-desc">Stroll the gardens for portrait-style photos, or meet with family members for quick group shots.</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- RECEPTION: Sunday Evening, December 6 -->
+  <div class="day-panel" id="panel-reception">
+    <div class="day-header">
+      <h2 class="day-name">The Reception</h2>
+      <p class="day-date">Sunday · December 6, 2025</p>
+    </div>
+    <div class="panel-rsvps" data-event="reception"></div>
+    <div class="timeline">
+      <div class="timeline-item itinerary-reception">
+        <p class="timeline-time">6:00 PM</p>
+        <h3 class="timeline-title">Cocktail Hour</h3>
+        <p class="timeline-location">Foyer &amp; Terrace</p>
+        <p class="timeline-desc">A pre-dinner social hour with cocktails, passed hors d'oeuvres, and ambient music while guests arrive and settle.</p>
+        <span class="timeline-tag">Social</span>
+      </div>
+      <div class="timeline-item highlight itinerary-reception" style="margin-top:1.5rem;">
+        <p class="timeline-time">6:30 PM</p>
+        <h3 class="timeline-title">Grand Reception Dinner &amp; Dancing</h3>
+        <p class="timeline-location">The Great Hall</p>
+        <p class="timeline-desc">Formal dinner, toasts, cake cutting, and then an open dance floor. Expect music, light projections, and an unforgettable evening.</p>
+        <span class="timeline-tag gold-tag">Gala Reception</span>
+      </div>
+      <div class="timeline-item itinerary-reception">
+        <p class="timeline-time">9:30 PM</p>
+        <h3 class="timeline-title">Late-Night Desserts &amp; Send-off</h3>
+        <p class="timeline-location">The Terrace</p>
+        <p class="timeline-desc">Sweet treats, last dances, and a fun send-off to close the weekend.</p>
+      </div>
+    </div>
+  </div>
+ 
+  <div class="hotel-cta-banner">
+    <div class="banner-text">
+      <h3>Need a place to stay?</h3>
+      <p>We've reserved hotel blocks at the venue and nearby hotels. Book before September 1st for our group rate.</p>
+    </div>
+    <a href="travel.html#hotels" class="banner-btn">View Hotel Info →</a>
+  </div>
+</main>
+ 
+<footer>
+  <p>Sarah &amp; James · October 2025 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
+</footer>
+ 
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const savedPermissions = localStorage.getItem('weddingPartyPermissions');
+  const guestResponses = JSON.parse(localStorage.getItem('weddingGuestResponses') || '[]');
+  const gate = document.getElementById('itinerary-gate');
+ 
+  // No RSVP done yet — show gate, block page
+  if (!savedPermissions) {
+    gate.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+    return;
+  }
+ 
+  const p = JSON.parse(savedPermissions);
+  // p = { haldi: bool, wedding: bool, reception: bool }
+ 
+  // --- Display guest responses on timeline items ---
+  function displayGuestRsvps() {
+    const events = ['haldi', 'wedding', 'reception'];
+
+    // Clear existing panel RSVP areas
+    document.querySelectorAll('.panel-rsvps').forEach(el => el.innerHTML = '');
+
+    events.forEach(event => {
+      const panelContainer = document.querySelector(`.panel-rsvps[data-event="${event}"]`);
+      if (!panelContainer) return;
+
+      let html = '<div class="guest-rsvp"><div style="font-weight:400; margin-bottom:0.3rem;">Guest attendance:</div>';
+
+      if (!guestResponses || !guestResponses.length) {
+        html += '<div class="guest-rsvp-item"><span>No saved RSVP data</span><span>—</span></div>';
+      } else {
+        guestResponses.forEach(guest => {
+          const attendingField = `${event}_attending`;
+          const status = guest[attendingField];
+          const statusClass = status === 'Attending' ? 'guest-rsvp-yes' : status === 'Declined' ? 'guest-rsvp-no' : '';
+          const statusText = status === 'Attending' ? '✓ Yes' : status === 'Declined' ? '✗ No' : '–';
+          html += `<div class="guest-rsvp-item"><span>${guest.name}</span><span class="${statusClass}">${statusText}</span></div>`;
+        });
+      }
+
+      html += '</div>';
+      panelContainer.innerHTML = html;
+    });
+  }
+ 
+  // Personalise subtitle
+  // (optional: could pull name from localStorage too if you store it)
+ 
+  // --- STEP 1: Hide individual timeline items the guest isn't invited to ---
+  function enforceItemPermissions() {
+    if (!p.haldi) {
+      document.querySelectorAll('.itinerary-haldi').forEach(el => el.classList.add('hidden'));
+    }
+    if (!p.wedding) {
+      document.querySelectorAll('.itinerary-wedding').forEach(el => el.classList.add('hidden'));
+    }
+    if (!p.reception) {
+      document.querySelectorAll('.itinerary-reception').forEach(el => el.classList.add('hidden'));
+    }
+  }
+ 
+  // --- STEP 2: Hide day tabs (and panels) the guest has zero events on ---
+  function enforceDayTabVisibility() {
+    document.querySelectorAll('.day-tab').forEach(tab => {
+      const requires = tab.dataset.requires;
+ 
+      let shouldShow = true;
+
+      if (requires === 'haldi') {
+        shouldShow = p.haldi;
+      } else if (requires === 'wedding') {
+        shouldShow = p.wedding;
+      } else if (requires === 'reception') {
+        shouldShow = p.reception;
+      }
+      // 'all' = always visible (Friday arrivals/welcome applies to everyone)
+ 
+      if (!shouldShow) {
+        tab.classList.add('tab-hidden');
+        // Also hide the panel itself
+        const panel = document.getElementById('panel-' + tab.dataset.day);
+        if (panel) panel.classList.add('hidden');
+      }
+    });
+ 
+    // If the currently-active tab got hidden, activate the first visible tab instead
+    const activeTab = document.querySelector('.day-tab.active');
+    if (activeTab && activeTab.classList.contains('tab-hidden')) {
+      const firstVisible = document.querySelector('.day-tab:not(.tab-hidden)');
+      if (firstVisible) firstVisible.click();
+    }
+  }
+ 
+  enforceItemPermissions();
+  enforceDayTabVisibility();
+  displayGuestRsvps();
+ 
+  // --- STEP 3: Tab click handler ---
+  document.querySelectorAll('.day-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      if (tab.classList.contains('tab-hidden')) return; // safety guard
+ 
+      document.querySelectorAll('.day-tab').forEach(t => t.classList.remove('active'));
+      document.querySelectorAll('.day-panel').forEach(panel => {
+        // Only remove active — keep hidden class intact
+        panel.classList.remove('active');
+      });
+ 
+      tab.classList.add('active');
+      const panel = document.getElementById('panel-' + tab.dataset.day);
+      if (panel) {
+        panel.classList.add('active');
+ 
+        // Re-enforce item-level permissions in case of first render
+        enforceItemPermissions();
+ 
+        // Re-display guest RSVPs for this tab
+        displayGuestRsvps();
+
+        // Re-trigger animations for visible items only
+        panel.querySelectorAll('.timeline-item:not(.hidden)').forEach((item, i) => {
+          item.style.animation = 'none';
+          item.offsetHeight; // force reflow
+          item.style.animation = `slideIn 0.5s ${i * 0.1}s ease forwards`;
+        });
+      }
+    });
+  });
+});
+</script>
+</body>
+</html>
