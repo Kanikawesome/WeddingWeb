@@ -10,8 +10,8 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   :root {
-    --green-deep: #0d1f0f;
-    --green-dark: #142b14;
+    --green-deep: #97a683;
+    --green-dark: #7fb27f;
     --green-mid: #1e4620;
     --green-accent: #3a7d44;
     --green-light: #6fbd7a;
@@ -41,20 +41,43 @@
   .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;font-style:italic;line-height:1;}
   .page-sub{margin-top:1.2rem;font-size:0.9rem;color:var(--text-dim);letter-spacing:0.1em;}
  
-  main{max-width:900px;margin:0 auto;padding:5rem 2rem 6rem;}
+  main{
+    max-width:980px;
+    margin:0 auto;
+    padding:1.5rem 1.5rem 2rem;
+    background: url('BackgroundFlowers.png') center center / cover no-repeat;
+  }
+  .itinerary-letter{
+    position:relative;
+    background: rgba(245,240,232,0.88);
+    border: 1px solid rgba(13,31,15,0.1);
+    border-radius: 0;
+    padding: 2rem 2rem 2.2rem;
+    box-shadow: 0 18px 50px rgba(0,0,0,0.08);
+    overflow: hidden;
+    color: #2f261f;
+  }
+  .itinerary-letter::before{
+    content:'';
+    position:absolute;
+    inset:0;
+    background: rgba(245,240,232,0.88);
+    pointer-events:none;
+  }
+  .itinerary-letter > *{position:relative;z-index:1;}
  
   .day-tabs{display:flex;gap:0;border:1px solid rgba(111,189,122,0.2);margin-bottom:4rem;overflow:hidden;}
   .day-tab{
-    flex:1;background:none;border:none;color:var(--text-mid);
+    flex:1;background:none;border:none;color:#3d3328;
     font-family:'Jost',sans-serif;font-weight:300;font-size:0.8rem;
-    letter-spacing:0.12em;padding:0.9rem 1rem;cursor:pointer;
+    letter-spacing:0.12em;padding:0.75rem 0.9rem;cursor:pointer;
     transition:all 0.3s;border-right:1px solid rgba(111,189,122,0.2);
     display:flex;flex-direction:column;align-items:center;gap:0.18rem;
     text-transform:none;
   }
   .day-tab:last-child{border-right:none;}
-  .day-tab:hover{background:rgba(111,189,122,0.07);color:var(--cream);}
-  .day-tab.active{background:var(--green-accent);color:var(--cream);}
+  .day-tab:hover{background:rgba(58,125,68,0.12);color:#0d1f0f;}
+  .day-tab.active{background:var(--green-accent);color:#f5f0e8;}
   .day-tab .tab-main{font-size:0.92rem;letter-spacing:0.08em;font-weight:400;}
   .day-tab .tab-sub{font-size:0.62rem;color:var(--text-dim);letter-spacing:0.06em;text-transform:none;margin-top:0;}
   /* Tabs hidden when guest has no events that day */
@@ -89,17 +112,17 @@
     box-shadow:0 0 0 3px rgba(58,125,68,0.2);
   }
   .timeline-item.highlight::before{background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,0.2);}
-  .timeline-time{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:var(--green-light);margin-bottom:0.5rem;font-weight:400;}
-  .timeline-title{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:300;margin-bottom:0.5rem;}
-  .timeline-location{font-size:0.8rem;color:var(--gold);margin-bottom:0.6rem;}
-  .timeline-desc{font-size:0.85rem;color:var(--text-mid);line-height:1.75;max-width:560px;}
+  .timeline-time{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:#5a6f58;margin-bottom:0.5rem;font-weight:400;}
+  .timeline-title{font-family:'Cormorant Garamond',serif;font-size:1.55rem;font-weight:300;margin-bottom:0.5rem;color:#2f261f;}
+  .timeline-location{font-size:0.8rem;color:#7a623f;margin-bottom:0.6rem;}
+  .timeline-desc{font-size:0.85rem;color:#4e453f;line-height:1.75;max-width:560px;}
   .timeline-tag{
     display:inline-block;margin-top:0.75rem;
-    padding:0.3rem 0.85rem;
-    background:rgba(58,125,68,0.2);border:1px solid rgba(58,125,68,0.3);
-    font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:var(--green-light);
+    padding:0.28rem 0.75rem;
+    background:rgba(58,125,68,0.14);border:1px solid rgba(58,125,68,0.22);
+    font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#3d5937;
   }
-  .timeline-tag.gold-tag{background:rgba(201,168,76,0.1);border-color:rgba(201,168,76,0.3);color:var(--gold);}
+  .timeline-tag.gold-tag{background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.25);color:#8e7032;}
  
   .guest-rsvp{margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(111,189,122,0.15);font-size:0.78rem;color:var(--text-dim);}
   .guest-rsvp-item{display:flex;justify-content:space-between;padding:0.3rem 0;font-size:0.75rem;}
@@ -185,11 +208,12 @@
 </div>
  
 <main>
-  <div class="day-tabs">
-    <button class="day-tab active" data-day="haldi" data-requires="haldi">
-      <span class="tab-main">Haldi — Sat Dec 5</span>
-      <span class="tab-sub">(click to see)</span>
-    </button>
+  <div class="itinerary-letter">
+    <div class="day-tabs">
+      <button class="day-tab active" data-day="haldi" data-requires="haldi">
+        <span class="tab-main">Haldi — Sat Dec 5</span>
+        <span class="tab-sub">(click to see)</span>
+      </button>
     <button class="day-tab" data-day="wedding" data-requires="wedding">
       <span class="tab-main">Wedding — Sun Dec 6 (Morning)</span>
       <span class="tab-sub">(click to see)</span>
@@ -299,6 +323,7 @@
       <p>We've reserved hotel blocks at the venue and nearby hotels. Book before September 1st for our group rate.</p>
     </div>
     <a href="travel.html#hotels" class="banner-btn">View Hotel Info →</a>
+  </div>
   </div>
 </main>
  

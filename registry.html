@@ -9,56 +9,61 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
-  /*
-   * Registry page — experiential static interface.
-   * SECURITY: Read-only display layer. Financial handshakes occur safely within native banking platforms.
-   */
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
 
   :root {
-    --green-deep: #0d1f0f;
-    --green-dark: #142b14;
-    --green-mid: #1e4620;
-    --green-accent: #3a7d44;
-    --gold: #c9a84c;
-    --cream: #f5f0e8;
-    --white: #ffffff;
-    --text-dim: rgba(245, 240, 232, 0.55);
-    --text-mid: rgba(245, 240, 232, 0.82);
-    --gold-dim: rgba(201, 168, 76, 0.35);
+    --bg-cream-pure: #FCFAF5;   /* Raw unbleached Kasavu core background */
+    --bg-cream-card: #FFFFFF;   /* Crisp pristine white for layout depth */
+    --gold-kasavu: #D4AF37;     /* Vibrant metallic zari border accents */
+    --gold-antique: #AA8214;    /* Deeper weighted gold for crisp legible labels */
+    --gold-dim: rgba(212, 175, 55, 0.22);
+    --leaf-green: #144023;      /* Rich traditional banana leaf green for hover pop */
+    --charcoal-soft: #2D2B2A;   /* Soft charcoal for primary high-contrast reading typography */
+    --text-muted: #666260;      /* Mid-tone gray for subtext lines */
   }
 
   html { scroll-behavior: smooth; }
 
   body {
-    background: var(--green-deep);
-    color: var(--cream);
+    /* 1. SOLID SINGLE COLOR BASE AS REQUESTED */
+    background-color: var(--bg-cream-pure);
+    
+    /* 2. OPTIONAL FIXED BACKDROP CUSTOM VIBE STYLE (Floating Content Matrix) */
+    background-image: url('kasavu-texture.png'); 
+    background-attachment: fixed; 
+    background-repeat: repeat;
+    background-size: auto;
+
+    color: var(--charcoal-soft);
     font-family: 'Jost', sans-serif;
     font-weight: 300;
-    line-height: 1.6;
+    line-height: 1.65;
   }
 
-  /* ── Navigation header ── */
+  /* ==========================================================================
+     KASAVU HEADER NAVIGATION
+     ========================================================================== */
   nav {
     position: fixed;
     top: 0; left: 0; right: 0;
-    z-index: 100;
+    z-index: 1000;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1.1rem 3rem;
-    background: var(--cream);
-    border-bottom: 1px solid rgba(13, 31, 15, 0.1);
-    box-shadow: 0 2px 24px rgba(13, 31, 15, 0.08);
+    padding: 1.25rem 2rem;
+    background: var(--bg-cream-pure);
+    border-bottom: 4px solid var(--gold-kasavu);
+    box-shadow: 0 4px 30px rgba(170, 130, 20, 0.04);
   }
 
   .nav-logo {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1.45rem;
-    color: var(--green-deep);
+    font-size: 1.5rem;
+    color: var(--charcoal-soft);
     text-decoration: none;
     letter-spacing: 0.02em;
+    font-weight: 400;
   }
 
   .nav-links {
@@ -69,136 +74,139 @@
   }
 
   .nav-links a {
-    color: var(--green-mid);
+    color: var(--charcoal-soft);
     text-decoration: none;
-    font-size: 0.72rem;
+    font-size: 0.75rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
     font-weight: 400;
     transition: color 0.2s;
+    display: inline-block;
   }
 
   .nav-links a:hover, .nav-links a.active {
-    color: var(--green-deep);
+    color: var(--gold-antique);
   }
 
   .nav-links a.active {
-    border-bottom: 1px solid var(--gold);
+    border-bottom: 2px solid var(--gold-kasavu);
     padding-bottom: 2px;
   }
 
   .nav-toggle {
     display: none;
-    background: none;
-    border: 1px solid var(--green-mid);
-    color: var(--green-deep);
+    background: transparent;
+    border: 1px solid var(--gold-kasavu);
+    color: var(--charcoal-soft);
     font-family: 'Jost', sans-serif;
     font-size: 0.65rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    padding: 0.5rem 0.85rem;
+    padding: 0.6rem 1rem;
     cursor: pointer;
+    font-weight: 400;
   }
 
-  /* ── Page hero ── */
+  /* ==========================================================================
+     PAGE HERO (REMOVED RADIAL GRADIENTS FOR CLEAN FLAT DISPLAY)
+     ========================================================================== */
   .page-hero {
-    padding: 11rem 2rem 5rem;
+    padding: 11rem 1.5rem 4.5rem;
     text-align: center;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    border-bottom: 1px solid var(--gold-dim);
+    background: transparent; /* Allows unified background texture canvas flow */
   }
 
   .page-eyebrow {
-    font-size: 0.63rem;
+    font-size: 0.65rem;
     letter-spacing: 0.32em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-antique);
     margin-bottom: 1.2rem;
+    font-weight: 500;
   }
 
   .page-title {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(2.8rem, 7vw, 5rem);
+    font-size: clamp(2.6rem, 7vw, 4.8rem);
     font-weight: 300;
     font-style: italic;
-    line-height: 1.05;
-    color: var(--white);
+    line-height: 1.1;
+    color: var(--charcoal-soft);
   }
 
   .page-sub {
-    margin-top: 1.4rem;
+    margin-top: 1.2rem;
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(1.15rem, 2.5vw, 1.45rem);
+    font-size: clamp(1.2rem, 2.5vw, 1.45rem);
     font-weight: 300;
     font-style: italic;
-    color: var(--text-mid);
+    color: var(--text-muted);
     max-width: 38rem;
     margin-left: auto;
     margin-right: auto;
-    line-height: 1.75;
+    line-height: 1.7;
   }
 
-  /* ── Main content ── */
   main {
     max-width: 1080px;
     margin: 0 auto;
-    padding: 4.5rem 2rem 5rem;
+    padding: 4.5rem 1.5rem 5rem;
   }
 
-  /* ── Two-column experiential grid ── */
+  /* ==========================================================================
+     TEMPLE ARCH LAYOUT CONSOLE GRID
+     ========================================================================== */
   .registry-split {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 2rem;
+    gap: 2.5rem;
   }
 
   .registry-card {
-    background: var(--green-dark);
+    background: var(--bg-cream-card);
     border: 1px solid var(--gold-dim);
-    padding: 3rem 2.5rem;
+    border-radius: 40px 40px 0px 0px; /* Elegant traditional arch curves */
+    color: var(--charcoal-soft);
+    padding: 4rem 2.5rem 3.5rem;
+    position: relative;
     display: flex;
     flex-direction: column;
     gap: 0;
-    position: relative;
+    box-shadow: 0 12px 40px rgba(170, 130, 20, 0.04);
   }
 
+  /* Solid top accent header styling block */
   .registry-card::before {
     content: '';
     position: absolute;
     top: 0; left: 0; right: 0;
-    height: 3px;
-    background: linear-gradient(90deg, var(--gold), rgba(201, 168, 76, 0.3));
+    height: 5px;
+    background: linear-gradient(90deg, var(--gold-kasavu), #F3E5AB, var(--gold-kasavu));
+    border-radius: 40px 40px 0 0;
   }
 
   .card-region {
     font-size: 0.6rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-antique);
     margin-bottom: 0.75rem;
-  }
-
-  .card-title {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: 2.2rem;
-    font-weight: 300;
-    font-style: italic;
-    color: var(--white);
-    margin-bottom: 0.5rem;
+    font-weight: 500;
   }
 
   .card-desc {
-    font-size: 0.9rem;
-    color: var(--text-mid);
+    font-size: 0.92rem;
+    color: var(--text-muted);
     line-height: 1.75;
     margin-bottom: 2rem;
     padding-bottom: 2rem;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
+    border-bottom: 1px solid var(--gold-dim);
   }
 
-  /* ── Contribution sections ── */
   .pay-section {
     padding: 1.75rem 0;
-    border-bottom: 1px solid rgba(201, 168, 76, 0.12);
+    border-bottom: 1px solid rgba(214, 175, 55, 0.15);
   }
 
   .pay-section:last-of-type {
@@ -210,35 +218,36 @@
     font-size: 0.58rem;
     letter-spacing: 0.26em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-antique);
     margin-bottom: 0.4rem;
+    font-weight: 500;
   }
 
   .pay-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.35rem;
+    font-size: 1.4rem;
     font-weight: 400;
-    color: var(--white);
+    color: var(--charcoal-soft);
     margin-bottom: 0.35rem;
   }
 
   .pay-detail {
-    font-size: 0.84rem;
-    color: var(--text-dim);
+    font-size: 0.86rem;
+    color: var(--text-muted);
     line-height: 1.65;
     margin-bottom: 1.1rem;
   }
 
   .pay-marker {
-    display: inline-block;
+    display: block;
     font-family: 'Jost', sans-serif;
-    font-size: 0.78rem;
+    font-size: 0.8rem;
     font-weight: 400;
     letter-spacing: 0.04em;
-    color: var(--white);
-    background: rgba(13, 31, 15, 0.45);
+    color: var(--charcoal-soft);
+    background: #FAF8F2;
     border: 1px solid var(--gold-dim);
-    padding: 0.65rem 1rem;
+    padding: 0.75rem 1rem;
     margin-bottom: 1.15rem;
     word-break: break-all;
     width: 100%;
@@ -249,52 +258,51 @@
     font-size: 0.58rem;
     letter-spacing: 0.2em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-antique);
     margin-bottom: 0.15rem;
+    font-weight: 500;
   }
 
   .pay-marker .marker-value {
-    font-size: 0.92rem;
-    color: var(--cream);
+    font-size: 0.95rem;
+    color: var(--charcoal-soft);
   }
 
-  /* ── Action buttons ── */
+  /* PREMIUM TRADITIONAL INTERACTION ACTIONS BUTTON */
   .btn-pay {
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.5rem;
-    padding: 0.85rem 1.5rem;
+    padding: 0.95rem 1.5rem;
     font-family: 'Jost', sans-serif;
-    font-size: 0.7rem;
+    font-size: 0.72rem;
     font-weight: 400;
     letter-spacing: 0.16em;
     text-transform: uppercase;
     text-decoration: none;
-    border: 1px solid var(--gold);
-    color: var(--gold);
+    border: 1px solid var(--gold-kasavu);
+    color: var(--gold-antique);
     background: transparent;
-    transition: background 0.25s, color 0.25s;
+    transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
     cursor: pointer;
     width: 100%;
   }
 
-  .btn-pay:hover, .btn-pay:focus-visible {
-    background: var(--gold);
-    color: var(--green-deep);
-    outline: none;
+  .btn-pay:hover {
+    background: var(--leaf-green); /* Traditional banana leaf color interaction overlay pop */
+    color: #FFFFFF;
+    border-color: var(--leaf-green);
+    box-shadow: 0 4px 15px rgba(20, 64, 35, 0.15);
   }
 
   .btn-pay::after {
     content: '→';
-    transition: transform 0.2s;
   }
 
-  .btn-pay:hover::after {
-    transform: translateX(3px);
-  }
-
-  /* ── UPI QR adjustments ── */
+  /* ==========================================================================
+     UPI GRAPHIC SETS
+     ========================================================================== */
   .upi-qr-wrap {
     display: flex;
     flex-direction: column;
@@ -307,30 +315,29 @@
     width: 160px;
     height: 160px;
     border: 1px solid var(--gold-dim);
-    background: var(--white);
+    background: #FFFFFF;
     padding: 0.5rem;
     display: flex;
     align-items: center;
     justify-content: center;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.02);
   }
 
   .upi-qr-frame img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
+    width: 100%; height: 100%; object-fit: contain; display: block;
   }
 
   .upi-qr-caption {
     font-size: 0.68rem;
     letter-spacing: 0.12em;
     text-transform: uppercase;
-    color: var(--text-dim);
+    color: var(--text-muted);
   }
 
   .upi-id-block {
     text-align: center;
     margin-bottom: 1.25rem;
+    width: 100%;
   }
 
   .upi-id-raw {
@@ -338,111 +345,132 @@
     font-size: 0.95rem;
     font-weight: 400;
     letter-spacing: 0.06em;
-    color: var(--white);
+    color: var(--charcoal-soft);
     word-break: break-all;
-    padding: 0.6rem 1rem;
-    border: 1px dashed var(--gold-dim);
-    background: rgba(13, 31, 15, 0.35);
+    padding: 0.65rem 1rem;
+    border: 1px dashed var(--gold-kasavu);
+    background: #FAF8F2;
     display: inline-block;
+    width: 100%;
   }
 
-  /* ── Security assurance banner ── */
+  /* ==========================================================================
+     NOTICES & TRUST WRAPPERS
+     ========================================================================== */
   .security-note {
     margin-top: 4rem;
-    padding: 2rem 2.25rem;
+    padding: 2.25rem;
     border: 1px solid var(--gold-dim);
-    background: rgba(20, 43, 20, 0.6);
+    background: var(--bg-cream-card);
     display: flex;
     gap: 1.25rem;
     align-items: center;
+    box-shadow: 0 5px 20px rgba(170, 130, 20, 0.02);
   }
 
   .security-icon {
     flex-shrink: 0;
     width: 2.2rem;
     height: 2.2rem;
-    border: 1px solid var(--gold);
+    border: 1px solid var(--gold-kasavu);
     border-radius: 50%;
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 1rem;
-    color: var(--gold);
+    color: var(--gold-antique);
   }
 
   .security-body h3 {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-weight: 400;
-    color: var(--white);
+    color: var(--charcoal-soft);
     margin-bottom: 0.3rem;
   }
 
   .security-body p {
-    font-size: 0.82rem;
-    color: var(--text-mid);
+    font-size: 0.85rem;
+    color: var(--text-muted);
     line-height: 1.7;
   }
 
-  /* ── Traditional blessings card ── */
   .lifafa-note {
     margin-top: 2rem;
-    padding: 3rem 2.5rem;
+    padding: 3.5rem 1.5rem;
     text-align: center;
-    border: 1px solid rgba(201, 168, 76, 0.2);
-    background: linear-gradient(180deg, rgba(30, 70, 32, 0.25) 0%, rgba(20, 43, 20, 0.5) 100%);
+    border: 1px solid rgba(214, 175, 55, 0.3);
+    background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F0 100%);
   }
 
   .lifafa-note .note-eyebrow {
     font-size: 0.6rem;
     letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: var(--gold);
+    color: var(--gold-antique);
     margin-bottom: 1rem;
+    font-weight: 500;
   }
 
   .lifafa-note p {
     font-family: 'Cormorant Garamond', serif;
-    font-size: 1.25rem;
+    font-size: 1.3rem;
     font-style: italic;
-    color: var(--text-mid);
+    color: var(--charcoal-soft);
     line-height: 1.85;
     max-width: 550px;
     margin: 0 auto;
   }
 
   footer {
-    padding: 3rem 2rem;
+    padding: 3.5rem 2rem;
     text-align: center;
-    border-top: 1px solid rgba(201, 168, 76, 0.12);
+    border-top: 1px solid var(--gold-dim);
     margin-top: 4rem;
   }
 
   footer p {
     font-family: 'Cormorant Garamond', serif;
     font-style: italic;
-    font-size: 1rem;
-    color: var(--text-dim);
+    font-size: 1.05rem;
+    color: var(--text-muted);
   }
 
   footer a {
-    color: var(--gold);
+    color: var(--gold-antique);
     text-decoration: none;
     transition: color 0.2s;
+    font-weight: 400;
   }
 
-  footer a:hover { color: var(--white); }
+  footer a:hover { color: var(--charcoal-soft); }
 
-  @media (max-width: 640px) {
-    nav { padding: 1rem 1.25rem; flex-wrap: wrap; gap: 0.75rem; }
-    .nav-links { display: none; width: 100%; flex-direction: column; gap: 1rem; padding: 1rem 0 0.5rem; border-top: 1px solid rgba(13, 31, 15, 0.08); }
-    .nav-links.open { display: flex; }
+  /* ==========================================================================
+     SMARTPHONE FLUID OVERRIDES
+     ========================================================================== */
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
     .nav-toggle { display: block; }
-    .page-hero { padding: 9rem 1.5rem 4rem; }
-    main { padding: 3.5rem 1.25rem 4rem; }
-    .registry-split { grid-template-columns: 1fr; }
-    .registry-card { padding: 2.25rem 1.5rem; }
-    .security-note { flex-direction: column; text-align: center; padding: 1.75rem 1.5rem; }
+    .nav-links {
+      display: none; width: 100%; flex-direction: column; gap: 0;
+      padding: 0.5rem 0 0; margin-top: 0.75rem;
+      border-top: 1px solid rgba(13, 31, 15, 0.05);
+    }
+    .nav-links.open { display: flex; }
+    .nav-links li { width: 100%; text-align: center; }
+    .nav-links a {
+      width: 100%; padding: 0.85rem 0; font-size: 0.8rem;
+      border-bottom: 1px solid rgba(13, 31, 15, 0.03);
+    }
+    .nav-links li:last-child a { border-bottom: none; }
+    .nav-links a.active { border-bottom: 2px solid var(--gold-kasavu); padding-bottom: 0.85rem; }
+
+    .page-hero { padding: 9rem 1rem 3.5rem; }
+    main { padding: 2.5rem 1rem 4rem; }
+    .registry-split { grid-template-columns: 1fr; gap: 2.5rem; }
+    .registry-card { padding: 3rem 1.5rem 2.5rem; border-radius: 40px 40px 0 0; }
+    .registry-card::before { border-radius: 40px 40px 0 0; }
+    .security-note { flex-direction: column; text-align: center; padding: 1.75rem 1.25rem; }
   }
 </style>
 </head>
@@ -450,7 +478,7 @@
 
 <nav aria-label="Main navigation">
   <a href="index.html" class="nav-logo">S &amp; N</a>
-  <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+  <button class="nav-toggle" id="menu-toggle-btn" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
   <ul class="nav-links" id="nav-menu">
     <li><a href="index.html">Home</a></li>
     <li><a href="travel.html">Travel</a></li>
@@ -469,65 +497,126 @@
 </header>
 
 <main>
-  <div class="registry-split">
+  <!-- SECTION 1: TWO CHANNELS ROW -->
+  <div class="registry-split" style="margin-bottom: 4rem;">
+    
+    <!-- CARD 1: THE GREAT ESCAPE -->
+    <div class="registry-card">
+      <div>
+        <span style="font-size: 2.2rem; margin-bottom: 1rem; display: block;" aria-hidden="true">✈️ 🥂</span>
+        <h3 class="card-title">The Great Escape</h3>
+        <p class="card-desc">
+          Help us fund our very first grand adventure as husband and wife. This chapter is dedicated to the wandering—crossing skies, exploring hidden coastal corners, toast-filled romantic dinners, and making memories that we will look back on for the rest of our lives.
+        </p>
+      </div>
+      <button class="btn-pay" onclick="openRegistryForm('The Great Escape')" style="margin-top: 1.5rem;">Select This Chapter</button>
+    </div>
 
-    <article class="registry-card" aria-labelledby="card-us-title">
-      <p class="card-region">International &amp; US Guests</p>
-      <h2 class="card-title" id="card-us-title">The Honeymoon Fund</h2>
-      <p class="card-desc">We are so excited to plan our first grand adventure as husband and wife. If you wish to send a blessing from overseas, these avenues connect directly into our travel and future registry funds securely.</p>
+    <!-- CARD 2: THE EVERYDAY MAGIC -->
+    <div class="registry-card">
+      <div>
+        <span style="font-size: 2.2rem; margin-bottom: 1rem; display: block;" aria-hidden="true">🏡 ☕</span>
+        <h3 class="card-title">The Everyday Magic</h3>
+        <p class="card-desc">
+          Help us set down our roots and design the beautiful foundation of our ordinary days. This chapter is dedicated to building our first home sanctuary—gathering comfortable furniture, planting a garden, setting up cozy weekend morning coffee corners, and creating a space to host you all for years to come.
+        </p>
+      </div>
+      <button class="btn-pay" onclick="openRegistryForm('The Everyday Magic')" style="margin-top: 1.5rem;">Select This Chapter</button>
+    </div>
 
-      <section class="pay-section" aria-labelledby="zelle-label">
-        <p class="pay-label" id="zelle-label">Avenue 01</p>
-        <p class="pay-name">Direct Transfer via Zelle</p>
-        <p class="pay-detail">To contribute securely with no overhead fees via your standard US banking application, you can locate our registry account using the details below.</p>
-        <div class="pay-marker" role="group" aria-label="Zelle routing details">
-          <span class="marker-key">Registry Email</span>
-          <span class="marker-value">YOUR_EMAIL@EXAMPLE.COM</span>
-        </div>
-        <div class="pay-marker" role="group" aria-label="Zelle phone pointer">
-          <span class="marker-key">Registry Phone</span>
-          <span class="marker-value">+1 (555) 123-4567</span>
-        </div>
-      </section>
+  </div>
 
-      <section class="pay-section" aria-labelledby="venmo-label">
-        <p class="pay-label" id="venmo-label">Avenue 02</p>
-        <p class="pay-name">Gifting via Venmo</p>
-        <p class="pay-detail">Tapping below on a mobile device will safely transition you to our pre-notated wedding profile link layout instantly.</p>
-        <div class="pay-marker" role="group" aria-label="Venmo username">
-          <span class="marker-key">Venmo Handle</span>
-          <span class="marker-value">@YOUR_USERNAME</span>
-        </div>
-        <a href="https://venmo.com/u/YOUR_USERNAME?txn=pay&note=Sharvari%20and%20Nikhil%20Wedding" class="btn-pay" target="_blank">Contribute via Venmo</a>
-      </section>
-    </article>
+  <!-- SECTION 2: INTERACTIVE GUEST INTENTION FORM -->
+  <div id="registry-form-container" style="max-width: 600px; margin: 0 auto 4rem; background: var(--bg-cream-card); border: 1px solid var(--gold-dim); padding: 3rem 2rem; position: relative; display: none; box-shadow: 0 10px 30px rgba(170,130,20,0.04);">
+    <h3 id="form-heading" style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--charcoal-soft); text-align: center; margin-bottom: 1.5rem; font-style: italic;">Contribute</h3>
+    
+    <form id="custom-registry-form" onsubmit="revealPaymentAvenues(event)">
+      <input type="hidden" id="selected-fund-input" name="SelectedFund">
+      
+      <div style="margin-bottom: 1.5rem;">
+        <label style="display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-antique); margin-bottom: 0.5rem; font-weight: 500;">Family Name / Your Name</label>
+        <input type="text" id="guest-name" name="GuestName" required style="width: 100%; padding: 0.85rem; background: #FCFAF5; border: 1px solid var(--gold-dim); color: var(--charcoal-soft); font-family: inherit; font-size: 0.95rem; border-radius: 0; outline: none;">
+      </div>
 
-    <article class="registry-card" aria-labelledby="card-in-title">
-      <p class="card-region">Domestic Guests — India</p>
-      <h2 class="card-title" id="card-in-title">The New Home Fund</h2>
-      <p class="card-desc">As we build our home and look toward setting down roots, your blessings mean the world. For family and friends staying in India, we have configured a seamless way to participate directly.</p>
+      <div style="margin-bottom: 2rem;">
+        <label style="display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-antique); margin-bottom: 0.5rem; font-weight: 500;">Gift Amount (e.g., $100 or ₹5,000)</label>
+        <input type="text" id="gift-amount" name="GuestAmount" required style="width: 100%; padding: 0.85rem; background: #FCFAF5; border: 1px solid var(--gold-dim); color: var(--charcoal-soft); font-family: inherit; font-size: 0.95rem; border-radius: 0; outline: none;">
+      </div>
 
-      <section class="pay-section" aria-labelledby="upi-label">
-        <p class="pay-label" id="upi-label">Avenue 01</p>
-        <p class="pay-name">Instant Transfer via UPI</p>
-        <p class="pay-detail">Scan our custom wedding QR token utilizing GPay, PhonePe, Paytm, or your preferred bank portal, or tap the responsive shortcut handler below.</p>
+      <button type="submit" class="btn-pay" style="width: 100%;">Next: Choose Registry Avenue</button>
+    </form>
+  </div>
 
-        <div class="upi-qr-wrap">
-          <div class="upi-qr-frame">
-            <img src="upi-qr.png" alt="UPI QR code for wedding gift fund" width="150" height="150">
+  <!-- SECTION 3: THREE-WAY CONSOLE CHANNELS -->
+  <div id="payment-options-container" style="display: none; animation: fadeIn 0.4s ease;">
+    
+    <div style="text-align: center; margin-bottom: 3.5rem; padding: 2.5rem 1.5rem; background: #FFFFFF; border: 1px solid var(--gold-kasavu); max-width: 850px; margin-left: auto; margin-right: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(170,130,20,0.02);">
+      <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--gold-antique); font-style: italic; margin-bottom: 0.5rem;">Thank You, <span id="thank-you-name"></span></h3>
+      <p style="font-size: 0.95rem; color: var(--charcoal-soft); max-width: 620px; margin: 0 auto; line-height: 1.7;">
+        Your choice to support <strong id="conf-amount" style="color:var(--gold-antique); font-weight:500;"></strong> toward <strong id="conf-fund" style="color:var(--gold-antique); font-weight:500;"></strong> has been beautifully logged in our registry ledger. 
+        <span style="display:block; margin-top: 0.85rem; color: var(--charcoal-soft); font-weight: 400; border-top: 1px dashed var(--gold-dim); padding-top: 0.85rem;">To securely send your blessing, please finalize the transfer directly through your preferred application below:</span>
+      </p>
+    </div>
+
+    <div class="registry-split">
+      
+      <article class="registry-card" aria-labelledby="card-us-title">
+        <p class="card-region">United States &amp; International</p>
+        <h2 class="card-title" id="card-us-title">Zelle &amp; Venmo</h2>
+        <p class="card-desc">For family and friends sending from the US or abroad. Transfers clear instantly through your native system applications with zero middle-man platform cuts.</p>
+
+        <section class="pay-section" aria-labelledby="zelle-label">
+          <p class="pay-label" id="zelle-label">Avenue 01</p>
+          <p class="pay-name">Direct Transfer via Zelle</p>
+          <p class="pay-detail">Open your secure local banking app, select Zelle routing, and enter either verified registry credential handle below:</p>
+          <div class="pay-marker" role="group" aria-label="Zelle Email">
+            <span class="marker-key">Registry Email Destination</span>
+            <span class="marker-value">YOUR_EMAIL@EXAMPLE.COM</span>
           </div>
-          <span class="upi-qr-caption">Scan with any UPI framework</span>
-        </div>
+          <div class="pay-marker" role="group" aria-label="Zelle Phone">
+            <span class="marker-key">Registry Phone Number</span>
+            <span class="marker-value">+1 (555) 123-4567</span>
+          </div>
+        </section>
 
-        <div class="upi-id-block">
-          <p class="pay-label" style="margin-bottom:0.35rem;">Universal UPI String ID</p>
-          <p class="upi-id-raw" aria-label="UPI ID">YOUR_UPI_ID@paytm</p>
-        </div>
+        <section class="pay-section" aria-labelledby="venmo-label">
+          <p class="pay-label" id="venmo-label">Avenue 02</p>
+          <p class="pay-name">Gifting via Venmo</p>
+          <p class="pay-detail">Tapping below on your smartphone safely boots up your native Venmo application directly to our wedding registry profile screen.</p>
+          <div class="pay-marker" role="group" aria-label="Venmo Handle">
+            <span class="marker-key">Venmo Account Handle</span>
+            <span class="marker-value">@YOUR_USERNAME</span>
+          </div>
+          <a href="https://venmo.com/u/YOUR_USERNAME?txn=pay&note=Sharvari%20and%20Nikhil%20Wedding" class="btn-pay" target="_blank">Open Venmo App</a>
+        </section>
+      </article>
 
-        <a href="upi://pay?pa=YOUR_UPI_ID@paytm&amp;pn=SharvariAndNikhil&amp;cu=INR" class="btn-pay">Contribute via UPI</a>
-      </section>
-    </article>
+      <article class="registry-card" aria-labelledby="card-in-title">
+        <p class="card-region">Domestic — India</p>
+        <h2 class="card-title" id="card-in-title">UPI Registry</h2>
+        <p class="card-desc">For our guests residing inside India. Scan the dedicated registry code utilizing GPay, PhonePe, Paytm, or tap the responsive button shortcut below.</p>
 
+        <section class="pay-section" aria-labelledby="upi-label" style="border-bottom:none; padding-bottom:0;">
+          <p class="pay-label" id="upi-label">Avenue 03</p>
+          <p class="pay-name">Instant Transfer via UPI</p>
+          
+          <div class="upi-qr-wrap">
+            <div class="upi-qr-frame">
+              <img src="upi-qr.png" alt="UPI QR Code for wedding contribution" width="150" height="150">
+            </div>
+            <span class="upi-qr-caption">Scan with GPay, PhonePe, or Paytm</span>
+          </div>
+
+          <div class="upi-id-block">
+            <p class="pay-label" style="margin-bottom:0.35rem;">Universal UPI ID String</p>
+            <p class="upi-id-raw" aria-label="UPI ID">YOUR_UPI_ID@paytm</p>
+          </div>
+
+          <a href="upi://pay?pa=YOUR_UPI_ID@paytm&amp;pn=SharvariAndNikhil&amp;cu=INR" class="btn-pay">Launch Mobile UPI App</a>
+        </section>
+      </article>
+
+    </div>
   </div>
 
   <aside class="security-note" aria-labelledby="security-heading">
@@ -549,9 +638,9 @@
 </footer>
 
 <script>
-  /* Mobile nav responsive controller toggle */
+  /* Navigation dropdown responsive handler mechanics */
   (function () {
-    var toggle = document.querySelector('.nav-toggle');
+    var toggle = document.getElementById('menu-toggle-btn');
     var menu = document.getElementById('nav-menu');
     if (!toggle || !menu) return;
     toggle.addEventListener('click', function () {
@@ -559,6 +648,37 @@
       toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     });
   })();
+
+  /* Dynamic Custom Gifting Interface State Flows */
+  function openRegistryForm(fundName) {
+    document.getElementById('selected-fund-input').value = fundName;
+    document.getElementById('form-heading').innerText = "Contribute to " + fundName;
+    
+    // Safety resets
+    document.getElementById('payment-options-container').style.display = 'none';
+    
+    const formBox = document.getElementById('registry-form-container');
+    formBox.style.display = 'block';
+    formBox.scrollIntoView({ behavior: 'smooth', block: 'center' });
+  }
+
+  async function revealPaymentAvenues(event) {
+    event.preventDefault();
+    
+    const name = document.getElementById('guest-name').value;
+    const amount = document.getElementById('gift-amount').value;
+    const fund = document.getElementById('selected-fund-input').value;
+
+    document.getElementById('thank-you-name').innerText = name;
+    document.getElementById('conf-amount').innerText = amount;
+    document.getElementById('conf-fund').innerText = fund;
+    
+    document.getElementById('registry-form-container').style.display = 'none';
+    
+    const optionsBlock = document.getElementById('payment-options-container');
+    optionsBlock.style.display = 'block';
+    optionsBlock.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }
 </script>
 </body>
 </html>
