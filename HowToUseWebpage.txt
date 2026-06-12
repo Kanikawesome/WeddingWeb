@@ -1,0 +1,8 @@
+just use:
+    python -m http.server 8000
+to start up the server
+
+then
+go to chrome
+and copy paste:
+    http://localhost:8000/
