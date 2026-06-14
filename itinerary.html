@@ -269,6 +269,39 @@
       max-width: 560px;
     }
 
+    .dress-code-block {
+      margin: 1.5rem 0 2.5rem;
+      padding: 1.5rem;
+      background: rgba(201, 168, 76, 0.05);
+      border-left: 3px solid var(--gold);
+    }
+
+    .dress-code-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.3rem;
+      color: #2f261f;
+      margin-bottom: 0.5rem;
+      font-style: italic;
+    }
+
+    .dress-code-text {
+      font-size: 0.85rem;
+      color: #4e453f;
+      line-height: 1.6;
+      margin-bottom: 0.3rem;
+    }
+
+    .dress-code-img {
+      max-width: 100%;
+      height: auto;
+      max-height: 350px;
+      margin-top: 1rem;
+      border: 1px solid rgba(201, 168, 76, 0.2);
+      border-radius: 4px;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      object-fit: cover;
+    }
+
     .timeline-tag {
       display: inline-block;
       margin-top: 0.75rem;
@@ -501,32 +534,26 @@
       <div class="day-panel active" id="panel-haldi">
         <div class="day-header">
           <h2 class="day-name">Haldi &amp; Festivities</h2>
-          <p class="day-date">Saturday · December 5, 2025</p>
+          <p class="day-date">Saturday · December 5, 2026</p>
         </div>
         <div class="panel-rsvps" data-event="haldi"></div>
+        <div class="dress-code-block">
+          <p class="dress-code-title">Theme &amp; Dress Code</p>
+          <p class="dress-code-text"><strong>Theme:</strong> Kerala Inspired Haldi</p>
+          <p class="dress-code-text"><strong>Dress Code:</strong> White and gold (Kerala sari style)</p>
+          <img src="kerala_sari.png" alt="Kerala Sari Style Example" class="dress-code-img">
+        </div>
         <div class="timeline">
-          <div class="timeline-item">
-            <p class="timeline-time">All Day</p>
-            <h3 class="timeline-title">Family Gatherings &amp; Festive Vibes</h3>
-            <p class="timeline-location">Venue Grounds &amp; Hotel Lounges</p>
-            <p class="timeline-desc">A relaxed day of visiting, light rituals, and bright outfits — think all-day color,
-              music, and informal get-togethers leading into the evening ceremony.</p>
-            <span class="timeline-tag">Optional</span>
-          </div>
           <div class="timeline-item highlight itinerary-haldi">
-            <p class="timeline-time">7:00 PM</p>
+            <p class="timeline-time">6:00 PM</p>
             <h3 class="timeline-title">Haldi Ceremony (replacing Sangeet)</h3>
-            <p class="timeline-location">The Sunset Terrace</p>
             <p class="timeline-desc">An evening Haldi — turmeric blessings, music, and heartfelt rituals. Dress in
               bright, festive colors you don't mind getting a little yellow on.</p>
-            <span class="timeline-tag gold-tag">Haldi Event</span>
           </div>
           <div class="timeline-item itinerary-haldi">
             <p class="timeline-time">8:30 PM</p>
-            <h3 class="timeline-title">Casual Dinner &amp; Music</h3>
-            <p class="timeline-location">The Great Hall</p>
-            <p class="timeline-desc">A cozy, informal dinner to follow the Haldi — comfortable seating, light
-              performances, and mixers for friends and family.</p>
+            <h3 class="timeline-title">Sadhya</h3>
+            <p class="timeline-desc">Traditional Kerala dinner to follow the Haldi. Relax, watch the water, and enjoy dinner while chatting with friends and family</p>
           </div>
         </div>
       </div>
@@ -538,28 +565,22 @@
           <p class="day-date">Sunday · December 6, 2025</p>
         </div>
         <div class="panel-rsvps" data-event="wedding"></div>
+        <div class="dress-code-block">
+          <p class="dress-code-title">Theme &amp; Dress Code</p>
+          <p class="dress-code-text"><strong>Theme:</strong> South Indian Seaside</p>
+          <p class="dress-code-text"><strong>Dress Code:</strong> Very South Indian-esque, bright colors! (Please no pink or red, as the bride will be wearing those colors)</p>
+        </div>
         <div class="timeline">
           <div class="timeline-item highlight itinerary-wedding">
-            <p class="timeline-time">8:00 AM</p>
-            <h3 class="timeline-title">The Wedding Ceremony</h3>
-            <p class="timeline-location">The Sunset Terrace (Mandap)</p>
-            <p class="timeline-desc">The core rituals begin early — please be seated by 7:45 AM. An intimate,
+            <p class="timeline-time">8:30 AM</p>
+            <h3 class="timeline-title">Muhurthum</h3>
+            <p class="timeline-desc">The Wedding Ceremony begins early — please be seated by 7:45 AM. An intimate,
               traditional ceremony followed by blessings and family photos.</p>
-            <span class="timeline-tag gold-tag">Main Event</span>
-          </div>
-          <div class="timeline-item itinerary-wedding">
-            <p class="timeline-time">9:30 AM</p>
-            <h3 class="timeline-title">Post-Ceremony Brunch</h3>
-            <p class="timeline-location">The Garden Room</p>
-            <p class="timeline-desc">A relaxed brunch with the newlyweds — light bites, warm drinks, and time to
-              congratulate the couple.</p>
           </div>
           <div class="timeline-item itinerary-wedding">
             <p class="timeline-time">11:00 AM</p>
-            <h3 class="timeline-title">Photo Opportunities &amp; Guest Meetups</h3>
-            <p class="timeline-location">Venue Grounds</p>
-            <p class="timeline-desc">Stroll the gardens for portrait-style photos, or meet with family members for quick
-              group shots.</p>
+            <h3 class="timeline-title">Post-Ceremony Lunch and Photos</h3>
+            <p class="timeline-desc">A relaxed lunch with the newlyweds. Meet with family for quick group shots</p>
           </div>
         </div>
       </div>
@@ -571,28 +592,22 @@
           <p class="day-date">Sunday · December 6, 2025</p>
         </div>
         <div class="panel-rsvps" data-event="reception"></div>
+        <div class="dress-code-block">
+          <p class="dress-code-title">Theme &amp; Dress Code</p>
+          <p class="dress-code-text"><strong>Theme:</strong> Starry Night</p>
+          <p class="dress-code-text"><strong>Dress Code:</strong> Greens, blues (deep tones), blacks, silvers, golds, and darker colors</p>
+        </div>
         <div class="timeline">
           <div class="timeline-item itinerary-reception">
-            <p class="timeline-time">6:00 PM</p>
+            <p class="timeline-time">7:00 PM</p>
             <h3 class="timeline-title">Cocktail Hour</h3>
-            <p class="timeline-location">Foyer &amp; Terrace</p>
-            <p class="timeline-desc">A pre-dinner social hour with cocktails, passed hors d'oeuvres, and ambient music
-              while guests arrive and settle.</p>
-            <span class="timeline-tag">Social</span>
+            <p class="timeline-desc">A pre-dinner social hour with cocktails and ambient music while guests arrive and settle.</p>
           </div>
           <div class="timeline-item highlight itinerary-reception" style="margin-top:1.5rem;">
-            <p class="timeline-time">6:30 PM</p>
+            <p class="timeline-time">8:00 PM</p>
             <h3 class="timeline-title">Grand Reception Dinner &amp; Dancing</h3>
-            <p class="timeline-location">The Great Hall</p>
             <p class="timeline-desc">Formal dinner, toasts, cake cutting, and then an open dance floor. Expect music,
               light projections, and an unforgettable evening.</p>
-            <span class="timeline-tag gold-tag">Gala Reception</span>
-          </div>
-          <div class="timeline-item itinerary-reception">
-            <p class="timeline-time">9:30 PM</p>
-            <h3 class="timeline-title">Late-Night Desserts &amp; Send-off</h3>
-            <p class="timeline-location">The Terrace</p>
-            <p class="timeline-desc">Sweet treats, last dances, and a fun send-off to close the weekend.</p>
           </div>
         </div>
       </div>
