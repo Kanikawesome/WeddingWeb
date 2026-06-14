@@ -7,20 +7,9 @@
 <meta name="description" content="Registry options for Sharvari &amp; Nikhil — Experiential honeymoon and future home contributions for our wedding guests.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-
-  :root {
-    --bg-cream-pure: #FCFAF5;   /* Raw unbleached Kasavu core background */
-    --bg-cream-card: #FFFFFF;   /* Crisp pristine white for layout depth */
-    --gold-kasavu: #D4AF37;     /* Vibrant metallic zari border accents */
-    --gold-antique: #AA8214;    /* Deeper weighted gold for crisp legible labels */
-    --gold-dim: rgba(212, 175, 55, 0.22);
-    --leaf-green: #144023;      /* Rich traditional banana leaf green for hover pop */
-    --charcoal-soft: #2D2B2A;   /* Soft charcoal for primary high-contrast reading typography */
-    --text-muted: #666260;      /* Mid-tone gray for subtext lines */
-  }
 
   html { scroll-behavior: smooth; }
 
@@ -38,73 +27,6 @@
     font-family: 'Jost', sans-serif;
     font-weight: 300;
     line-height: 1.65;
-  }
-
-  /* ==========================================================================
-     KASAVU HEADER NAVIGATION
-     ========================================================================== */
-  nav {
-    position: fixed;
-    top: 0; left: 0; right: 0;
-    z-index: 1000;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 1.25rem 2rem;
-    background: var(--bg-cream-pure);
-    border-bottom: 4px solid var(--gold-kasavu);
-    box-shadow: 0 4px 30px rgba(170, 130, 20, 0.04);
-  }
-
-  .nav-logo {
-    font-family: 'Cormorant Garamond', serif;
-    font-style: italic;
-    font-size: 1.5rem;
-    color: var(--charcoal-soft);
-    text-decoration: none;
-    letter-spacing: 0.02em;
-    font-weight: 400;
-  }
-
-  .nav-links {
-    display: flex;
-    gap: 2rem;
-    list-style: none;
-    align-items: center;
-  }
-
-  .nav-links a {
-    color: var(--charcoal-soft);
-    text-decoration: none;
-    font-size: 0.75rem;
-    letter-spacing: 0.14em;
-    text-transform: uppercase;
-    font-weight: 400;
-    transition: color 0.2s;
-    display: inline-block;
-  }
-
-  .nav-links a:hover, .nav-links a.active {
-    color: var(--gold-antique);
-  }
-
-  .nav-links a.active {
-    border-bottom: 2px solid var(--gold-kasavu);
-    padding-bottom: 2px;
-  }
-
-  .nav-toggle {
-    display: none;
-    background: transparent;
-    border: 1px solid var(--gold-kasavu);
-    color: var(--charcoal-soft);
-    font-family: 'Jost', sans-serif;
-    font-size: 0.65rem;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    padding: 0.6rem 1rem;
-    cursor: pointer;
-    font-weight: 400;
   }
 
   /* ==========================================================================
@@ -245,7 +167,7 @@
     font-weight: 400;
     letter-spacing: 0.04em;
     color: var(--charcoal-soft);
-    background: #FAF8F2;
+    background: #faf7f0;
     border: 1px solid var(--gold-dim);
     padding: 0.75rem 1rem;
     margin-bottom: 1.15rem;
@@ -349,7 +271,7 @@
     word-break: break-all;
     padding: 0.65rem 1rem;
     border: 1px dashed var(--gold-kasavu);
-    background: #FAF8F2;
+    background: #faf7f0;
     display: inline-block;
     width: 100%;
   }
@@ -400,7 +322,7 @@
     padding: 3.5rem 1.5rem;
     text-align: center;
     border: 1px solid rgba(214, 175, 55, 0.3);
-    background: linear-gradient(180deg, #FFFFFF 0%, #FAF7F0 100%);
+    background: var(--green-dark);
   }
 
   .lifafa-note .note-eyebrow {
@@ -449,22 +371,6 @@
      SMARTPHONE FLUID OVERRIDES
      ========================================================================== */
   @media (max-width: 768px) {
-    nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
-    .nav-toggle { display: block; }
-    .nav-links {
-      display: none; width: 100%; flex-direction: column; gap: 0;
-      padding: 0.5rem 0 0; margin-top: 0.75rem;
-      border-top: 1px solid rgba(13, 31, 15, 0.05);
-    }
-    .nav-links.open { display: flex; }
-    .nav-links li { width: 100%; text-align: center; }
-    .nav-links a {
-      width: 100%; padding: 0.85rem 0; font-size: 0.8rem;
-      border-bottom: 1px solid rgba(13, 31, 15, 0.03);
-    }
-    .nav-links li:last-child a { border-bottom: none; }
-    .nav-links a.active { border-bottom: 2px solid var(--gold-kasavu); padding-bottom: 0.85rem; }
-
     .page-hero { padding: 9rem 1rem 3.5rem; }
     main { padding: 2.5rem 1rem 4rem; }
     .registry-split { grid-template-columns: 1fr; gap: 2.5rem; }
@@ -476,19 +382,7 @@
 </head>
 <body>
 
-<nav aria-label="Main navigation">
-  <a href="index.html" class="nav-logo">S &amp; N</a>
-  <button class="nav-toggle" id="menu-toggle-btn" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
-  <ul class="nav-links" id="nav-menu">
-    <li><a href="index.html">Home</a></li>
-    <li><a href="travel.html">Travel</a></li>
-    <li><a href="itinerary.html">Itinerary</a></li>
-    <li><a href="registry.html" class="active">Registry</a></li>
-    <li><a href="gallery.html">Our Story</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="rsvp.html">RSVP</a></li>
-  </ul>
-</nav>
+<div id="site-header"></div>
 
 <header class="page-hero">
   <p class="page-eyebrow">With Gratitude</p>
@@ -535,7 +429,7 @@
       
       <div style="margin-bottom: 1.5rem;">
         <label style="display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-antique); margin-bottom: 0.5rem; font-weight: 500;">Family Name / Your Name</label>
-        <input type="text" id="guest-name" name="GuestName" required style="width: 100%; padding: 0.85rem; background: #FCFAF5; border: 1px solid var(--gold-dim); color: var(--charcoal-soft); font-family: inherit; font-size: 0.95rem; border-radius: 0; outline: none;">
+        <input type="text" id="guest-name" name="GuestName" required style="width: 100%; padding: 0.85rem; background: #fcfaf5; border: 1px solid var(--gold-dim); color: var(--charcoal-soft); font-family: inherit; font-size: 0.95rem; border-radius: 0; outline: none;">
       </div>
 
       <div style="margin-bottom: 2rem;">
@@ -550,7 +444,7 @@
   <!-- SECTION 3: THREE-WAY CONSOLE CHANNELS -->
   <div id="payment-options-container" style="display: none; animation: fadeIn 0.4s ease;">
     
-    <div style="text-align: center; margin-bottom: 3.5rem; padding: 2.5rem 1.5rem; background: #FFFFFF; border: 1px solid var(--gold-kasavu); max-width: 850px; margin-left: auto; margin-right: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(170,130,20,0.02);">
+    <div style="text-align: center; margin-bottom: 3.5rem; padding: 2.5rem 1.5rem; background: var(--green-dark); border: 1px solid var(--gold-kasavu); max-width: 850px; margin-left: auto; margin-right: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(170,130,20,0.02);">
       <h3 style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--gold-antique); font-style: italic; margin-bottom: 0.5rem;">Thank You, <span id="thank-you-name"></span></h3>
       <p style="font-size: 0.95rem; color: var(--charcoal-soft); max-width: 620px; margin: 0 auto; line-height: 1.7;">
         Your choice to support <strong id="conf-amount" style="color:var(--gold-antique); font-weight:500;"></strong> toward <strong id="conf-fund" style="color:var(--gold-antique); font-weight:500;"></strong> has been beautifully logged in our registry ledger. 
@@ -637,18 +531,8 @@
   <p>Sharvari &amp; Nikhil · December 2026 · <a href="index.html">← Back to Home</a></p>
 </footer>
 
+<script src="nav.js" defer></script>
 <script>
-  /* Navigation dropdown responsive handler mechanics */
-  (function () {
-    var toggle = document.getElementById('menu-toggle-btn');
-    var menu = document.getElementById('nav-menu');
-    if (!toggle || !menu) return;
-    toggle.addEventListener('click', function () {
-      var open = menu.classList.toggle('open');
-      toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-  })();
-
   /* Dynamic Custom Gifting Interface State Flows */
   function openRegistryForm(fundName) {
     document.getElementById('selected-fund-input').value = fundName;

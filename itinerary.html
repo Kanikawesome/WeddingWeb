@@ -6,37 +6,13 @@
 <title>Itinerary — Sarah & James</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --green-deep: #97a683;
-    --green-dark: #7fb27f;
-    --green-mid: #1e4620;
-    --green-accent: #3a7d44;
-    --green-light: #6fbd7a;
-    --green-pale: #b8deba;
-    --gold: #c9a84c;
-    --cream: #f5f0e8;
-    --text-dim: rgba(245,240,232,0.5);
-    --text-mid: rgba(245,240,232,0.78);
-  }
   html{scroll-behavior:smooth;}
   body{background:var(--green-deep);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;}
- 
-  nav{
-    position:fixed;top:0;left:0;right:0;z-index:100;
-    display:flex;justify-content:space-between;align-items:center;
-    padding:1.25rem 3rem;
-    background:rgba(13,31,15,0.9);backdrop-filter:blur(12px);
-    border-bottom:1px solid rgba(111,189,122,0.1);
-  }
-  .nav-logo{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--cream);text-decoration:none;}
-  .nav-links{display:flex;gap:2.5rem;list-style:none;}
-  .nav-links a{color:var(--text-mid);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s;}
-  .nav-links a:hover,.nav-links a.active{color:var(--cream);}
- 
-  .page-hero{padding:12rem 2rem 6rem;text-align:center;border-bottom:1px solid rgba(111,189,122,0.1);}
+
+  .page-hero{padding:12rem 2rem 6rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.1);}
   .page-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.2rem;}
   .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;font-style:italic;line-height:1;}
   .page-sub{margin-top:1.2rem;font-size:0.9rem;color:var(--text-dim);letter-spacing:0.1em;}
@@ -66,18 +42,18 @@
   }
   .itinerary-letter > *{position:relative;z-index:1;}
  
-  .day-tabs{display:flex;gap:0;border:1px solid rgba(111,189,122,0.2);margin-bottom:4rem;overflow:hidden;}
+  .day-tabs{display:flex;gap:0;border:1px solid rgba(201,168,76,0.2);margin-bottom:4rem;overflow:hidden;}
   .day-tab{
     flex:1;background:none;border:none;color:#3d3328;
     font-family:'Jost',sans-serif;font-weight:300;font-size:0.8rem;
     letter-spacing:0.12em;padding:0.75rem 0.9rem;cursor:pointer;
-    transition:all 0.3s;border-right:1px solid rgba(111,189,122,0.2);
+    transition:all 0.3s;border-right:1px solid rgba(201,168,76,0.2);
     display:flex;flex-direction:column;align-items:center;gap:0.18rem;
     text-transform:none;
   }
   .day-tab:last-child{border-right:none;}
-  .day-tab:hover{background:rgba(58,125,68,0.12);color:#0d1f0f;}
-  .day-tab.active{background:var(--green-accent);color:#f5f0e8;}
+  .day-tab:hover{background:rgba(201,168,76,0.12);color:#0d1f0f;}
+  .day-tab.active{background:var(--green-accent);color:#2d2a24;}
   .day-tab .tab-main{font-size:0.92rem;letter-spacing:0.08em;font-weight:400;}
   .day-tab .tab-sub{font-size:0.62rem;color:var(--text-dim);letter-spacing:0.06em;text-transform:none;margin-top:0;}
   /* Tabs hidden when guest has no events that day */
@@ -92,7 +68,7 @@
   .timeline{position:relative;padding-left:2.5rem;}
   .timeline::before{
     content:'';position:absolute;left:0;top:8px;bottom:8px;
-    width:1px;background:linear-gradient(to bottom,rgba(111,189,122,0.4),rgba(111,189,122,0.05));
+    width:1px;background:linear-gradient(to bottom,rgba(201,168,76,0.4),rgba(201,168,76,0.05));
   }
   .timeline-item{
     position:relative;padding:0 0 3rem 2rem;
@@ -109,7 +85,7 @@
     content:'';position:absolute;left:-2.5rem;top:6px;
     width:7px;height:7px;border-radius:50%;
     background:var(--green-accent);
-    box-shadow:0 0 0 3px rgba(58,125,68,0.2);
+    box-shadow:0 0 0 3px rgba(201,168,76,0.2);
   }
   .timeline-item.highlight::before{background:var(--gold);box-shadow:0 0 0 4px rgba(201,168,76,0.2);}
   .timeline-time{font-size:0.68rem;letter-spacing:0.18em;text-transform:uppercase;color:#5a6f58;margin-bottom:0.5rem;font-weight:400;}
@@ -119,12 +95,12 @@
   .timeline-tag{
     display:inline-block;margin-top:0.75rem;
     padding:0.28rem 0.75rem;
-    background:rgba(58,125,68,0.14);border:1px solid rgba(58,125,68,0.22);
+    background:rgba(201,168,76,0.14);border:1px solid rgba(201,168,76,0.22);
     font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;color:#3d5937;
   }
   .timeline-tag.gold-tag{background:rgba(201,168,76,0.12);border-color:rgba(201,168,76,0.25);color:#8e7032;}
  
-  .guest-rsvp{margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(111,189,122,0.15);font-size:0.78rem;color:#000;} 
+  .guest-rsvp{margin-top:1rem;padding-top:0.75rem;border-top:1px solid rgba(201,168,76,0.15);font-size:0.78rem;color:#000;} 
   .guest-rsvp-item{display:flex;justify-content:space-between;padding:0.3rem 0;font-size:0.75rem;}
   .guest-rsvp-yes{color:var(--green-light);}
   .guest-rsvp-no{color:#ff6b6b;}
@@ -132,7 +108,7 @@
   .hotel-cta-banner{
     margin-top:4rem;padding:2.5rem 3rem;
     background:var(--green-dark);
-    border:1px solid rgba(111,189,122,0.2);
+    border:1px solid rgba(201,168,76,0.2);
     display:flex;align-items:center;justify-content:space-between;gap:2rem;
     flex-wrap:wrap;
   }
@@ -146,7 +122,7 @@
   }
   .hotel-cta-banner .banner-btn:hover{background:var(--green-light);color:var(--green-deep);}
  
-  footer{padding:3rem 2rem;text-align:center;border-top:1px solid rgba(111,189,122,0.1);}
+  footer{padding:3rem 2rem;text-align:center;border-top:1px solid rgba(201,168,76,0.1);}
   footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-dim);}
  
   @keyframes slideIn{to{opacity:1;transform:translateX(0);}}
@@ -154,7 +130,7 @@
   @media(max-width:640px){
     nav{padding:1rem 1.5rem;}.nav-links{display:none;}
     .day-tabs{flex-direction:column;}
-    .day-tab{border-right:none;border-bottom:1px solid rgba(111,189,122,0.2);}
+    .day-tab{border-right:none;border-bottom:1px solid rgba(201,168,76,0.2);}
     .day-tab:last-child{border-bottom:none;}
     .hotel-cta-banner{flex-direction:column;align-items:flex-start;}
   }
@@ -165,7 +141,7 @@
     z-index:1000;display:none;align-items:center;justify-content:center;padding:2rem;
   }
   .gate-card{
-    max-width:500px;width:100%;border:1px solid rgba(111,189,122,0.2);
+    max-width:500px;width:100%;border:1px solid rgba(201,168,76,0.2);
     background:var(--green-dark);padding:4rem 3rem;text-align:center;
   }
   .gate-title{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:2.2rem;font-weight:300;margin-bottom:1.5rem;color:var(--cream);}
@@ -189,17 +165,7 @@
   </div>
 </div>
  
-<nav>
-  <a href="index.html" class="nav-logo">S &amp; N</a>
-  <ul class="nav-links">
-    <li><a href="travel.html">Travel &amp; Stay</a></li>
-    <li><a href="itinerary.html" class="active">Itinerary</a></li>
-    <li><a href="registry.html">Registry</a></li>
-    <li><a href="gallery.html">Our Story</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="rsvp.html">RSVP</a></li>
-  </ul>
-</nav>
+<div id="site-header"></div>
  
 <div class="page-hero">
   <p class="page-eyebrow">Weekend of December 5–6, 2025</p>
@@ -331,6 +297,7 @@
   <p>Sarah &amp; James · October 2025 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
 </footer>
  
+<script src="nav.js" defer></script>
 <script>
 document.addEventListener("DOMContentLoaded", () => {
   const savedPermissions = localStorage.getItem('weddingPartyPermissions');

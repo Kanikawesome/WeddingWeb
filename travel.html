@@ -6,23 +6,12 @@
 <title>Travel &amp; Stay — Sharvari &amp; Nikhil</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="theme.css">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --green-deep: #0a180b; 
-    --green-dark: #112413;
-    --green-mid: #1a3a1d;
-    --green-accent: #2c5e33;
-    --green-light: #8cbfa0; 
-    --gold: #c9a84c; 
-    --cream: #f6f2eb;
-    --text-dim: rgba(246, 242, 235, 0.5);
-    --text-mid: rgba(246, 242, 235, 0.82);
-  }
   html { scroll-behavior: smooth; }
   body { 
-    background: linear-gradient(180deg, var(--green-deep) 0%, #061007 100%); 
+    background: linear-gradient(180deg, var(--green-deep) 0%, #e7ddc8 100%); 
     color: var(--cream); 
     font-family: 'Jost', sans-serif; 
     font-weight: 300; 
@@ -42,18 +31,6 @@
     pointer-events: none;
     z-index: -1;
   }
-
-  nav {
-    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
-    display: flex; justify-content: space-between; align-items: center;
-    padding: 1.25rem 3rem;
-    background: rgba(10, 24, 11, 0.9); backdrop-filter: blur(12px);
-    border-bottom: 1px solid rgba(201, 168, 76, 0.15);
-  }
-  .nav-logo { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1.4rem;color:var(--cream);text-decoration:none; }
-  .nav-links { display:flex;gap:2.5rem;list-style:none; }
-  .nav-links a { color:var(--text-mid);text-decoration:none;font-size:0.78rem;letter-spacing:0.15em;text-transform:uppercase;transition:color 0.2s; }
-  .nav-links a:hover, .nav-links a.active { color:var(--cream); }
 
   .page-hero {
     padding: 12rem 2rem 6rem;
@@ -119,17 +96,7 @@
 </head>
 <body>
 
-<nav>
-  <a href="index.html" class="nav-logo">S &amp; N</a>
-  <ul class="nav-links">
-    <li><a href="travel.html" class="active">Travel &amp; Stay</a></li>
-    <li><a href="itinerary.html">Itinerary</a></li>
-    <li><a href="registry.html">Registry</a></li>
-    <li><a href="gallery.html">Our Story</a></li>
-    <li><a href="faq.html">FAQ</a></li>
-    <li><a href="rsvp.html">RSVP</a></li>
-  </ul>
-</nav>
+<div id="site-header"></div>
 
 <div class="page-hero">
   <p class="page-eyebrow">Getting Here</p>
@@ -186,5 +153,6 @@
 <footer>
   <p>Sharvari &amp; Nikhil · December 2026 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
 </footer>
+<script src="nav.js" defer></script>
 </body>
 </html>
