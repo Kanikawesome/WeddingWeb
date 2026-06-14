@@ -4,16 +4,13 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>RSVP — Sarah & James</title>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="theme.css">
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  :root {
-    --green-deep: #0d1f0f; --green-dark: #142b14; --green-mid: #1e4620;
-    --green-accent: #3a7d44; --green-light: #6fbd7a; --gold: #c9a84c; --cream: #f5f0e8;
-    --text-mid: rgba(245,240,232,0.8); --text-dim: rgba(245,240,232,0.5);
-  }
   body { background: var(--green-deep); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; padding: 4rem 2rem; }
-  .container { max-width: 650px; margin: 4rem auto 0; background: var(--green-dark); padding: 3rem; border: 1px solid rgba(111,189,122,0.2); }
+  .container { max-width: 650px; margin: 4rem auto 0; background: var(--green-dark); padding: 3rem; border: 1px solid rgba(201,168,76,0.2); }
   h1, h2 { font-family: 'Cormorant Garamond', serif; font-style: italic; font-weight: 300; margin-bottom: 1.5rem; text-align: center; }
   h1 { font-size: 2.5rem; }
   p { text-align: center; color: var(--text-mid); margin-bottom: 2rem; font-size: 0.95rem; }
@@ -21,7 +18,7 @@
   .form-group { margin-bottom: 1.25rem; display: flex; flex-direction: column; gap: 0.5rem; }
   label { font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; color: var(--green-light); }
   input[type="text"], textarea {
-    background: rgba(13,31,15,0.6); border: 1px solid rgba(111,189,122,0.2);
+    background: #fcfaf5; border: 1px solid rgba(201,168,76,0.4);
     padding: 0.85rem; color: var(--cream); font-family: inherit; font-size: 0.9rem; transition: border-color 0.3s; width: 100%;
   }
   input[type="text"]:focus { border-color: var(--gold); outline: none; }
@@ -33,11 +30,11 @@
   button:hover { background: var(--green-light); color: var(--green-deep); }
   
   .party-member-block {
-    background: rgba(13,31,15,0.4); border: 1px solid rgba(111,189,122,0.15);
+    background: #faf6ee; border: 1px solid rgba(201,168,76,0.25);
     padding: 2rem; margin-bottom: 2rem; border-left: 3px solid var(--gold);
   }
-  .member-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--cream); margin-bottom: 1rem; border-bottom: 1px solid rgba(111,189,122,0.1); padding-bottom: 0.5rem; }
-  .event-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(111,189,122,0.05); }
+  .member-name { font-family: 'Cormorant Garamond', serif; font-size: 1.8rem; color: var(--cream); margin-bottom: 1rem; border-bottom: 1px solid rgba(201,168,76,0.1); padding-bottom: 0.5rem; }
+  .event-row { display: flex; justify-content: space-between; align-items: center; padding: 0.75rem 0; border-bottom: 1px solid rgba(201,168,76,0.05); }
   .event-info-label { font-size: 0.9rem; color: var(--text-mid); }
   .radio-opts { display: flex; gap: 1.5rem; }
   .radio-label { display: flex; align-items: center; gap: 0.4rem; font-size: 0.8rem; text-transform: none; color: var(--text-mid); letter-spacing: normal; }
@@ -47,7 +44,7 @@
 
   .confirm-modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;z-index:2000}
   .confirm-overlay{position:absolute;inset:0;background:rgba(0,0,0,0.55)}
-  .confirm-card{position:relative;background:var(--green-dark);padding:2rem;border:1px solid rgba(111,189,122,0.15);max-width:460px;width:90%;text-align:center}
+  .confirm-card{position:relative;background:var(--green-dark);padding:2rem;border:1px solid rgba(201,168,76,0.15);max-width:460px;width:90%;text-align:center}
   .confirm-card h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:300;margin-bottom:0.5rem}
   .confirm-card p{color:var(--text-mid);margin-bottom:1rem}
   .confirm-actions{display:flex;gap:0.75rem;justify-content:center;margin-top:0.75rem}

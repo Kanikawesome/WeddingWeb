@@ -1,0 +1,146 @@
+/* ==========================================================================
+   SHARED THEME — Sharvari & Nikhil Wedding
+   Single source of truth for fonts, the unified color palette, and the
+   shared site header. Linked from every page.
+   ========================================================================== */
+
+/* ---- Fonts (superset used across the whole site) ------------------------- */
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Jost:wght@300;400;500&family=Pinyon+Script&display=swap');
+
+/* ==========================================================================
+   UNIFIED COLOR PALETTE & TYPOGRAPHY TOKENS
+   One canonical scheme applied to every page (the deep-green theme).
+   ========================================================================== */
+:root {
+  /* ---- Cream & gold theme ------------------------------------------------
+     The variable NAMES are kept (pages reference them everywhere) but the
+     meaning is inverted: the "green" surface tokens now hold cream/warm-white
+     backgrounds, "cream" holds the dark espresso text colour, and the accent
+     tokens carry gold. Gold is the secondary colour throughout. */
+  --green-deep: #f5efe2;   /* page background — warm cream */
+  --green-dark: #fffdf8;   /* cards / elevated surfaces — warm white */
+  --green-mid: #ece3d0;    /* subtle alt surface / hover tint */
+  --green-accent: #c9a84c; /* primary action — gold */
+  --green-light: #a8821a;  /* small accent text, eyebrows, links — antique gold */
+  --green-pale: #8a6a14;   /* deeper gold for hover */
+  --gold: #c9a84c;
+  --cream: #2d2a24;        /* PRIMARY TEXT — espresso (pages use color:var(--cream)) */
+  --text-dim: rgba(45, 42, 36, 0.5);
+  --text-mid: rgba(45, 42, 36, 0.78);
+
+  /* Envelope kraft/sage tones (home-page invitation art) */
+  --envelope-bg: #b3c2a2;
+  --envelope-shadow-left: #a1b090;
+  --envelope-shadow-right: #96a585;
+  --envelope-flap-top: #bdccac;
+  --envelope-parchment-base: #223f24;
+
+  /* Font tokens */
+  --font-serif: 'Cormorant Garamond', serif;
+  --font-sans: 'Jost', sans-serif;
+  --font-script: 'Pinyon Script', cursive;
+
+  /* ---- Legacy aliases (registry page) mapped to the unified palette -------
+     The registry markup references these older variable names; pointing them
+     at the canonical tokens keeps the page on the shared cream/gold theme. */
+  --bg-cream-pure: var(--green-deep);
+  --bg-cream-card: var(--green-dark);
+  --gold-kasavu: var(--gold);
+  --gold-antique: #a8821a;
+  --gold-dim: rgba(201, 168, 76, 0.28);
+  --leaf-green: #1f4d2b;   /* deep-green hover pop (cream text sits on it) */
+  --charcoal-soft: var(--cream);
+  --text-muted: var(--text-mid);
+}
+
+/* ==========================================================================
+   SHARED SITE HEADER (injected by nav.js on every page except the home page)
+   ========================================================================== */
+.site-nav {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 100;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 3rem;
+  /* Pinned so the bar height is identical on every page regardless of the
+     page's body line-height (registry sets line-height:1.65). */
+  line-height: 1.2;
+  background: rgba(245, 239, 226, 0.92);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(201, 168, 76, 0.4);
+}
+
+.site-nav .nav-logo {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-size: 1.4rem;
+  color: var(--cream);
+  text-decoration: none;
+  letter-spacing: 0.02em;
+}
+
+.site-nav .nav-links {
+  display: flex;
+  gap: 2.5rem;
+  list-style: none;
+  align-items: center;
+}
+
+.site-nav .nav-links a {
+  color: var(--text-mid);
+  text-decoration: none;
+  font-size: 0.78rem;
+  letter-spacing: 0.15em;
+  text-transform: uppercase;
+  transition: color 0.2s;
+}
+
+.site-nav .nav-links a:hover,
+.site-nav .nav-links a.active {
+  color: var(--cream);
+}
+
+.site-nav .nav-links a.active {
+  border-bottom: 1px solid var(--gold);
+  padding-bottom: 2px;
+}
+
+.site-nav .nav-toggle {
+  display: none;
+  background: transparent;
+  border: 1px solid var(--gold);
+  color: var(--cream);
+  font-family: var(--font-sans);
+  font-size: 0.65rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  padding: 0.6rem 1rem;
+  cursor: pointer;
+}
+
+@media (max-width: 768px) {
+  .site-nav { padding: 1rem 1.5rem; flex-wrap: wrap; }
+  .site-nav .nav-toggle { display: block; }
+  .site-nav .nav-links {
+    display: none;
+    width: 100%;
+    flex-direction: column;
+    gap: 0;
+    padding: 0.5rem 0 0;
+    margin-top: 0.75rem;
+    border-top: 1px solid rgba(201, 168, 76, 0.12);
+  }
+  .site-nav .nav-links.open { display: flex; }
+  .site-nav .nav-links li { width: 100%; text-align: center; }
+  .site-nav .nav-links a {
+    display: block;
+    width: 100%;
+    padding: 0.85rem 0;
+    font-size: 0.8rem;
+    border-bottom: 1px solid rgba(201, 168, 76, 0.08);
+  }
+  .site-nav .nav-links li:last-child a { border-bottom: none; }
+  .site-nav .nav-links a.active { border-bottom: 1px solid var(--gold); padding-bottom: 0.85rem; }
+}
