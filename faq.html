@@ -1,119 +1,244 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>FAQ — Sarah & James</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="theme.css">
-<style>
-  *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
-  html { scroll-behavior: smooth; }
-  body { background: var(--green-deep); color: var(--cream); font-family: 'Jost', sans-serif; font-weight: 300; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>FAQ — Sarah & James</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="theme.css">
+  <style>
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
 
-  .page-hero {
-    padding: 12rem 2rem 6rem;
-    text-align: center;
-    border-bottom: 1px solid rgba(201,168,76,0.1);
-  }
-  .page-eyebrow { font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.2rem; }
-  .page-title { font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;font-style:italic;line-height:1; }
-  .page-sub { margin-top:1.2rem;font-size:0.9rem;color:var(--text-dim);letter-spacing:0.1em; }
+    html {
+      scroll-behavior: smooth;
+    }
 
-  main { max-width: 900px; margin: 0 auto; padding: 5rem 2rem 6rem; }
+    body {
+      background: var(--green-deep);
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-weight: 300;
+    }
 
-  .section-label { font-size:0.63rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.5rem; }
-  .section-title { font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;margin-bottom:2rem; }
+    .page-hero {
+      padding: 12rem 2rem 6rem;
+      text-align: center;
+      border-bottom: 1px solid rgba(201, 168, 76, 0.1);
+    }
 
-  /* FAQ */
-  .faq-list { display:flex;flex-direction:column;gap:0; }
-  .faq-item { border-top:1px solid rgba(201,168,76,0.12); }
-  .faq-q {
-    width:100%;background:none;border:none;color:var(--cream);
-    font-family:'Jost',sans-serif;font-weight:600;font-size:0.95rem;
-    text-align:left;padding:1.5rem 0;cursor:pointer;
-    display:flex;justify-content:space-between;align-items:center;
-    transition:color 0.2s;
-  }
-  .faq-q:hover { color:var(--green-pale); }
-  .faq-icon { font-size:1.2rem;color:var(--green-light);transition:transform 0.3s;flex-shrink:0; }
-  .faq-item.open .faq-icon { transform:rotate(45deg); }
-  .faq-a {
-    max-height:0;overflow:hidden;transition:max-height 0.4s ease;
-    font-size:0.88rem;color:var(--text-mid);line-height:1.8;
-  }
-  .faq-item.open .faq-a { max-height:500px; }
-  .faq-a p { padding-bottom:1.5rem; }
+    .page-eyebrow {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 1.2rem;
+    }
 
-  footer { padding:3rem 2rem;text-align:center;border-top:1px solid rgba(201,168,76,0.1); }
-  footer p { font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-dim); }
+    .page-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(3rem, 8vw, 5.5rem);
+      font-weight: 300;
+      font-style: italic;
+      line-height: 1;
+    }
 
-  @media (max-width:640px) {
-    nav { padding:1rem 1.5rem; }
-    .nav-links { display:none; }
-  }
-</style>
+    .page-sub {
+      margin-top: 1.2rem;
+      font-size: 0.9rem;
+      color: var(--text-dim);
+      letter-spacing: 0.1em;
+    }
+
+    main {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 5rem 2rem 6rem;
+    }
+
+    .section-label {
+      font-size: 0.63rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: var(--green-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 300;
+      margin-bottom: 2rem;
+    }
+
+    /* FAQ */
+    .faq-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .faq-item {
+      border-top: 1px solid rgba(201, 168, 76, 0.12);
+    }
+
+    .faq-q {
+      width: 100%;
+      background: none;
+      border: none;
+      color: var(--cream);
+      font-family: 'Jost', sans-serif;
+      font-weight: 600;
+      font-size: 0.95rem;
+      text-align: left;
+      padding: 1.5rem 0;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      transition: color 0.2s;
+    }
+
+    .faq-q:hover {
+      color: var(--green-pale);
+    }
+
+    .faq-icon {
+      font-size: 1.2rem;
+      color: var(--green-light);
+      transition: transform 0.3s;
+      flex-shrink: 0;
+    }
+
+    .faq-item.open .faq-icon {
+      transform: rotate(45deg);
+    }
+
+    .faq-a {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.4s ease;
+      font-size: 0.88rem;
+      color: var(--text-mid);
+      line-height: 1.8;
+    }
+
+    .faq-item.open .faq-a {
+      max-height: 500px;
+    }
+
+    .faq-a p {
+      padding-bottom: 1.5rem;
+    }
+
+    footer {
+      padding: 3rem 2rem;
+      text-align: center;
+      border-top: 1px solid rgba(201, 168, 76, 0.1);
+    }
+
+    footer p {
+      font-family: 'Cormorant Garamond', serif;
+      font-style: italic;
+      font-size: 1rem;
+      color: var(--text-dim);
+    }
+
+    @media (max-width:640px) {
+      nav {
+        padding: 1rem 1.5rem;
+      }
+
+      .nav-links {
+        display: none;
+      }
+    }
+  </style>
 </head>
+
 <body>
 
-<div id="site-header"></div>
+  <div id="site-header"></div>
 
-<div class="page-hero">
-  <p class="page-eyebrow">Quick Answers</p>
-  <h1 class="page-title">FAQ</h1>
-  <p class="page-sub">Everything you need to know</p>
-</div>
-
-<main>
-  <p class="section-label">Common Questions</p>
-  
-  <div class="faq-list">
-    <div class="faq-item">
-      <button class="faq-q">What is the dress code? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>Indian Attire.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What airport should I fly into? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>The nearest airport is Kochi International Airport. From there, you can take a taxi or rideshare service to Ramada Inn.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What do I need to know before booking tickets?<span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>Visit INSERT WEBSITE and get EVisa</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Will the ceremony and reception be indoors or outdoors? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>The ceremony will be outdoors on the terrace at the Ramada Inn/p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What time should I arrive? <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>The ceremony begins at 4:00 PM. We ask that guests be seated by 3:45 PM. The venue opens for guests at 3:15 PM. Plan for parking — the venue has a large lot but it fills up.</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">Will there be time for swimming <span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>Yes!</p></div>
-    </div>
-    <div class="faq-item">
-      <button class="faq-q">What should I bring as gifts<span class="faq-icon">+</span></button>
-      <div class="faq-a"><p>We ask that guests use our registry link for gifts!</p></div>
-    </div>
+  <div class="page-hero">
+    <p class="page-eyebrow">Quick Answers</p>
+    <h1 class="page-title">FAQ</h1>
+    <p class="page-sub">Everything you need to know</p>
   </div>
-</main>
 
-<footer>
-  <p>Sarah &amp; James · December 2025 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
-</footer>
+  <main>
+    <p class="section-label">Common Questions</p>
 
-<script src="nav.js" defer></script>
-<script>
-  document.querySelectorAll('.faq-q').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const item = btn.parentElement;
-      const isOpen = item.classList.contains('open');
-      document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-      if (!isOpen) item.classList.add('open');
+    <div class="faq-list">
+      <div class="faq-item">
+        <button class="faq-q">What is the dress code? <span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <p>Dress code attire is provided in itinerary per event</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What airport should I fly into? <span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <p>The nearest airport is Kochi International Airport. From there, you can take a taxi or rideshare service to
+            Ramada Inn.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What do I need to know before booking tickets?<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <p>Visit INSERT WEBSITE and get EVisa</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Will the events be indoors or outdoors? <span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <p>All events will be held outdoors on the property of Hotel Ramada</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What time should I arrive? <span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <p>Please reach out to Sharvari or Nikhil for more details.</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">What should I bring as gifts<span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <p>We ask that guests use our registry link for gifts!</p>
+        </div>
+      </div>
+      <div class="faq-item">
+        <button class="faq-q">Where can I get Indian attire <span class="faq-icon">+</span></button>
+        <div class="faq-a">
+          <p>Here are a few places to try: </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>Sarah &amp; James · December 2025 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">←
+        Back to Home</a></p>
+  </footer>
+
+  <script src="nav.js" defer></script>
+  <script>
+    document.querySelectorAll('.faq-q').forEach(btn => {
+      btn.addEventListener('click', () => {
+        const item = btn.parentElement;
+        const isOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!isOpen) item.classList.add('open');
+      });
     });
-  });
-</script>
+  </script>
 </body>
+
 </html>
