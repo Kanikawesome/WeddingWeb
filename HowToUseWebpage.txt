@@ -1,4 +1,4 @@
-just use:
+type into terminal:
     python -m http.server 8000
 to start up the server
 
@@ -6,3 +6,10 @@ then
 go to chrome
 and copy paste:
     http://localhost:8000/
+
+after making edits:
+
+git status
+git add .
+git commit -m "your changes"
+git push
