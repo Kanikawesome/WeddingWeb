@@ -9,7 +9,6 @@
   if (!mount) return;
 
   var links = [
-    { href: 'travel.html',    label: 'Travel &amp; Stay' },
     { href: 'itinerary.html', label: 'Itinerary' },
     { href: 'registry.html',  label: 'Registry' },
     { href: 'gallery.html',   label: 'Our Story' },
