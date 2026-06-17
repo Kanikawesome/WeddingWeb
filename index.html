@@ -510,21 +510,36 @@
      ========================================================================== */
     .invite-letter-sheet {
       position: absolute;
-      top: -38%;
-      left: 4%;
-      width: 92%;
-      height: 106%;
+      top: -50%;
+      left: 3%;
+      width: 94%;
+      height: 118%;
       background: #fdfcf9;
       color: #333230;
       z-index: 2;
       box-shadow: 0 -6px 20px rgba(0, 0, 0, 0.08), 0 6px 15px rgba(0, 0, 0, 0.04);
-      border-radius: 4px;
+      border-radius: 6px;
       display: flex;
       flex-direction: column;
       justify-content: center;
       align-items: center;
-      padding: 1.5rem 3rem;
+      padding: 2.5rem 2rem;
       background-image: linear-gradient(to bottom, transparent 49.8%, rgba(0, 0, 0, 0.02) 50%, transparent 50.2%);
+    }
+
+    .invite-letter-sheet::before {
+      content: '';
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      right: 12px;
+      bottom: 12px;
+      border: 1.5px solid var(--gold);
+      outline: 1px solid rgba(201, 168, 76, 0.4);
+      outline-offset: -5px;
+      pointer-events: none;
+      z-index: 10;
+      border-radius: 4px;
     }
 
     .letter-header-flap {
@@ -830,25 +845,21 @@
 
       <!-- LEVEL 2: White Invitation Card (Sandwiched natively inside the envelope sleeve depth stack)[cite: 2] -->
       <article class="invite-letter-sheet">
-        <header class="letter-header-flap">
-          <img src="ganesh-symbol.png" alt="Ganesha Symbol" class="ganesh-icon">
-          <h2 class="letter-flap-names">Sharvari and Nikhil</h2>
-          <p class="letter-flap-date">December 5-6, 2026</p>
-        </header>
+        <header class="letter-header-flap" style="border-bottom: none; margin-bottom: 0.5rem; padding-bottom: 0;">
+            <img src="ganesh-symbol.png" alt="Ganesha Symbol" class="ganesh-icon" style="margin-bottom: 1rem;">
+          </header>
 
-        <p class="invite-label">Formal Invitation</p>
-        <h3 class="invite-title">Together with their families, you are invited to celebrate</h3>
+          <h3 class="invite-title" style="margin-bottom: 0.5rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em;">TOGETHER WITH THEIR FAMILIES</h3>
+          <h2 class="letter-flap-names" style="margin-bottom: 0.5rem; font-size: 3.2rem; font-family: 'Pinyon Script', cursive; font-style: normal; font-weight: 400; color: var(--gold); text-transform: none; letter-spacing: 0;">Sharvari &amp; Nikhil</h2>
+          <p class="invite-body" style="margin-bottom: 1.25rem; font-size: 0.85rem; text-transform: uppercase; letter-spacing: 0.2em;">CORDIALLY INVITE YOU TO THE CELEBRATION OF THEIR MARRIAGE</p>
 
-        <p class="invite-body">
-          the marriage of &nbsp;<strong>Sharvari</strong>&nbsp; and &nbsp;<strong>Nikhil</strong>
-        </p>
-
-        <div class="invite-details">
-          <div class="invite-detail-item">
-            <p class="label">Venue</p>
-            <p class="value">Ramada Resort · Kochi, India</p>
+          <div class="invite-details" style="flex-direction: column; gap: 0.4rem; border: none; padding-top: 0;">
+            <div class="invite-detail-item">
+              <p class="value" style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; color: #142b14;">December 6, 2026</p>
+            </div>
+            <div class="invite-detail-item">
+              <p class="value" style="font-size: 1.15rem; color: #4c4a47;">Ramada Resort Kochi, India</p>
           </div>
-        </div>
       </article>
 
       <!-- LEVEL 3: Front Intersecting Pocket Folds (Triangles Overlapping crisply on top face layer)[cite: 2] -->
