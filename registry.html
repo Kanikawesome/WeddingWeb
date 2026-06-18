@@ -43,9 +43,8 @@
      PAGE HERO (REMOVED RADIAL GRADIENTS FOR CLEAN FLAT DISPLAY)
      ========================================================================== */
     .page-hero {
-      padding: 11rem 1.5rem 4.5rem;
+      padding: 10rem 1.5rem 3rem;
       text-align: center;
-      border-bottom: 1px solid var(--gold-dim);
       background: transparent;
       /* Allows unified background texture canvas flow */
     }
@@ -61,7 +60,7 @@
 
     .page-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.6rem, 7vw, 4.8rem);
+      font-size: clamp(3rem, 8vw, 5.5rem);
       font-weight: 300;
       font-style: italic;
       line-height: 1.1;
@@ -416,7 +415,7 @@
      ========================================================================== */
     @media (max-width: 768px) {
       .page-hero {
-        padding: 9rem 1rem 3.5rem;
+        padding: 8rem 1rem 2.5rem;
       }
 
       main {
@@ -451,8 +450,7 @@
   <div id="site-header"></div>
 
   <header class="page-hero">
-    <p class="page-eyebrow">With Gratitude</p>
-    <h1 class="page-title">Our Next Chapters</h1>
+    <h1 class="page-title">Registry</h1>
     <p class="page-sub">Your love and presence at our wedding celebrations are the greatest gifts we could ask for. If
       you would like to honor us with a gesture, we welcome contributions toward the avenues below as we begin our life
       together.</p>
@@ -496,9 +494,9 @@
 
     <!-- SECTION 2: INTERACTIVE GUEST INTENTION FORM -->
     <div id="registry-form-container"
-      style="max-width: 600px; margin: 0 auto 4rem; background: var(--bg-cream-card); border: 1px solid var(--gold-dim); padding: 3rem 2rem; position: relative; display: none; box-shadow: 0 10px 30px rgba(170,130,20,0.04);">
+      style="max-width: 600px; margin: 0 auto 4rem; background: var(--green-dark); border: 1px solid rgba(201, 168, 76, 0.2); padding: 3rem 2rem; position: relative; display: none;">
       <h3 id="form-heading"
-        style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--charcoal-soft); text-align: center; margin-bottom: 1.5rem; font-style: italic;">
+        style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--cream); text-align: center; margin-bottom: 1.5rem; font-style: italic;">
         Contribute</h3>
 
       <form id="custom-registry-form" onsubmit="revealPaymentAvenues(event)">
@@ -506,18 +504,18 @@
 
         <div style="margin-bottom: 1.5rem;">
           <label
-            style="display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-antique); margin-bottom: 0.5rem; font-weight: 500;">Family
+            style="display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; font-weight: 500;">Family
             Name / Your Name</label>
           <input type="text" id="guest-name" name="GuestName" required
-            style="width: 100%; padding: 0.85rem; background: #fcfaf5; border: 1px solid var(--gold-dim); color: var(--charcoal-soft); font-family: inherit; font-size: 0.95rem; border-radius: 0; outline: none;">
+            style="width: 100%; padding: 0.85rem; background: rgba(201, 168, 76, 0.05); border: 1px solid rgba(201, 168, 76, 0.2); color: var(--cream); font-family: inherit; font-size: 0.95rem; border-radius: 0; outline: none;">
         </div>
 
         <div style="margin-bottom: 2rem;">
           <label
-            style="display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold-antique); margin-bottom: 0.5rem; font-weight: 500;">Gift
+            style="display: block; font-size: 0.62rem; letter-spacing: 0.2em; text-transform: uppercase; color: var(--gold); margin-bottom: 0.5rem; font-weight: 500;">Gift
             Amount</label>
           <input type="text" id="gift-amount" name="GuestAmount" required
-            style="width: 100%; padding: 0.85rem; background: #FCFAF5; border: 1px solid var(--gold-dim); color: var(--charcoal-soft); font-family: inherit; font-size: 0.95rem; border-radius: 0; outline: none;">
+            style="width: 100%; padding: 0.85rem; background: rgba(201, 168, 76, 0.05); border: 1px solid rgba(201, 168, 76, 0.2); color: var(--cream); font-family: inherit; font-size: 0.95rem; border-radius: 0; outline: none;">
         </div>
 
         <button type="submit" class="btn-pay" style="width: 100%;">Next: Choose Registry Avenue</button>
@@ -528,16 +526,16 @@
     <div id="payment-options-container" style="display: none; animation: fadeIn 0.4s ease;">
 
       <div
-        style="text-align: center; margin-bottom: 3.5rem; padding: 2.5rem 1.5rem; background: var(--green-dark); border: 1px solid var(--gold-kasavu); max-width: 850px; margin-left: auto; margin-right: auto; border-radius: 8px; box-shadow: 0 4px 20px rgba(170,130,20,0.02);">
+        style="text-align: center; margin-bottom: 3.5rem; padding: 2.5rem 1.5rem; background: var(--green-dark); border: 1px solid rgba(201, 168, 76, 0.3); max-width: 850px; margin-left: auto; margin-right: auto; border-radius: 8px;">
         <h3
-          style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--gold-antique); font-style: italic; margin-bottom: 0.5rem;">
+          style="font-family: 'Cormorant Garamond', serif; font-size: 1.9rem; color: var(--gold); font-style: italic; margin-bottom: 0.5rem;">
           Thank You, <span id="thank-you-name"></span></h3>
-        <p style="font-size: 0.95rem; color: var(--charcoal-soft); max-width: 620px; margin: 0 auto; line-height: 1.7;">
-          Your choice to support <strong id="conf-amount" style="color:var(--gold-antique); font-weight:500;"></strong>
-          toward <strong id="conf-fund" style="color:var(--gold-antique); font-weight:500;"></strong> has been
+        <p style="font-size: 0.95rem; color: var(--cream); max-width: 620px; margin: 0 auto; line-height: 1.7;">
+          Your choice to support <strong id="conf-amount" style="color:var(--gold); font-weight:500;"></strong>
+          toward <strong id="conf-fund" style="color:var(--gold); font-weight:500;"></strong> has been
           beautifully logged in our registry ledger.
           <span
-            style="display:block; margin-top: 0.85rem; color: var(--charcoal-soft); font-weight: 400; border-top: 1px dashed var(--gold-dim); padding-top: 0.85rem;">To
+            style="display:block; margin-top: 0.85rem; color: var(--text-mid); font-weight: 400; border-top: 1px dashed rgba(201, 168, 76, 0.2); padding-top: 0.85rem;">To
             securely send your blessing, please finalize the transfer directly through your preferred application
             below:</span>
         </p>

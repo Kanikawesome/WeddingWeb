@@ -12,12 +12,30 @@
   html{scroll-behavior:smooth;}
   body{background:var(--green-deep);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;}
 
-  .page-hero{padding:12rem 2rem 6rem;text-align:center;border-bottom:1px solid rgba(201,168,76,0.1);}
+  .page-hero{padding:10rem 2rem 3rem;text-align:center;}
   .page-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.2rem;}
   .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;font-style:italic;line-height:1;}
   .page-sub{margin-top:1.2rem;font-size:0.9rem;color:var(--text-dim);letter-spacing:0.1em;}
 
-  main{max-width:1100px;margin:0 auto;padding:5rem 2rem 6rem;}
+  .jump-btn {
+    display: inline-block;
+    margin-top: 2rem;
+    padding: 0.8rem 2rem;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--gold);
+    border: 1px solid rgba(201,168,76,0.5);
+    border-radius: 50px;
+    text-decoration: none;
+    transition: all 0.3s ease;
+  }
+  .jump-btn:hover {
+    background: var(--gold);
+    color: var(--green-deep);
+  }
+
+  main{max-width:1100px;margin:0 auto;padding:2rem 2rem 6rem;}
 
   /* STORY TIMELINE */
   .story-section{margin-bottom:6rem;}
@@ -34,15 +52,19 @@
     transition:opacity 0.6s ease,transform 0.6s ease;
   }
   .story-item.visible{opacity:1;transform:translateY(0);}
-  .story-item:nth-child(even) .story-text{grid-column:3;grid-row:1;}
-  .story-item:nth-child(even) .story-photo{grid-column:1;grid-row:1;}
-  .story-item:nth-child(even) .story-spine{grid-column:2;grid-row:1;}
+  .story-item:nth-child(odd) .story-text{grid-column:3;grid-row:1;}
+  .story-item:nth-child(odd) .story-photo{grid-column:1;grid-row:1;}
+  .story-item:nth-child(odd) .story-spine{grid-column:2;grid-row:1;}
 
   .story-photo {
     aspect-ratio:4/5;
-    background:var(--green-dark);
-    position:relative;overflow:hidden;
+    background:#faf8f2;
+    padding: 12px 12px 35px 12px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    position:relative;
     display:flex;align-items:center;justify-content:center;
+    width: 85%;
+    margin: 0 auto;
   }
   .story-photo img{width:100%;height:100%;object-fit:cover;display:block;}
   .story-photo .photo-placeholder{
@@ -72,38 +94,56 @@
   }
 
   .story-text{padding:3rem 3.5rem;}
-  .story-year{font-size:0.62rem;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
+  .story-year{font-size:0.75rem;letter-spacing:0.2em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;}
   .story-heading{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;margin-bottom:1rem;line-height:1.2;}
   .story-body{font-size:0.88rem;color:var(--text-mid);line-height:1.85;}
 
   /* GALLERY GRID */
   .gallery-section{margin-top:5rem;}
   .gallery-section h2{
-    font-family:'Cormorant Garamond',serif;font-size:0.65rem;
-    letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);
+    font-size:0.75rem;
+    font-weight:300;
+    letter-spacing:0.2em;
+    text-transform:uppercase;
+    color:var(--gold);
     margin-bottom:3rem;
   }
   .gallery-grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    grid-auto-rows:280px;
-    gap:3px;
-    background:rgba(201,168,76,0.08);
+    column-count: 3;
+    column-gap: 1.5rem;
   }
   .gallery-cell{
-    overflow:hidden;background:var(--green-dark);
-    position:relative;cursor:pointer;
+    break-inside: avoid;
+    margin-bottom: 1.5rem;
+    overflow:hidden;
+    background:var(--green-dark);
+    position:relative;
+    cursor:pointer;
+    border-radius: 8px;
   }
-  .gallery-cell.wide{grid-column:span 2;}
-  .gallery-cell.tall{grid-row:span 2;}
-  .gallery-cell img{width:100%;height:100%;object-fit:cover;display:block;transition:transform 0.6s ease;}
+  .gallery-cell img{
+    width:100%;
+    display:block;
+    transition:transform 0.6s ease;
+  }
   .gallery-cell:hover img{transform:scale(1.04);}
   .gallery-placeholder{
-    width:100%;height:100%;display:flex;flex-direction:column;
+    width:100%;
+    aspect-ratio: 4/5;
+    display:flex;flex-direction:column;
     align-items:center;justify-content:center;gap:0.6rem;
     color:rgba(201,168,76,0.3);
   }
+  .gallery-placeholder.short { aspect-ratio: 1/1; }
+  .gallery-placeholder.tall { aspect-ratio: 2/3; }
   .gallery-placeholder .ph-i{font-size:2rem;}
+  
+  @media(max-width:900px){
+    .gallery-grid{column-count: 2;}
+  }
+  @media(max-width:500px){
+    .gallery-grid{column-count: 1;}
+  }
   .gallery-placeholder p{font-size:0.65rem;letter-spacing:0.15em;text-transform:uppercase;}
   .gallery-cell .overlay{
     position:absolute;inset:0;
@@ -114,18 +154,36 @@
   .gallery-cell:hover .overlay{opacity:1;}
   .overlay-caption{font-size:0.75rem;color:#f6f1e6;letter-spacing:0.08em;}
 
+  @keyframes crossfade {
+    0%, 40% { opacity: 1; }
+    50%, 90% { opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .crossfade-img { position: absolute; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; }
+  .crossfade-img.top { animation: crossfade 8s infinite; z-index: 10; }
+
   footer{padding:3rem 2rem;text-align:center;border-top:1px solid rgba(201,168,76,0.1);}
   footer p{font-family:'Cormorant Garamond',serif;font-style:italic;font-size:1rem;color:var(--text-dim);}
 
   @media(max-width:768px){
     nav{padding:1rem 1.5rem;}.nav-links{display:none;}
-    .story-item{grid-template-columns:1fr;gap:1.5rem;}
-    .story-item:nth-child(even) .story-text{grid-column:1;grid-row:2;}
-    .story-item:nth-child(even) .story-photo{grid-column:1;grid-row:1;}
-    .story-item:nth-child(even) .story-spine{display:none;}
+    .story-item{
+      grid-template-columns:1fr;
+      gap:1.5rem; 
+      margin-bottom: 3rem; 
+      padding-bottom: 3rem; 
+      border-bottom: 1px solid rgba(201,168,76,0.15);
+    }
+    .story-item:last-child {
+      border-bottom: none;
+      margin-bottom: 0;
+      padding-bottom: 0;
+    }
+    .story-item:nth-child(odd) .story-text, .story-item:nth-child(even) .story-text {grid-column:1;grid-row:1;}
+    .story-item:nth-child(odd) .story-photo, .story-item:nth-child(even) .story-photo {grid-column:1;grid-row:2;}
     .story-spine{display:none;}
     .story-text{padding:0 0 2rem;}
-    .story-photo{aspect-ratio:16/9;}
+    .story-photo{aspect-ratio:4/5;}
     .gallery-grid{grid-template-columns:repeat(2,1fr);}
     .gallery-cell.wide{grid-column:span 1;}
   }
@@ -135,117 +193,97 @@
 <div id="site-header"></div>
 
 <div class="page-hero">
-  <p class="page-eyebrow">A Love Story</p>
   <h1 class="page-title">Our Story</h1>
-  <p class="page-sub">How it started, how it grew, and how we got here</p>
+  <p class="page-sub">THE CHAPTERS OF OUR FAVORITE STORY</p>
+  <a href="#gallery" class="jump-btn">Jump to Photo Gallery &darr;</a>
 </div>
 
 <main>
   <section class="story-section">
-    <h2>The Journey</h2>
-
-    <div class="story-item">
+    <div class="story-item" id="first-hello">
       <div class="story-photo">
-        <!-- Replace src with your photo: <img src="photos/how-we-met.jpg" alt="How we met"> -->
-        <div class="photo-placeholder">
-          <span class="ph-icon">📷</span>
-          <p>Add your photo here</p>
-        </div>
+        <img src="first-hello-1.jpg" alt="How we met">
       </div>
       <div class="story-spine"><div class="spine-dot"></div></div>
       <div class="story-text">
-        <p class="story-year">2019 · How We Met</p>
+        <p class="story-year">November · 2024</p>
         <h3 class="story-heading">The First Hello</h3>
+        <p class="story-body" style="margin-bottom: 1.25rem;">
+          Our paths crossed at a Diwali party hosted by Sharvari’s next-door neighbors in Dallas. Nikhil, who is a distant relative of theirs, was visiting from Boston. We ended up sitting together, chatting away, and dancing for hours with family and friends. At one point, Sharvari's dad joined in and started teasing her, and Nikhil immediately stepped in to defend her.
+        </p>
         <p class="story-body">
-          [Tell your story here — where you met, what the moment was like, and that first impression. This is your space to share something personal and meaningful with your guests.]
+          We actually left the party without exchanging numbers, which led to a funny search the next morning. Sharvari looked Nikhil up on LinkedIn, while Nikhil was at home trying to figure out every possible way to spell "Sharvari" online. Luckily, the algorithm worked in our favor—Nikhil opened a matchmaking app that next day, and Sharvari's profile was the very first one that popped up. We reconnected instantly and started talking and FaceTiming every day.
         </p>
       </div>
     </div>
 
-    <div class="story-item">
+    <div class="story-item" id="when-we-knew">
       <div class="story-text">
-        <p class="story-year">2020 · Getting Serious</p>
+        <p class="story-year">December · 2024</p>
         <h3 class="story-heading">When We Knew</h3>
+        <p class="story-body" style="margin-bottom: 1.25rem;">
+          After a month of endless FaceTimes and texts, Nikhil flew back down to Dallas. Sharvari picked him up from the airport and we grabbed a quick coffee before heading to his cousin’s house. When we arrived, Nikhil invited Sharvari inside, and she suddenly realized she was about to meet his family—along with her own next-door neighbors who knew her parents!
+        </p>
         <p class="story-body">
-          [Share the moment — or the slow realization — that this was something more. A trip you took together, a moment at home, a challenge you navigated side by side. Something that showed you who the other person really was.]
+          Though it was only our second time seeing each other in person, it felt incredibly natural. It was a little overwhelming but we were so happy to be there. We spent the whole weekend together, Nikhil met Sharvari's sister, and by the time the weekend ended, we both just knew this was it.
         </p>
       </div>
       <div class="story-spine"><div class="spine-dot"></div></div>
       <div class="story-photo">
-        <div class="photo-placeholder">
-          <span class="ph-icon">📷</span>
-          <p>Add your photo here</p>
-        </div>
+        <img src="when-we-knew.jpg" alt="When We Knew">
       </div>
     </div>
 
-    <div class="story-item">
+    <div class="story-item" id="two-cities">
       <div class="story-photo">
-        <div class="photo-placeholder">
-          <span class="ph-icon">📷</span>
-          <p>Add your photo here</p>
-        </div>
+        <img src="life-in-two-cities.jpg" alt="Life in Two Cities" style="width: 100%; height: 100%; object-fit: cover; filter: brightness(0.95) contrast(1.05) saturate(1.1);">
       </div>
       <div class="story-spine"><div class="spine-dot"></div></div>
       <div class="story-text">
-        <p class="story-year">2022 · Adventures</p>
-        <h3 class="story-heading">Building a Life</h3>
+        <p class="story-year">January · July 2025</p>
+        <h3 class="story-heading">Life in Two Cities</h3>
+        <p class="story-body" style="margin-bottom: 1.25rem;">
+          From there, our relationship became a beautiful rhythm of traveling back and forth between Dallas and Boston. We made sure to make every visit count—Nikhil introduced Sharvari to the best of Boston (where she quickly fell in love with local cannolis), we cheered at basketball games, and we took weekend trips to NYC for Broadway shows and California for quick getaways.
+        </p>
         <p class="story-body">
-          [Describe a trip, a milestone, or a chapter of your life together — moving in, a great adventure, meeting each other's families. Let guests feel like they're part of your story.]
+          More importantly, this was the time when our two worlds truly came together. We spent our weekends introducing each other to our closest friends, catching up with Nikhil's extended family in Dallas, and setting up FaceTime calls for our parents to connect. By the time Nikhil met Sharvari's parents in person, our families and friends were already a favorite part of our shared journey.
         </p>
       </div>
     </div>
 
-    <div class="story-item">
+    <div class="story-item" id="proposal">
       <div class="story-text">
-        <p class="story-year">2024 · The Proposal</p>
-        <h3 class="story-heading">She Said Yes</h3>
+        <p class="story-year">August · 2025</p>
+        <h3 class="story-heading">She Said Yes!</h3>
+        <p class="story-body" style="margin-bottom: 1.25rem;">
+          Nikhil managed to pull off a total surprise, though it almost didn’t happen after his flight was canceled at the last minute. He managed to make it to Dallas undetected, and even left his phone location set to his Boston apartment so Sharvari wouldn't suspect a thing. That Saturday, Sharvari was completely thrown off the scent, genuinely believing her sister was dragging her out to a sunflower patch for family photos.
+        </p>
         <p class="story-body">
-          [Tell the proposal story! Where it happened, how it was planned, whether they suspected anything, and what the moment felt like. This is always the one guests most want to read.]
+          Instead, the car made a sudden U-turn to a different spot. As soon as Sharvari spotted a few friends hiding, she realized what was happening! A violinist was playing our favorite songs, and our friends walked out holding bouquets right before Nikhil proposed. A few weeks later, we celebrated our formal engagement ceremony with our families and friends with a weekend of dancing, food, and festivities. Now, we are officially counting down to Kochi!
         </p>
       </div>
       <div class="story-spine"><div class="spine-dot"></div></div>
       <div class="story-photo">
-        <div class="photo-placeholder">
-          <span class="ph-icon">💍</span>
-          <p>Engagement photo here</p>
-        </div>
+        <img src="proposal.jpg" alt="The Proposal">
       </div>
     </div>
   </section>
 
   <!-- GALLERY GRID -->
-  <section class="gallery-section">
-    <h2>Gallery · Add Your Photos Below</h2>
+  <section class="gallery-section" id="gallery">
+    <h2>Photo Gallery · Some of our favorite clicks
+    </h2>
     <div class="gallery-grid">
-      <!-- Replace each .gallery-placeholder div with: <img src="photos/your-photo.jpg" alt="caption"> -->
-      <div class="gallery-cell wide">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Wide photo (2 cols)</p></div>
-      </div>
-      <div class="gallery-cell tall">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Tall photo (2 rows)</p></div>
-      </div>
-      <div class="gallery-cell">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
-      </div>
-      <div class="gallery-cell">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
-      </div>
-      <div class="gallery-cell">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
-      </div>
-      <div class="gallery-cell wide">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Wide photo (2 cols)</p></div>
-      </div>
-      <div class="gallery-cell">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
-      </div>
-      <div class="gallery-cell">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
-      </div>
-      <div class="gallery-cell">
-        <div class="gallery-placeholder"><span class="ph-i">📷</span><p>Square photo</p></div>
-      </div>
+      <!-- To add real photos, replace the ENTIRE inner div with your <img src="..."> -->
+      <div class="gallery-cell"><div class="gallery-placeholder tall"><span class="ph-i">📷</span><p>Portrait Photo</p></div></div>
+      <div class="gallery-cell"><div class="gallery-placeholder"><span class="ph-i">📷</span><p>Standard Photo</p></div></div>
+      <div class="gallery-cell"><div class="gallery-placeholder short"><span class="ph-i">📷</span><p>Square/Landscape</p></div></div>
+      <div class="gallery-cell"><div class="gallery-placeholder"><span class="ph-i">📷</span><p>Standard Photo</p></div></div>
+      <div class="gallery-cell"><div class="gallery-placeholder tall"><span class="ph-i">📷</span><p>Portrait Photo</p></div></div>
+      <div class="gallery-cell"><div class="gallery-placeholder"><span class="ph-i">📷</span><p>Standard Photo</p></div></div>
+      <div class="gallery-cell"><div class="gallery-placeholder short"><span class="ph-i">📷</span><p>Square/Landscape</p></div></div>
+      <div class="gallery-cell"><div class="gallery-placeholder tall"><span class="ph-i">📷</span><p>Portrait Photo</p></div></div>
+      <div class="gallery-cell"><div class="gallery-placeholder"><span class="ph-i">📷</span><p>Standard Photo</p></div></div>
     </div>
     <p style="text-align:center;margin-top:1.5rem;font-size:0.75rem;color:var(--text-dim);letter-spacing:0.1em;">To add photos: replace the placeholder divs with &lt;img&gt; tags pointing to your image files.</p>
   </section>
