@@ -1,553 +1,618 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Registry — Sharvari &amp; Nikhil</title>
+    <meta
+      name="description"
+      content="Registry options for Sharvari &amp; Nikhil — Experiential honeymoon and future home contributions for our wedding guests."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link rel="stylesheet" href="theme.css" />
+    <style>
+      *,
+      *::before,
+      *::after {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
 
-<head>
- <meta charset="UTF-8">
- <meta name="viewport" content="width=device-width, initial-scale=1.0">
- <title>Registry — Sharvari &amp; Nikhil</title>
- <meta name="description"
- content="Registry options for Sharvari &amp; Nikhil — Experiential honeymoon and future home contributions for our wedding guests.">
- <link rel="preconnect" href="https://fonts.googleapis.com">
- <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
- <link rel="stylesheet" href="theme.css">
- <style>
- *,
- *::before,
- *::after {
- margin: 0;
- padding: 0;
- box-sizing: border-box;
- }
+      html {
+        scroll-behavior: smooth;
+      }
 
- html {
- scroll-behavior: smooth;
- }
+      body {
+        /* 1. SOLID SINGLE COLOR BASE AS REQUESTED */
+        background-color: var(--bg-cream-pure);
 
- body {
- /* 1. SOLID SINGLE COLOR BASE AS REQUESTED */
- background-color: var(--bg-cream-pure);
+        /* 2. OPTIONAL FIXED BACKDROP CUSTOM VIBE STYLE (Floating Content Matrix) */
+        background-image: url("kasavu-texture.png");
+        background-attachment: fixed;
+        background-repeat: repeat;
+        background-size: auto;
 
- /* 2. OPTIONAL FIXED BACKDROP CUSTOM VIBE STYLE (Floating Content Matrix) */
- background-image: url('kasavu-texture.png');
- background-attachment: fixed;
- background-repeat: repeat;
- background-size: auto;
+        color: var(--charcoal-soft);
+        font-family: "Jost", sans-serif;
+        font-weight: 300;
+        line-height: 1.65;
+      }
 
- color: var(--charcoal-soft);
- font-family: 'Jost', sans-serif;
- font-weight: 300;
- line-height: 1.65;
- }
-
- /* ==========================================================================
+      /* ==========================================================================
  PAGE HERO (REMOVED RADIAL GRADIENTS FOR CLEAN FLAT DISPLAY)
  ========================================================================== */
- .page-hero {
- padding: 10rem 1.5rem 3rem;
- text-align: center;
- background: transparent;
- /* Allows unified background texture canvas flow */
- }
+      .hero-container {
+        background-color: var(--green-deep);
+        border-bottom: 2px solid var(--gold);
+      }
 
- .page-eyebrow {
- font-size: 0.65rem;
- letter-spacing: 0.32em;
- text-transform: uppercase;
- color: var(--gold-antique);
- margin-bottom: 1.2rem;
- font-weight: 500;
- }
+      .registry-container {
+        background-color: var(--green-dark);
+      }
 
- .page-title {
- font-family: 'Cormorant Garamond', serif;
- font-size: clamp(3rem, 8vw, 5.5rem);
- font-weight: 300;
- font-style: italic;
- line-height: 1.1;
- color: var(--charcoal-soft);
- }
+      .page-hero {
+        padding: 8rem 1.5rem 3rem;
+        text-align: center;
+        background: transparent;
+        /* Allows unified background texture canvas flow */
+      }
 
- .page-sub {
- margin-top: 1.2rem;
- font-size: 0.9rem;
- color: var(--text-dim);
- letter-spacing: 0.1em;
- text-transform: uppercase;
- }
+      .page-eyebrow {
+        font-size: 0.65rem;
+        letter-spacing: 0.32em;
+        text-transform: uppercase;
+        color: var(--gold-antique);
+        margin-bottom: 1.2rem;
+        font-weight: 500;
+      }
 
- .page-desc {
- margin-top: 1.8rem;
- font-size: 0.95rem;
- color: var(--text-mid);
- max-width: 42rem;
- margin-left: auto;
- margin-right: auto;
- line-height: 1.85;
- letter-spacing: 0.03em;
- }
+      .page-title {
+        font-family: "Cormorant Garamond", serif;
+        font-size: clamp(3rem, 8vw, 5.5rem);
+        font-weight: 300;
+        font-style: italic;
+        line-height: 1.1;
+        color: var(--charcoal-soft);
+      }
 
- main {
- max-width: 1080px;
- margin: 0 auto;
- padding: 1.5rem 1.5rem 5rem;
- }
+      .page-sub {
+        margin-top: 1.2rem;
+        font-size: 0.9rem;
+        color: var(--text-dim);
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
 
- /* ==========================================================================
+      .page-desc {
+        margin-top: 1.8rem;
+        font-size: 0.95rem;
+        color: var(--text-mid);
+        max-width: 42rem;
+        margin-left: auto;
+        margin-right: auto;
+        line-height: 1.85;
+        letter-spacing: 0.03em;
+      }
+
+      main {
+        max-width: 1080px;
+        margin: 0 auto;
+        padding: 1.5rem 1.5rem 5rem;
+      }
+
+      /* ==========================================================================
  TEMPLE ARCH LAYOUT CONSOLE GRID
  ========================================================================== */
- .registry-split {
- display: grid;
- grid-template-columns: 1fr 1fr;
- gap: 2.5rem;
- }
+      .registry-split {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2.5rem;
+      }
 
- .registry-card {
- background: var(--bg-cream-card);
- border: 1px solid var(--gold-dim);
- border-radius: 40px 40px 0px 0px;
- color: var(--charcoal-soft);
- padding: 4rem 2.5rem 3.5rem;
- position: relative;
- display: flex;
- flex-direction: column;
- gap: 0;
- overflow: hidden;
- box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
- transition: transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1), border-color 0.4s ease;
- animation: slideUpFade 0.8s ease backwards;
- }
+      .registry-card {
+        background: var(--bg-cream-card);
+        border: 1px solid var(--gold-dim);
+        border-radius: 40px 40px 0px 0px;
+        color: var(--charcoal-soft);
+        padding: 4rem 2.5rem 3.5rem;
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+        overflow: hidden;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+        transition:
+          transform 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+          box-shadow 0.4s cubic-bezier(0.165, 0.84, 0.44, 1),
+          border-color 0.4s ease;
+        animation: slideUpFade 0.8s ease backwards;
+      }
 
- .registry-card:nth-child(1) {
- animation-delay: 0.1s;
- }
+      .registry-card:nth-child(1) {
+        animation-delay: 0.1s;
+      }
 
- .registry-card:nth-child(2) {
- animation-delay: 0.3s;
- }
+      .registry-card:nth-child(2) {
+        animation-delay: 0.3s;
+      }
 
- .registry-card:hover {
- transform: translateY(-8px);
- box-shadow: 0 15px 35px rgba(201, 168, 76, 0.12);
- border-color: rgba(201, 168, 76, 0.6);
- }
+      .registry-card:hover {
+        transform: translateY(-8px);
+        box-shadow: 0 15px 35px rgba(201, 168, 76, 0.12);
+        border-color: rgba(201, 168, 76, 0.6);
+      }
 
- @keyframes slideUpFade {
- 0% {
- opacity: 0;
- transform: translateY(40px);
- }
- 100% {
- opacity: 1;
- transform: translateY(0);
- }
- }
- .card-region {
- font-size: 0.6rem;
- letter-spacing: 0.28em;
- text-transform: uppercase;
- color: var(--gold-antique);
- margin-bottom: 0.75rem;
- font-weight: 500;
- }
+      @keyframes slideUpFade {
+        0% {
+          opacity: 0;
+          transform: translateY(40px);
+        }
+        100% {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+      .card-region {
+        font-size: 0.6rem;
+        letter-spacing: 0.28em;
+        text-transform: uppercase;
+        color: var(--gold-antique);
+        margin-bottom: 0.75rem;
+        font-weight: 500;
+      }
 
- .card-desc {
- font-size: 0.92rem;
- color: var(--text-muted);
- line-height: 1.75;
- margin-bottom: 1rem;
- }
+      .card-desc {
+        font-size: 0.92rem;
+        color: var(--text-muted);
+        line-height: 1.75;
+        margin-bottom: 1rem;
+      }
 
- details.pay-accordion > summary {
- list-style: none;
- cursor: pointer;
- display: block;
- width: 100%;
- text-align: center;
- margin-top: 1rem;
- }
- 
- details.pay-accordion > summary::-webkit-details-marker {
- display: none;
- }
- 
- details.pay-accordion[open] > summary {
- display: none;
- }
- 
- details.pay-accordion[open] .accordion-content {
- animation: fadeIn 0.4s ease;
- }
+      details.pay-accordion > summary {
+        list-style: none;
+        cursor: pointer;
+        display: block;
+        width: 100%;
+        text-align: center;
+        margin-top: 1rem;
+      }
 
- .pay-section {
- padding: 1.75rem 0;
- border-bottom: 1px solid rgba(214, 175, 55, 0.15);
- }
+      details.pay-accordion > summary::-webkit-details-marker {
+        display: none;
+      }
 
- .pay-section:last-of-type {
- border-bottom: none;
- padding-bottom: 0;
- }
+      details.pay-accordion[open] > summary {
+        display: none;
+      }
 
- .pay-label {
- font-size: 0.58rem;
- letter-spacing: 0.26em;
- text-transform: uppercase;
- color: var(--gold-antique);
- margin-bottom: 0.4rem;
- font-weight: 500;
- }
+      details.pay-accordion[open] .accordion-content {
+        animation: fadeIn 0.4s ease;
+      }
 
- .pay-name {
- font-family: 'Cormorant Garamond', serif;
- font-size: 1.4rem;
- font-weight: 400;
- color: var(--charcoal-soft);
- margin-bottom: 0.35rem;
- }
+      .pay-section {
+        padding: 1.75rem 0;
+        border-bottom: 1px solid rgba(214, 175, 55, 0.15);
+      }
 
- .pay-detail {
- font-size: 0.86rem;
- color: var(--text-muted);
- line-height: 1.65;
- margin-bottom: 1.1rem;
- }
+      .pay-section:last-of-type {
+        border-bottom: none;
+        padding-bottom: 0;
+      }
 
- .pay-marker {
- display: block;
- font-family: 'Jost', sans-serif;
- font-size: 0.8rem;
- font-weight: 400;
- letter-spacing: 0.04em;
- color: var(--charcoal-soft);
- background: #faf7f0;
- border: 1px solid var(--gold-dim);
- padding: 0.75rem 1rem;
- margin-bottom: 1.15rem;
- word-break: break-all;
- width: 100%;
- }
+      .pay-label {
+        font-size: 0.58rem;
+        letter-spacing: 0.26em;
+        text-transform: uppercase;
+        color: var(--gold-antique);
+        margin-bottom: 0.4rem;
+        font-weight: 500;
+      }
 
- .pay-marker .marker-key {
- display: block;
- font-size: 0.58rem;
- letter-spacing: 0.2em;
- text-transform: uppercase;
- color: var(--gold-antique);
- margin-bottom: 0.15rem;
- font-weight: 500;
- }
+      .pay-name {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.4rem;
+        font-weight: 400;
+        color: var(--charcoal-soft);
+        margin-bottom: 0.35rem;
+      }
 
- .pay-marker .marker-value {
- font-size: 0.95rem;
- color: var(--charcoal-soft);
- }
+      .pay-detail {
+        font-size: 0.86rem;
+        color: var(--text-muted);
+        line-height: 1.65;
+        margin-bottom: 1.1rem;
+      }
 
- /* PREMIUM TRADITIONAL INTERACTION ACTIONS BUTTON */
- .btn-pay {
- display: inline-flex;
- align-items: center;
- justify-content: center;
- gap: 0.5rem;
- padding: 0.95rem 1.5rem;
- font-family: 'Jost', sans-serif;
- font-size: 0.72rem;
- font-weight: 400;
- letter-spacing: 0.16em;
- text-transform: uppercase;
- text-decoration: none;
- border: 1px solid var(--gold-kasavu);
- color: var(--gold-antique);
- background: transparent;
- transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
- cursor: pointer;
- width: 100%;
- }
+      .pay-marker {
+        display: block;
+        font-family: "Jost", sans-serif;
+        font-size: 0.8rem;
+        font-weight: 400;
+        letter-spacing: 0.04em;
+        color: var(--charcoal-soft);
+        background: #faf7f0;
+        border: 1px solid var(--gold-dim);
+        padding: 0.75rem 1rem;
+        margin-bottom: 1.15rem;
+        word-break: break-all;
+        width: 100%;
+      }
 
- .btn-pay:hover {
- background: var(--leaf-green);
- /* Traditional banana leaf color interaction overlay pop */
- color: #FFFFFF;
- border-color: var(--leaf-green);
- box-shadow: 0 4px 15px rgba(20, 64, 35, 0.15);
- }
+      .pay-marker .marker-key {
+        display: block;
+        font-size: 0.58rem;
+        letter-spacing: 0.2em;
+        text-transform: uppercase;
+        color: var(--gold-antique);
+        margin-bottom: 0.15rem;
+        font-weight: 500;
+      }
 
- .btn-pay::after {
- content: '→';
- }
+      .pay-marker .marker-value {
+        font-size: 0.95rem;
+        color: var(--charcoal-soft);
+      }
 
- /* ==========================================================================
+      /* PREMIUM TRADITIONAL INTERACTION ACTIONS BUTTON */
+      .btn-pay {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.95rem 1.5rem;
+        font-family: "Jost", sans-serif;
+        font-size: 0.72rem;
+        font-weight: 400;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+        text-decoration: none;
+        border: 1px solid var(--green-light);
+        color: #ffffff;
+        background: var(--green-light);
+        transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        cursor: pointer;
+        width: 100%;
+      }
+
+      .btn-pay:hover {
+        background: var(--gold);
+        color: #ffffff;
+        border-color: var(--gold);
+        box-shadow: 0 4px 15px rgba(201, 168, 76, 0.15);
+      }
+
+      .btn-pay::after {
+        content: "→";
+      }
+
+      /* ==========================================================================
  UPI GRAPHIC SETS
  ========================================================================== */
- .upi-qr-wrap {
- display: flex;
- flex-direction: column;
- align-items: center;
- gap: 0.75rem;
- margin: 1.5rem 0;
- }
+      .upi-qr-wrap {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 0.75rem;
+        margin: 1.5rem 0;
+      }
 
- .upi-qr-frame {
- width: 160px;
- height: 160px;
- border: 1px solid var(--gold-dim);
- background: #FFFFFF;
- padding: 0.5rem;
- display: flex;
- align-items: center;
- justify-content: center;
- box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
- }
+      .upi-qr-frame {
+        width: 160px;
+        height: 160px;
+        border: 1px solid var(--gold-dim);
+        background: #ffffff;
+        padding: 0.5rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.02);
+      }
 
- .upi-qr-frame img {
- width: 100%;
- height: 100%;
- object-fit: contain;
- display: block;
- }
+      .upi-qr-frame img {
+        width: 100%;
+        height: 100%;
+        object-fit: contain;
+        display: block;
+      }
 
- .upi-qr-caption {
- font-size: 0.68rem;
- letter-spacing: 0.12em;
- text-transform: uppercase;
- color: var(--text-muted);
- }
+      .upi-qr-caption {
+        font-size: 0.68rem;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--text-muted);
+      }
 
- .upi-id-block {
- text-align: center;
- margin-bottom: 1.25rem;
- width: 100%;
- }
+      .upi-id-block {
+        text-align: center;
+        margin-bottom: 1.25rem;
+        width: 100%;
+      }
 
- .upi-id-raw {
- font-family: 'Jost', sans-serif;
- font-size: 0.95rem;
- font-weight: 400;
- letter-spacing: 0.06em;
- color: var(--charcoal-soft);
- word-break: break-all;
- padding: 0.65rem 1rem;
- border: 1px dashed var(--gold-kasavu);
- background: #faf7f0;
- display: inline-block;
- width: 100%;
- }
+      .upi-id-raw {
+        font-family: "Jost", sans-serif;
+        font-size: 0.95rem;
+        font-weight: 400;
+        letter-spacing: 0.06em;
+        color: var(--charcoal-soft);
+        word-break: break-all;
+        padding: 0.65rem 1rem;
+        border: 1px dashed var(--gold-kasavu);
+        background: #faf7f0;
+        display: inline-block;
+        width: 100%;
+      }
 
- /* ==========================================================================
+      /* ==========================================================================
  NOTICES & TRUST WRAPPERS
  ========================================================================== */
- .security-note {
- margin-top: 4rem;
- padding: 2.25rem;
- border: 1px solid var(--gold-dim);
- background: var(--bg-cream-card);
- display: flex;
- gap: 1.25rem;
- align-items: center;
- box-shadow: 0 5px 20px rgba(170, 130, 20, 0.02);
- }
+      .security-note {
+        margin-top: 4rem;
+        padding: 2.25rem;
+        border: 1px solid var(--gold-dim);
+        background: var(--bg-cream-card);
+        display: flex;
+        gap: 1.25rem;
+        align-items: center;
+        box-shadow: 0 5px 20px rgba(170, 130, 20, 0.02);
+      }
 
- .security-icon {
- flex-shrink: 0;
- width: 2.2rem;
- height: 2.2rem;
- border: 1px solid var(--gold-kasavu);
- border-radius: 50%;
- display: flex;
- align-items: center;
- justify-content: center;
- font-size: 1rem;
- color: var(--gold-antique);
- }
+      .security-icon {
+        flex-shrink: 0;
+        width: 2.2rem;
+        height: 2.2rem;
+        border: 1px solid var(--gold-kasavu);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1rem;
+        color: var(--gold-antique);
+      }
 
- .security-body h3 {
- font-family: 'Cormorant Garamond', serif;
- font-size: 1.3rem;
- font-weight: 400;
- color: var(--charcoal-soft);
- margin-bottom: 0.3rem;
- }
+      .security-body h3 {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.3rem;
+        font-weight: 400;
+        color: var(--charcoal-soft);
+        margin-bottom: 0.3rem;
+      }
 
- .security-body p {
- font-size: 0.85rem;
- color: var(--text-muted);
- line-height: 1.7;
- }
+      .security-body p {
+        font-size: 0.85rem;
+        color: var(--text-muted);
+        line-height: 1.7;
+      }
 
- .lifafa-note {
- grid-column: 1 / -1;
- margin: 0 auto;
- padding: 2rem 2.5rem;
- text-align: center;
- background: rgba(201, 168, 76, 0.05);
- border: 1px solid rgba(201, 168, 76, 0.3);
- border-radius: 10px;
- max-width: 600px;
- width: 100%;
- }
+      .lifafa-note {
+        grid-column: 1 / -1;
+        margin: 0 auto;
+        padding: 2rem 2.5rem;
+        text-align: center;
+        background: rgba(201, 168, 76, 0.05);
+        border: 1px solid rgba(201, 168, 76, 0.3);
+        border-radius: 10px;
+        max-width: 600px;
+        width: 100%;
+      }
 
- .lifafa-note .note-eyebrow {
- font-family: 'Cormorant Garamond', serif;
- font-size: 1.6rem;
- color: var(--gold);
- font-style: italic;
- margin-bottom: 0.75rem;
- font-weight: 400;
- }
+      .lifafa-note .note-eyebrow {
+        font-family: "Cormorant Garamond", serif;
+        font-size: 1.6rem;
+        color: var(--gold);
+        font-style: italic;
+        margin-bottom: 0.75rem;
+        font-weight: 400;
+      }
 
- .lifafa-note p {
- font-size: 0.95rem;
- color: var(--text-mid);
- line-height: 1.65;
- max-width: 500px;
- margin: 0 auto;
- }
+      .lifafa-note p {
+        font-size: 0.95rem;
+        color: var(--text-mid);
+        line-height: 1.65;
+        max-width: 500px;
+        margin: 0 auto;
+      }
 
- footer {
- padding: 3rem 2rem;
- text-align: center;
- border-top: 1px solid rgba(201, 168, 76, 0.1);
- }
+      footer {
+        padding: 3rem 2rem;
+        text-align: center;
+        border-top: 1px solid rgba(201, 168, 76, 0.1);
+      }
 
- footer p {
- font-family: 'Cormorant Garamond', serif;
- font-style: italic;
- font-size: 1rem;
- color: var(--text-dim);
- }
+      footer p {
+        font-family: "Cormorant Garamond", serif;
+        font-style: italic;
+        font-size: 1rem;
+        color: var(--text-dim);
+      }
 
- footer a {
- color: var(--gold-antique);
- text-decoration: none;
- transition: color 0.2s;
- font-weight: 400;
- }
+      footer a {
+        color: var(--gold-antique);
+        text-decoration: none;
+        transition: color 0.2s;
+        font-weight: 400;
+      }
 
- footer a:hover {
- color: var(--charcoal-soft);
- }
+      footer a:hover {
+        color: var(--charcoal-soft);
+      }
 
- /* ==========================================================================
+      /* ==========================================================================
  SMARTPHONE FLUID OVERRIDES
  ========================================================================== */
- @media (max-width: 768px) {
- .page-hero {
- padding: 8rem 1rem 2.5rem;
- }
+      @media (max-width: 768px) {
+        .page-hero {
+          padding: 8rem 1rem 2.5rem;
+        }
 
- main {
- padding: 1rem 1rem 4rem;
- }
+        main {
+          padding: 1rem 1rem 4rem;
+        }
 
- .registry-split {
- grid-template-columns: 1fr;
- gap: 2.5rem;
- }
+        .registry-split {
+          grid-template-columns: 1fr;
+          gap: 2.5rem;
+        }
 
- .registry-card {
- padding: 2rem 1.25rem;
- }
+        .registry-card {
+          padding: 2rem 1.25rem;
+        }
 
- .lifafa-note {
- padding: 1.75rem 1.25rem;
- }
- }
- </style>
-</head>
+        .lifafa-note {
+          padding: 1.75rem 1.25rem;
+        }
+      }
+    </style>
+  </head>
 
-<body>
+  <body>
+    <div id="site-header"></div>
 
- <div id="site-header"></div>
+    <div class="hero-container">
+      <header class="page-hero">
+        <h1 class="page-title">Registry</h1>
+        <p class="page-sub">SUPPORTING OUR NEXT CHAPTERS</p>
+        <p class="page-desc">
+          Your presence at our wedding celebrations in Kochi is the greatest
+          gift we could ask for. Should you wish to honor us with a gesture, we
+          welcome contributions toward our next chapters via the digital avenues
+          below, or traditionally at the venue. If you'd like, please include
+          your name and a little note so we can properly thank you.
+        </p>
+      </header>
+    </div>
 
- <header class="page-hero">
- <h1 class="page-title">Registry</h1>
- <p class="page-sub">SUPPORTING OUR NEXT CHAPTERS</p>
- <p class="page-desc">Your presence at our wedding celebrations in Kochi is the greatest gift we could ask for. Should you wish to honor us with a gesture, we welcome contributions toward our next chapters via the digital avenues below, or traditionally at the venue. If you'd like, please include your name and a little note so we can properly thank you.</p>
- </header>
+    <div class="registry-container">
+      <main>
+        <div class="registry-split" style="margin-bottom: 4rem">
+          <article class="registry-card" aria-labelledby="card-us-title">
+            <p class="card-region">United States &amp; International</p>
+            <h2 class="card-title" id="card-us-title">Zelle &amp; Venmo</h2>
+            <p class="card-desc">
+              For our guests celebrating with us from the States and abroad.
+            </p>
 
- <main>
- <div class="registry-split" style="margin-bottom: 4rem;">
+            <details class="pay-accordion">
+              <summary class="btn-pay">Reveal Details</summary>
+              <div class="accordion-content">
+                <section class="pay-section" aria-labelledby="zelle-label">
+                  <p class="pay-label" id="zelle-label">Avenue 01</p>
+                  <p class="pay-name">Direct Transfer via Zelle</p>
+                  <p class="pay-detail">
+                    Open your secure local banking app, select Zelle routing,
+                    and enter either verified registry credential handle below:
+                  </p>
+                  <div class="pay-marker" role="group" aria-label="Zelle Email">
+                    <span class="marker-key">Registry Email Destination</span>
+                    <span class="marker-value">YOUR_EMAIL@EXAMPLE.COM</span>
+                  </div>
+                  <div class="pay-marker" role="group" aria-label="Zelle Phone">
+                    <span class="marker-key">Registry Phone Number</span>
+                    <span class="marker-value">+1 (918) 809-6445</span>
+                  </div>
+                </section>
 
- <article class="registry-card" aria-labelledby="card-us-title">
- <p class="card-region">United States &amp; International</p>
- <h2 class="card-title" id="card-us-title">Zelle &amp; Venmo</h2>
- <p class="card-desc">For our guests celebrating with us from the States and abroad.</p>
+                <section class="pay-section" aria-labelledby="venmo-label">
+                  <p class="pay-label" id="venmo-label">Avenue 02</p>
+                  <p class="pay-name">Gifting via Venmo</p>
+                  <p class="pay-detail">
+                    Tapping below on your smartphone safely boots up your native
+                    Venmo application directly to our wedding registry profile
+                    screen.
+                  </p>
+                  <div
+                    class="pay-marker"
+                    role="group"
+                    aria-label="Venmo Handle"
+                  >
+                    <span class="marker-key">Venmo Account Handle</span>
+                    <span class="marker-value">@Sharvari-Gupta</span>
+                  </div>
+                  <a
+                    href="https://venmo.com/u/Sharvari-Gupta?txn=pay&note=Sharvari%20and%20Nikhil%20Wedding"
+                    class="btn-pay"
+                    target="_blank"
+                    >Open Venmo App</a
+                  >
+                </section>
+              </div>
+            </details>
+          </article>
 
- <details class="pay-accordion">
- <summary class="btn-pay">Reveal Details</summary>
- <div class="accordion-content">
- <section class="pay-section" aria-labelledby="zelle-label">
- <p class="pay-label" id="zelle-label">Avenue 01</p>
- <p class="pay-name">Direct Transfer via Zelle</p>
- <p class="pay-detail">Open your secure local banking app, select Zelle routing, and enter either verified
- registry credential handle below:</p>
- <div class="pay-marker" role="group" aria-label="Zelle Email">
- <span class="marker-key">Registry Email Destination</span>
- <span class="marker-value">YOUR_EMAIL@EXAMPLE.COM</span>
- </div>
- <div class="pay-marker" role="group" aria-label="Zelle Phone">
- <span class="marker-key">Registry Phone Number</span>
- <span class="marker-value">+1 (918) 809-6445</span>
- </div>
- </section>
+          <article class="registry-card" aria-labelledby="card-in-title">
+            <p class="card-region">India</p>
+            <h2 class="card-title" id="card-in-title">UPI Registry</h2>
+            <p class="card-desc">
+              For our guests celebrating with us from near and far in India.
+            </p>
 
- <section class="pay-section" aria-labelledby="venmo-label">
- <p class="pay-label" id="venmo-label">Avenue 02</p>
- <p class="pay-name">Gifting via Venmo</p>
- <p class="pay-detail">Tapping below on your smartphone safely boots up your native Venmo application
- directly to our wedding registry profile screen.</p>
- <div class="pay-marker" role="group" aria-label="Venmo Handle">
- <span class="marker-key">Venmo Account Handle</span>
- <span class="marker-value">@Sharvari-Gupta</span>
- </div>
- <a href="https://venmo.com/u/Sharvari-Gupta?txn=pay&note=Sharvari%20and%20Nikhil%20Wedding" class="btn-pay"
- target="_blank">Open Venmo App</a>
- </section>
- </div>
- </details>
- </article>
+            <details class="pay-accordion">
+              <summary class="btn-pay">Reveal Details</summary>
+              <div class="accordion-content">
+                <section
+                  class="pay-section"
+                  aria-labelledby="upi-label"
+                  style="border-bottom: none; padding-bottom: 0"
+                >
+                  <p class="pay-label" id="upi-label">Avenue 03</p>
+                  <p class="pay-name">Instant Transfer via UPI</p>
 
- <article class="registry-card" aria-labelledby="card-in-title">
- <p class="card-region">India</p>
- <h2 class="card-title" id="card-in-title">UPI Registry</h2>
- <p class="card-desc">For our guests celebrating with us from near and far in India.</p>
+                  <div class="upi-qr-wrap">
+                    <div class="upi-qr-frame">
+                      <img
+                        src="upi-qr.png"
+                        alt="UPI QR Code for wedding contribution"
+                        width="150"
+                        height="150"
+                      />
+                    </div>
+                    <span class="upi-qr-caption"
+                      >Scan with GPay, PhonePe, or Paytm</span
+                    >
+                  </div>
 
- <details class="pay-accordion">
- <summary class="btn-pay">Reveal Details</summary>
- <div class="accordion-content">
- <section class="pay-section" aria-labelledby="upi-label" style="border-bottom:none; padding-bottom:0;">
- <p class="pay-label" id="upi-label">Avenue 03</p>
- <p class="pay-name">Instant Transfer via UPI</p>
+                  <div class="upi-id-block">
+                    <p class="pay-label" style="margin-bottom: 0.35rem">
+                      Universal UPI ID String
+                    </p>
+                    <p class="upi-id-raw" aria-label="UPI ID">
+                      YOUR_UPI_ID@paytm
+                    </p>
+                  </div>
 
- <div class="upi-qr-wrap">
- <div class="upi-qr-frame">
- <img src="upi-qr.png" alt="UPI QR Code for wedding contribution" width="150" height="150">
- </div>
- <span class="upi-qr-caption">Scan with GPay, PhonePe, or Paytm</span>
- </div>
+                  <a
+                    href="upi://pay?pa=YOUR_UPI_ID@paytm&amp;pn=SharvariAndNikhil&amp;cu=INR"
+                    class="btn-pay"
+                    >Launch Mobile UPI App</a
+                  >
+                </section>
+              </div>
+            </details>
+          </article>
 
- <div class="upi-id-block">
- <p class="pay-label" style="margin-bottom:0.35rem;">Universal UPI ID String</p>
- <p class="upi-id-raw" aria-label="UPI ID">YOUR_UPI_ID@paytm</p>
- </div>
+          <div class="lifafa-note">
+            <h3 class="note-eyebrow">Traditional Blessings</h3>
+            <p>
+              For family and friends who prefer traditional gifting, an envelope
+              card box will be available at the venue during our celebrations.
+            </p>
+          </div>
+        </div>
+      </main>
+    </div>
 
- <a href="upi://pay?pa=YOUR_UPI_ID@paytm&amp;pn=SharvariAndNikhil&amp;cu=INR" class="btn-pay">Launch Mobile
- UPI App</a>
- </section>
- </div>
- </details>
- </article>
+    <footer>
+      <p>
+        Sharvari &amp; Nikhil · December 2026 ·
+        <a
+          href="index.html"
+          style="color: var(--green-light); text-decoration: none"
+          >← Back to Home</a
+        >
+      </p>
+    </footer>
 
- <div class="lifafa-note">
- <h3 class="note-eyebrow">Traditional Blessings</h3>
- <p>For family and friends who prefer traditional gifting, an envelope card box will be available at the venue during our celebrations.</p>
- </div>
- </main>
-
- <footer>
- <p>Sharvari &amp; Nikhil · December 2026 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
- </footer>
-
- <script src="nav.js" defer></script>
-</body>
-
+    <script src="nav.js" defer></script>
+  </body>
 </html>

@@ -97,7 +97,7 @@
       font-weight: 600;
       font-size: 0.95rem;
       text-align: left;
-      padding: 1.5rem 0;
+      padding: 1.5rem;
       cursor: pointer;
       display: flex;
       justify-content: space-between;
@@ -127,6 +127,7 @@
       font-size: 0.88rem;
       color: var(--text-mid);
       line-height: 1.8;
+      padding: 0 1.5rem;
     }
 
     .faq-item.open .faq-a {
@@ -269,9 +270,7 @@
     document.querySelectorAll('.faq-q').forEach(btn => {
       btn.addEventListener('click', () => {
         const item = btn.parentElement;
-        const isOpen = item.classList.contains('open');
-        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
-        if (!isOpen) item.classList.add('open');
+        item.classList.toggle('open');
       });
     });
   </script>

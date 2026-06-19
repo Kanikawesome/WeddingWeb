@@ -191,7 +191,11 @@
 
     .timeline-item {
       position: relative;
-      padding: 0 0 3rem 2rem;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      background: var(--sage-bg);
+      border: 1px solid rgba(113, 130, 89, 0.2);
+      border-radius: 8px;
       opacity: 0;
       transform: translateX(-12px);
       animation: slideIn 0.5s ease forwards;
@@ -225,12 +229,12 @@
       content: '';
       position: absolute;
       left: -2.5rem;
-      top: 6px;
+      top: 1.7rem;
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--green-accent);
-      box-shadow: 0 0 0 3px rgba(201, 168, 76, 0.2);
+      background: var(--green-light);
+      box-shadow: 0 0 0 3px rgba(113, 130, 89, 0.2);
     }
 
     .timeline-item.highlight::before {

@@ -10,7 +10,13 @@
 <style>
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html{scroll-behavior:smooth;}
-  body{background:var(--green-deep);color:var(--cream);font-family:'Jost',sans-serif;font-weight:300;}
+  body {
+    --green-light: #8fa487;
+    background:#d1c1a9;
+    color:var(--cream);
+    font-family:'Jost',sans-serif;
+    font-weight:300;
+  }
 
   .page-hero{padding:10rem 2rem 3rem;text-align:center;}
   .page-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.2rem;}
@@ -24,15 +30,17 @@
     font-size: 0.75rem;
     letter-spacing: 0.15em;
     text-transform: uppercase;
-    color: var(--gold);
-    border: 1px solid rgba(201,168,76,0.5);
+    color: white;
+    background: var(--green-light);
+    border: 1px solid var(--green-light);
     border-radius: 50px;
     text-decoration: none;
     transition: all 0.3s ease;
   }
   .jump-btn:hover {
     background: var(--gold);
-    color: var(--green-deep);
+    color: white;
+    border-color: var(--gold);
   }
 
   main{max-width:1100px;margin:0 auto;padding:2rem 2rem 6rem;}
@@ -58,8 +66,8 @@
 
   .story-photo {
     aspect-ratio:4/5;
-    background:#faf8f2;
-    padding: 12px 12px 35px 12px;
+    background: var(--green-light);
+    padding: 12px 12px 55px 12px;
     box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
     position:relative;
     display:flex;align-items:center;justify-content:center;
@@ -73,6 +81,19 @@
   }
   .story-photo .photo-placeholder .ph-icon{font-size:2.5rem;}
   .story-photo .photo-placeholder p{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;}
+
+  .polaroid-text {
+    position: absolute;
+    bottom: 2px;
+    left: 0;
+    right: 0;
+    text-align: center;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 1.35rem;
+    color: #3b3a36;
+    transform: rotate(-1.5deg);
+    pointer-events: none;
+  }
 
   .story-spine{
     display:flex;flex-direction:column;align-items:center;gap:0;
@@ -88,8 +109,8 @@
   }
   .spine-dot{
     width:10px;height:10px;border-radius:50%;
-    background:var(--green-accent);
-    box-shadow:0 0 0 4px rgba(201,168,76,0.15);
+    background:var(--green-light);
+    box-shadow:0 0 0 4px rgba(113, 130, 89, 0.15);
     flex-shrink:0;
   }
 
@@ -203,6 +224,7 @@
     <div class="story-item" id="first-hello">
       <div class="story-photo">
         <img src="first-hello-1.jpg" alt="How we met">
+        <span class="polaroid-text">November 2024</span>
       </div>
       <div class="story-spine"><div class="spine-dot"></div></div>
       <div class="story-text">

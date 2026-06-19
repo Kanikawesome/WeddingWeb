@@ -21,7 +21,7 @@
   --green-dark: #fffdf8;   /* cards / elevated surfaces — warm white */
   --green-mid: #ece3d0;    /* subtle alt surface / hover tint */
   --green-accent: #c9a84c; /* primary action — gold */
-  --green-light: #a8821a;  /* small accent text, eyebrows, links — antique gold */
+  --green-light: #718259;  /* small accent text, eyebrows, links — sage green */
   --green-pale: #8a6a14;   /* deeper gold for hover */
   --gold: #c9a84c;
   --cream: #2d2a24;        /* PRIMARY TEXT — espresso (pages use color:var(--cream)) */
@@ -45,8 +45,9 @@
      at the canonical tokens keeps the page on the shared cream/gold theme. */
   --bg-cream-pure: var(--green-deep);
   --bg-cream-card: var(--green-dark);
+  --sage-bg: #eef2eb;      /* pale wash of sage for cards */
   --gold-kasavu: var(--gold);
-  --gold-antique: #a8821a;
+  --gold-antique: #718259; /* mapped to sage green */
   --gold-dim: rgba(201, 168, 76, 0.28);
   --leaf-green: #1f4d2b;   /* deep-green hover pop (cream text sits on it) */
   --charcoal-soft: var(--cream);
