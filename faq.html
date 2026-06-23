@@ -22,15 +22,30 @@
     }
 
     body {
-      background: var(--green-deep);
-      color: var(--cream);
+      background-color: var(--bg-cream-pure);
+      background-image: url("kasavu-texture.png");
+      background-attachment: fixed;
+      background-repeat: repeat;
+      background-size: auto;
+      color: var(--charcoal-soft);
       font-family: 'Jost', sans-serif;
       font-weight: 300;
+      line-height: 1.65;
+    }
+
+    .main-container {
+      background-color: var(--green-dark);
+    }
+
+    .hero-container {
+      background-color: var(--green-deep);
+      border-bottom: 2px solid var(--gold);
     }
 
     .page-hero {
-      padding: 10rem 2rem 3rem;
+      padding: 8rem 1.5rem 3rem;
       text-align: center;
+      background: transparent;
     }
 
     .page-eyebrow {
@@ -177,11 +192,14 @@
 
   <div id="site-header"></div>
 
-  <div class="page-hero">
-    <h1 class="page-title">Frequently Asked Questions</h1>
-    <p class="page-sub">EVERYTHING YOU NEED TO KNOW</p>
+  <div class="hero-container">
+    <header class="page-hero">
+      <h1 class="page-title">Frequently Asked Questions</h1>
+      <p class="page-sub">EVERYTHING YOU NEED TO KNOW</p>
+    </header>
   </div>
 
+  <div class="main-container">
   <main>
 
     <h2 class="faq-category-title" style="margin-top: 1rem;">The Wedding Details</h2>
@@ -259,6 +277,7 @@
       </div>
     </div>
   </main>
+  </div>
 
   <footer>
     <p>Sharvari &amp; Nikhil · December 2026 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">←

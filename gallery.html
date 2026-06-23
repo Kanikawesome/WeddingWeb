@@ -11,14 +11,26 @@
   *, *::before, *::after { margin: 0; padding: 0; box-sizing: border-box; }
   html{scroll-behavior:smooth;}
   body {
-    --green-light: #8fa487;
-    background:#d1c1a9;
-    color:var(--cream);
-    font-family:'Jost',sans-serif;
-    font-weight:300;
+    background-color: var(--bg-cream-pure);
+    background-image: url("kasavu-texture.png");
+    background-attachment: fixed;
+    background-repeat: repeat;
+    background-size: auto;
+    color: var(--charcoal-soft);
+    font-family: 'Jost', sans-serif;
+    font-weight: 300;
+    line-height: 1.65;
   }
 
-  .page-hero{padding:10rem 2rem 3rem;text-align:center;}
+  .main-container {
+    background-color: var(--green-dark);
+  }
+
+  .hero-container {
+    background-color: var(--green-deep);
+    border-bottom: 2px solid var(--gold);
+  }
+  .page-hero{padding:8rem 1.5rem 3rem;text-align:center;background:transparent;}
   .page-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.2rem;}
   .page-title{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,8vw,5.5rem);font-weight:300;font-style:italic;line-height:1;}
   .page-sub{margin-top:1.2rem;font-size:0.9rem;color:var(--text-dim);letter-spacing:0.1em;}
@@ -213,18 +225,20 @@
 <body>
 <div id="site-header"></div>
 
-<div class="page-hero">
-  <h1 class="page-title">Our Story</h1>
-  <p class="page-sub">THE CHAPTERS OF OUR FAVORITE STORY</p>
-  <a href="#gallery" class="jump-btn">Jump to Photo Gallery &darr;</a>
+<div class="hero-container">
+  <header class="page-hero">
+    <h1 class="page-title">Our Story</h1>
+    <p class="page-sub">THE CHAPTERS OF OUR FAVORITE STORY</p>
+    <a href="#gallery" class="jump-btn">Jump to Photo Gallery &darr;</a>
+  </header>
 </div>
 
+<div class="main-container">
 <main>
   <section class="story-section">
     <div class="story-item" id="first-hello">
       <div class="story-photo">
         <img src="first-hello-1.jpg" alt="How we met">
-        <span class="polaroid-text">November 2024</span>
       </div>
       <div class="story-spine"><div class="spine-dot"></div></div>
       <div class="story-text">
@@ -310,6 +324,7 @@
     <p style="text-align:center;margin-top:1.5rem;font-size:0.75rem;color:var(--text-dim);letter-spacing:0.1em;">To add photos: replace the placeholder divs with &lt;img&gt; tags pointing to your image files.</p>
   </section>
 </main>
+</div>
 
 <footer>
   <p>Sharvari &amp; Nikhil · December 2026 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
