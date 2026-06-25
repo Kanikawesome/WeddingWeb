@@ -45,7 +45,7 @@
      at the canonical tokens keeps the page on the shared cream/gold theme. */
   --bg-cream-pure: var(--green-deep);
   --bg-cream-card: var(--green-dark);
-  --sage-bg: #eef2eb;      /* pale wash of sage for cards */
+  --sage-bg: #e3e8dc;      /* soft, light sage green for cards */
   --gold-kasavu: var(--gold);
   --gold-antique: #718259; /* mapped to sage green */
   --gold-dim: rgba(201, 168, 76, 0.28);

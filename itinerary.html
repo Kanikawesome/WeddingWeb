@@ -233,11 +233,6 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--green-light);
-      box-shadow: 0 0 0 3px rgba(113, 130, 89, 0.2);
-    }
-
-    .timeline-item.highlight::before {
       background: var(--gold);
       box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.2);
     }
@@ -301,8 +296,41 @@
       margin-top: 1rem;
       border: 1px solid rgba(201, 168, 76, 0.2);
       border-radius: 4px;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
       object-fit: cover;
+    }
+
+    .color-palette {
+      display: flex;
+      gap: 1.2rem;
+      margin-top: 1rem;
+      margin-bottom: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .color-swatch {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .color-circle {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+    }
+
+    .color-label {
+      font-size: 0.65rem;
+      color: #7a623f;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      text-align: center;
+      max-width: 60px;
+      line-height: 1.2;
     }
 
     .timeline-tag {
@@ -540,21 +568,32 @@
         </div>
         <div class="panel-rsvps" data-event="haldi"></div>
         <div class="dress-code-block">
-          <p class="dress-code-title">Theme &amp; Dress Code</p>
-          <p class="dress-code-text"><strong>Theme:</strong> Kerala Inspired Haldi</p>
-          <p class="dress-code-text"><strong>Dress Code:</strong> White and gold (Kerala style outfit)</p>
-          <img src="kerala_sari.png" alt="Kerala Sari Style Example" class="dress-code-img">
+          <p class="dress-code-title">Dress Code: Kerala-Inspired Haldi</p>
+          <p class="dress-code-text" style="margin-bottom: 1rem;">Join us for an evening of turmeric blessings and heartfelt rituals! To match our traditional theme, we'd love for guests to wear <strong>classic white and gold</strong> (feel free to add a vibrant pop of color!).</p>
+          
+          <ul style="list-style: none; padding: 0; margin-bottom: 0.5rem;">
+            <li class="dress-code-text" style="position: relative; padding-left: 1.2rem; margin-bottom: 0.6rem;">
+              <span style="position: absolute; left: 0; color: var(--gold);">✧</span> 
+              <strong>Attire Options:</strong> Traditional Kerala-style outfits are highly encouraged, but any festive white and gold Indian wear is perfect. We love seeing fun, colorful blouses, dupattas, or accessories paired with your whites!
+            </li>
+            <li class="dress-code-text" style="position: relative; padding-left: 1.2rem; margin-bottom: 1.5rem;">
+              <span style="position: absolute; left: 0; color: var(--gold);">✧</span> 
+              <strong>A Gentle Note:</strong> Please wear something comfortable that you don't mind getting a little yellow and wet!
+            </li>
+          </ul>
+
         </div>
         <div class="timeline">
           <div class="timeline-item highlight itinerary-haldi">
             <p class="timeline-time">6:00 PM</p>
             <h3 class="timeline-title">Haldi Ceremony</h3>
-            <p class="timeline-desc">An evening Haldi — turmeric blessings, music, and heartfelt rituals. Wear something you don't mind getting yellow and wet!</p>
+            <p class="timeline-desc">An evening Haldi — turmeric blessings, music, and heartfelt rituals to kick off the celebrations!</p>
           </div>
           <div class="timeline-item itinerary-haldi">
             <p class="timeline-time">8:30 PM</p>
             <h3 class="timeline-title">Sadhya</h3>
-            <p class="timeline-desc">Traditional Kerala dinner to follow the Haldi. Relax, watch the water, and enjoy dinner while chatting with friends and family.</p>
+            <p class="timeline-desc">Traditional Kerala dinner to follow the Haldi. Relax, watch the water, and enjoy
+              dinner while chatting with friends and family.</p>
           </div>
         </div>
       </div>
@@ -567,9 +606,25 @@
         </div>
         <div class="panel-rsvps" data-event="wedding"></div>
         <div class="dress-code-block">
-          <p class="dress-code-title">Theme &amp; Dress Code</p>
-          <p class="dress-code-text"><strong>Theme:</strong> South Indian Seaside</p>
-          <p class="dress-code-text"><strong>Dress Code:</strong> Very South Indian-esque, bright colors! (Please no pink or red, as the bride will be wearing those colors)</p>
+          <p class="dress-code-title">Dress Code: South Indian Seaside</p>
+          <p class="dress-code-text" style="margin-bottom: 1rem;">Join us in traditional Indian festive wear! To match
+            our beautiful ocean backdrop, we'd love for guests to wear <strong>airy pastels and bright, happy
+              shades</strong>.</p>
+
+          <ul style="list-style: none; padding: 0; margin-bottom: 0;">
+            <li class="dress-code-text" style="position: relative; padding-left: 1.2rem; margin-bottom: 0.6rem;">
+              <span style="position: absolute; left: 0; color: var(--gold);">✧</span>
+              <strong>Fabrics:</strong> Because our venue is right by the coast, light and breathable fabrics are highly
+              recommended to stay comfortable in the seaside breeze.
+            </li>
+            <li class="dress-code-text" style="position: relative; padding-left: 1.2rem;">
+              <span style="position: absolute; left: 0; color: var(--gold);">✧</span>
+              <strong>A Gentle Request:</strong> We welcome all bright colors and soft pastels, but kindly ask that
+              guests <strong>avoid wearing red or any vibrant shades of pink</strong>, as these colors are reserved for
+              the bride.
+            </li>
+          </ul>
+
         </div>
         <div class="timeline">
           <div class="timeline-item highlight itinerary-wedding">
@@ -594,20 +649,35 @@
         </div>
         <div class="panel-rsvps" data-event="reception"></div>
         <div class="dress-code-block">
-          <p class="dress-code-title">Theme &amp; Dress Code</p>
-          <p class="dress-code-text"><strong>Theme:</strong> Starry Night</p>
-          <p class="dress-code-text"><strong>Dress Code:</strong> Greens, blues (deep tones), blacks, silvers, golds, and darker colors</p>
+          <p class="dress-code-title">Dress Code: Starry Night</p>
+          <p class="dress-code-text" style="margin-bottom: 1rem;">Get ready to dance under the stars in Indian Festive
+            Attire! To match the evening's elegant vibe, we'd love for guests to wear <strong>deep jewel tones and
+              colors of the galaxy</strong>.</p>
+
+          <ul style="list-style: none; padding: 0; margin-bottom: 0.5rem;">
+            <li class="dress-code-text" style="position: relative; padding-left: 1.2rem; margin-bottom: 0.6rem;">
+              <span style="position: absolute; left: 0; color: var(--gold);">✧</span>
+              <strong>Attire Options:</strong> Traditional Indian festive wear is requested, but elegant long dresses
+              and semi-formal suits are also wonderfully suited for the evening.
+            </li>
+            <li class="dress-code-text" style="position: relative; padding-left: 1.2rem;">
+              <span style="position: absolute; left: 0; color: var(--gold);">✧</span>
+              <strong>Color Inspiration:</strong> Think of the rich, moody colors of a night sky—midnight navy, deep
+              emerald green, rich burgundy, deep plum, and dark charcoal, accented with gold or silver.
+            </li>
+          </ul>
         </div>
         <div class="timeline">
           <div class="timeline-item itinerary-reception">
             <p class="timeline-time">7:00 PM</p>
             <h3 class="timeline-title">Cocktail Hour</h3>
-            <p class="timeline-desc">A pre-dinner social hour with cocktails and ambient music while guests arrive and settle.</p>
+            <p class="timeline-desc">A pre-dinner social hour with cocktails and ambient music while guests arrive and
+              settle.</p>
           </div>
           <div class="timeline-item highlight itinerary-reception" style="margin-top:1.5rem;">
             <p class="timeline-time">8:00 PM</p>
-            <h3 class="timeline-title">Grand Reception Dinner &amp; Dancing</h3>
-            <p class="timeline-desc">Formal dinner, toasts, performances, and an open dance floor. Expect music, and an unforgettable evening.</p>
+            <h3 class="timeline-title">Dinner &amp; Dancing</h3>
+            <p class="timeline-desc">Formal dinner, special performances, and an open dance floor. Get ready for an unforgettable night!</p>
           </div>
         </div>
       </div>
