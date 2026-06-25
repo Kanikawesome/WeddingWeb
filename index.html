@@ -60,7 +60,7 @@
       background: linear-gradient(to bottom,
           rgba(0, 0, 0, 0.15) 0%,
           rgba(0, 0, 0, 0.05) 50%,
-          rgba(13, 31, 15, 0.5) 100%);
+          rgba(var(--green-forest-rgb), 0.5) 100%);
       pointer-events: none;
     }
 
@@ -69,7 +69,7 @@
       bottom: 2rem;
       right: 2rem;
       z-index: 150;
-      background: rgba(13, 31, 15, 0.75);
+      background: rgba(var(--green-forest-rgb), 0.75);
       border: 1px solid var(--gold);
       color: var(--gold);
       padding: 0.6rem 1.2rem;
@@ -152,6 +152,21 @@
       color: var(--gold);
     }
 
+    #main-nav { flex-wrap: wrap; }
+    #main-nav .nav-toggle {
+      display: none;
+      background: transparent;
+      border: 1px solid var(--gold);
+      color: #ffffff;
+      font-family: var(--font-sans);
+      font-size: 0.65rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      padding: 0.6rem 1rem;
+      cursor: pointer;
+      text-shadow: 0 1px 2px rgba(0,0,0,0.5);
+    }
+
     nav.scrolled {
       background: rgba(245, 239, 226, 0.92);
       backdrop-filter: blur(12px);
@@ -160,6 +175,12 @@
 
     nav.scrolled .nav-logo {
       color: #2d2a24;
+      text-shadow: none;
+    }
+
+    nav.scrolled .nav-toggle {
+      color: #2d2a24;
+      border-color: #2d2a24;
       text-shadow: none;
     }
 
@@ -332,7 +353,7 @@
      ========================================================================== */
     .invite-section {
       background: var(--green-dark);
-      padding: 8rem 2rem 10rem;
+      padding: 8rem 2rem 4rem;
       display: flex;
       flex-direction: column;
       justify-content: center;
@@ -496,6 +517,7 @@
       transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
       font-weight: 400;
       width: 100%;
+      border-radius: 4px;
       box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
     }
 
@@ -558,12 +580,12 @@
     }
 
     .letter-flap-names {
-      font-family: 'Pinyon Script', cursive;
-      font-size: 3.2rem;
-      font-style: normal;
-      font-weight: 400;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.4rem;
+      font-style: italic;
+      font-weight: 300;
       color: var(--gold);
-      letter-spacing: 0;
+      letter-spacing: 0.02em;
       line-height: 1.1;
       text-align: center;
       margin-bottom: 0.5rem;
@@ -614,7 +636,7 @@
     .invite-body strong {
       font-family: 'Cormorant Garamond', serif;
       font-weight: 500;
-      color: #142b14;
+      color: var(--green-forest);
       font-size: 1.35rem;
       letter-spacing: 0.01em;
     }
@@ -649,6 +671,18 @@
       font-weight: 400;
       color: #222;
       line-height: 1.2;
+    }
+
+    @media (min-width: 1024px) {
+      .letter-flap-names { font-size: 3rem; margin-bottom: 0.8rem; }
+      .letter-flap-date { font-size: 1.5rem; }
+      .invite-label { font-size: 0.85rem; margin-bottom: 0.8rem; }
+      .invite-title { font-size: 1.1rem; margin-bottom: 0.8rem; }
+      .invite-body { font-size: 1rem; line-height: 1.9; margin-bottom: 1.2rem; }
+      .invite-body strong { font-size: 1.6rem; }
+      .invite-detail-item .label { font-size: 0.8rem; }
+      .invite-detail-item .value { font-size: 1.2rem; }
+      .invite-details { padding: 0.8rem 0; margin-bottom: 1.5rem; }
     }
 
     /* ==========================================================================
@@ -728,12 +762,38 @@
         padding: 1rem 1.5rem;
       }
 
+      #main-nav .nav-toggle { display: block; }
+      
       .nav-links {
         display: none;
+        width: 100%;
+        flex-direction: column;
+        gap: 0;
+        padding: 0.5rem 0 0;
+        margin-top: 0.75rem;
+        border-top: 1px solid rgba(255, 255, 255, 0.2);
+      }
+      
+      #main-nav .nav-links.open { display: flex; }
+      #main-nav .nav-links li { width: 100%; text-align: center; }
+      #main-nav .nav-links a {
+        display: block;
+        width: 100%;
+        padding: 0.85rem 0;
+        font-size: 0.8rem;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      }
+      #main-nav .nav-links li:last-child a { border-bottom: none; }
+      
+      nav.scrolled .nav-links { border-top-color: rgba(201, 168, 76, 0.12); }
+      nav.scrolled .nav-links a { 
+        border-bottom-color: rgba(201, 168, 76, 0.08); 
+        color: #2d2a24; 
+        text-shadow: none; 
       }
 
       .invite-section {
-        padding: 6rem 1rem 8rem;
+        padding: 6rem 1rem 3rem;
       }
 
       .envelope-container {
@@ -797,7 +857,8 @@
       <span class="nav-logo">S &amp; N</span>
       <span class="nav-sublabel">Home</span>
     </a>
-    <ul class="nav-links">
+    <button class="nav-toggle" id="nav-toggle-btn" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>
+    <ul class="nav-links" id="nav-menu">
       <li><a href="itinerary.html">Itinerary</a></li>
       <li><a href="registry.html">Registry</a></li>
       <li><a href="gallery.html">Our Story</a></li>
@@ -864,10 +925,10 @@
 
           <div class="invite-details" style="flex-direction: column; gap: 0.4rem; border: none; padding-top: 0;">
             <div class="invite-detail-item">
-              <p class="value" style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; color: #142b14;">December 6, 2026</p>
+              <p class="value" style="font-family: var(--font-serif); font-size: 1.35rem; font-weight: 500; color: var(--green-forest);">December 6, 2026</p>
             </div>
             <div class="invite-detail-item">
-              <p class="value" style="font-size: 1.15rem; color: #4c4a47;">Ramada Resort Kochi, India</p>
+              <p class="value" style="font-size: 1.15rem; color: #4c4a47;">Ramada by Wyndham Kochi, India</p>
           </div>
       </article>
 
@@ -889,40 +950,28 @@
     </div>
   </section>
 
-  <!-- [HTML SECTION 5]: THE SEPARATOR NAVIGATION LINK TILES[cite: 2] -->
-  <div style="padding:4rem 2rem 1rem; text-align:center;">
-    <p style="font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);">Everything You
-      Need</p>
-  </div>
-  <div class="quick-nav">
-    <a href="itinerary.html" class="quick-tile">
-      <span class="tile-num">01</span>
-      <span class="tile-title">Itinerary</span>
-      <p class="tile-desc">Weekend schedule, custom events, and what to expect.</p>
-      <span class="tile-arrow">→</span>
-    </a>
-    <a href="registry.html" class="quick-tile">
-      <span class="tile-num">02</span>
-      <span class="tile-title">Registry</span>
-      <p class="tile-desc">Gifts, contributions, and how to celebrate with us.</p>
-      <span class="tile-arrow">→</span>
-    </a>
-    <a href="gallery.html" class="quick-tile">
-      <span class="tile-num">03</span>
-      <span class="tile-title">Our Story</span>
-      <p class="tile-desc">How we met, our journey, and the photos along the way.</p>
-      <span class="tile-arrow">→</span>
-    </a>
-  </div>
+  <!-- REMOVED: SQUARE NAVIGATION LINK TILES -->
 
   <footer>
-    <p>Sharvari &amp; Nikhil · December 2026 · Made with love</p>
+    <p>
+      Sharvari &amp; Nikhil · December 2026<br>
+      <span style="display:inline-block; margin-top:0.15rem;">#sharvwentforthekhil</span>
+    </p>
   </footer>
 
   <script>
     const nav = document.getElementById('main-nav');
     const video = document.getElementById('bg-video');
     const audioBtn = document.getElementById('audio-toggle-btn');
+    const navToggleBtn = document.getElementById('nav-toggle-btn');
+    const navMenu = document.getElementById('nav-menu');
+
+    if (navToggleBtn && navMenu) {
+      navToggleBtn.addEventListener('click', () => {
+        const isOpen = navMenu.classList.toggle('open');
+        navToggleBtn.setAttribute('aria-expanded', isOpen);
+      });
+    }
 
     window.addEventListener('scroll', () => {
       nav.classList.toggle('scrolled', window.scrollY > 60);

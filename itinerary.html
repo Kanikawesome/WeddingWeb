@@ -90,7 +90,7 @@
       display: flex;
       gap: 0;
       border: 1px solid rgba(201, 168, 76, 0.2);
-      margin-bottom: 4rem;
+      margin-bottom: 2rem;
       overflow: hidden;
     }
 
@@ -156,7 +156,7 @@
     }
 
     .day-header {
-      margin-bottom: 3rem;
+      margin-bottom: 1.5rem;
     }
 
     .day-header .day-name {
@@ -233,8 +233,8 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 0 4px rgba(201, 168, 76, 0.2);
+      background: var(--green-light);
+      box-shadow: 0 0 0 4px rgba(113, 130, 89, 0.2);
     }
 
     .timeline-time {
@@ -407,6 +407,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.18em;
       text-transform: uppercase;
+      border-radius: 4px;
       transition: background 0.3s;
     }
 
@@ -510,6 +511,7 @@
       font-size: 0.75rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
+      border-radius: 4px;
       transition: background 0.3s, color 0.3s;
     }
 
@@ -540,6 +542,9 @@
   <div class="page-hero">
     <h1 class="page-title">Itinerary</h1>
     <p id="page-sub-greeting" class="page-sub">WHERE TO BE AND WHAT TO WEAR</p>
+    <a href="https://www.google.com/maps/search/Ramada+by+Wyndham+Kochi" target="_blank" rel="noopener noreferrer" style="display: inline-block; margin-top: 0.85rem; font-family: 'Cormorant Garamond', serif; font-size: 1.2rem; color: var(--green-forest); text-decoration: none; border-bottom: 1px solid rgba(201, 168, 76, 0.5); padding-bottom: 2px; transition: all 0.3s;">
+      All events held at Ramada by Wyndham Kochi
+    </a>
   </div>
 
   <main>
@@ -563,7 +568,7 @@
       <!-- HALDI: Saturday, December 5 -->
       <div class="day-panel active" id="panel-haldi">
         <div class="day-header">
-          <h2 class="day-name">Haldi &amp; Festivities</h2>
+          <h2 class="day-name">Haldi</h2>
           <p class="day-date">Saturday · December 5, 2026</p>
         </div>
         <div class="panel-rsvps" data-event="haldi"></div>
@@ -574,14 +579,13 @@
           <ul style="list-style: none; padding: 0; margin-bottom: 0.5rem;">
             <li class="dress-code-text" style="position: relative; padding-left: 1.2rem; margin-bottom: 0.6rem;">
               <span style="position: absolute; left: 0; color: var(--gold);">✧</span> 
-              <strong>Attire Options:</strong> Traditional Kerala-style outfits are highly encouraged, but any festive white and gold Indian wear is perfect. We love seeing fun, colorful blouses, dupattas, or accessories paired with your whites!
+              <strong>Attire Options:</strong> Traditional Kerala-style outfits are highly encouraged, but any festive white and gold Indian wear is perfect. We love seeing fun, colorful blouses, dupattas, or accessories paired with your whites! <a href="custom_haldi.png" target="_blank" style="color:var(--green-light);text-decoration:underline; white-space: nowrap;">Click here to see visual examples.</a>
             </li>
             <li class="dress-code-text" style="position: relative; padding-left: 1.2rem; margin-bottom: 1.5rem;">
               <span style="position: absolute; left: 0; color: var(--gold);">✧</span> 
               <strong>A Gentle Note:</strong> Please wear something comfortable that you don't mind getting a little yellow and wet!
             </li>
           </ul>
-
         </div>
         <div class="timeline">
           <div class="timeline-item highlight itinerary-haldi">
@@ -662,8 +666,8 @@
             </li>
             <li class="dress-code-text" style="position: relative; padding-left: 1.2rem;">
               <span style="position: absolute; left: 0; color: var(--gold);">✧</span>
-              <strong>Color Inspiration:</strong> Think of the rich, moody colors of a night sky—midnight navy, deep
-              emerald green, rich burgundy, deep plum, and dark charcoal, accented with gold or silver.
+              <strong>Color Inspiration:</strong> Think of the rich, moody colors of a night sky—<strong>midnight navy</strong>, <strong>deep
+              emerald green</strong>, <strong>rich burgundy</strong>, <strong>deep plum</strong>, and <strong>dark charcoal</strong>, accented with <strong>gold</strong> or <strong>silver</strong>.
             </li>
           </ul>
         </div>
@@ -686,8 +690,11 @@
   </main>
 
   <footer>
-    <p>Sharvari &amp; Nikhil · December 2026 · <a href="index.html"
-        style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
+    <p>
+      Sharvari &amp; Nikhil · December 2026<br>
+      <span style="display:inline-block; margin-top:0.15rem;">#sharvwentforthekhil</span><br>
+      <a href="index.html" style="display:inline-block; margin-top:0.5rem; color:var(--green-light); text-decoration:none; font-family:'Jost',sans-serif; font-style:normal; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;">← Back to Home</a>
+    </p>
   </footer>
 
   <script src="nav.js" defer></script>

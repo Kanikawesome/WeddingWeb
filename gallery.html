@@ -28,7 +28,7 @@
 
   .hero-container {
     background-color: var(--green-deep);
-    border-bottom: 2px solid var(--gold);
+    border-bottom: 1px solid rgba(201, 168, 76, 0.2);
   }
   .page-hero{padding:8rem 1.5rem 3rem;text-align:center;background:transparent;}
   .page-eyebrow{font-size:0.65rem;letter-spacing:0.3em;text-transform:uppercase;color:var(--green-light);margin-bottom:1.2rem;}
@@ -45,7 +45,7 @@
     color: white;
     background: var(--green-light);
     border: 1px solid var(--green-light);
-    border-radius: 50px;
+    border-radius: 4px;
     text-decoration: none;
     transition: all 0.3s ease;
   }
@@ -78,9 +78,11 @@
 
   .story-photo {
     aspect-ratio:4/5;
-    background: var(--green-light);
-    padding: 12px 12px 55px 12px;
-    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+    background: none;
+    padding: 0;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
     position:relative;
     display:flex;align-items:center;justify-content:center;
     width: 85%;
@@ -95,16 +97,7 @@
   .story-photo .photo-placeholder p{font-size:0.72rem;letter-spacing:0.15em;text-transform:uppercase;}
 
   .polaroid-text {
-    position: absolute;
-    bottom: 2px;
-    left: 0;
-    right: 0;
-    text-align: center;
-    font-family: 'Pinyon Script', cursive;
-    font-size: 1.35rem;
-    color: #3b3a36;
-    transform: rotate(-1.5deg);
-    pointer-events: none;
+    display: none;
   }
 
   .story-spine{
@@ -327,7 +320,11 @@
 </div>
 
 <footer>
-  <p>Sharvari &amp; Nikhil · December 2026 · <a href="index.html" style="color:var(--green-light);text-decoration:none;">← Back to Home</a></p>
+  <p>
+    Sharvari &amp; Nikhil · December 2026<br>
+    <span style="display:inline-block; margin-top:0.15rem;">#sharvwentforthekhil</span><br>
+    <a href="index.html" style="display:inline-block; margin-top:0.5rem; color:var(--green-light); text-decoration:none; font-family:'Jost',sans-serif; font-style:normal; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;">← Back to Home</a>
+  </p>
 </footer>
 
 <script src="nav.js" defer></script>

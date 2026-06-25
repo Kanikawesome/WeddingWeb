@@ -23,7 +23,7 @@
   }
   input[type="text"]:focus { border-color: var(--gold); outline: none; }
   
-  button { padding: 1rem 2.5rem; background: var(--green-light); border: 1px solid var(--green-light); color: white; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
+  button { padding: 1rem 2.5rem; background: var(--green-light); border: 1px solid var(--green-light); border-radius: 4px; color: white; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; cursor: pointer; transition: all 0.3s ease; }
   button:hover { background: var(--gold); border-color: var(--gold); color: white; }
   
   .party-member-block {
@@ -95,11 +95,10 @@
   <div id="login-stage">
     <h1>Find Your Invitation</h1>
     <p>Please enter your party's unique passkey found on your invitation card to RSVP.</p>
-    <div class="form-group">
-      <label for="passkey-input">Passkey</label>
-      <input type="text" id="passkey-input" placeholder="e.g., SIDDHU25" autocomplete="off">
+    <div class="passkey-row" style="display: flex; gap: 1rem; justify-content: center; max-width: 500px; margin: 0 auto 1.5rem;">
+      <input type="text" id="passkey-input" placeholder="Enter Passkey (e.g., SHARV25)" autocomplete="off" style="flex: 1; min-width: 0;">
+      <button id="find-invite-btn" style="white-space: nowrap;">Find Invitation →</button>
     </div>
-    <button id="find-invite-btn">Find Invitation →</button>
     <div id="login-error" class="error-msg">Passkey not found. Please verify and try again.</div>
     <a href="index.html" style="display:block; text-align:center; color:var(--text-dim); text-decoration:none; font-size:0.75rem; letter-spacing:0.1em; text-transform:uppercase; margin-top:1.5rem;">← Back to Home</a>
   </div>

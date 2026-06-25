@@ -21,7 +21,9 @@
   --green-dark: #fffdf8;   /* cards / elevated surfaces — warm white */
   --green-mid: #ece3d0;    /* subtle alt surface / hover tint */
   --green-accent: #c9a84c; /* primary action — gold */
-  --green-light: #718259;  /* small accent text, eyebrows, links — sage green */
+  --green-light: #5d6e49;  /* small accent text, eyebrows, links — medium earthy sage */
+  --green-forest: #142b14; /* deep green accents, dark overlays — banana leaf green */
+  --green-forest-rgb: 20, 43, 20;
   --green-pale: #8a6a14;   /* deeper gold for hover */
   --gold: #c9a84c;
   --cream: #2d2a24;        /* PRIMARY TEXT — espresso (pages use color:var(--cream)) */
@@ -45,7 +47,7 @@
      at the canonical tokens keeps the page on the shared cream/gold theme. */
   --bg-cream-pure: var(--green-deep);
   --bg-cream-card: var(--green-dark);
-  --sage-bg: #e3e8dc;      /* soft, light sage green for cards */
+  --sage-bg: #e1e3d3;      /* earthy, warm sage green for cards */
   --gold-kasavu: var(--gold);
   --gold-antique: #718259; /* mapped to sage green */
   --gold-dim: rgba(201, 168, 76, 0.28);
@@ -145,3 +147,4 @@
   .site-nav .nav-links li:last-child a { border-bottom: none; }
   .site-nav .nav-links a.active { border-bottom: 1px solid var(--gold); padding-bottom: 0.85rem; }
 }
+
