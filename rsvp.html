@@ -95,7 +95,7 @@
 <div class="container">
   <div id="login-stage">
     <h1>Find Your Invitation</h1>
-    <p>Please enter your party's unique passkey found on your invitation card to RSVP.</p>
+    <p>We are so excited to celebrate with you! Please enter your unique passkey below to access your RSVP.</p>
     <div class="passkey-row" style="display: flex; gap: 1rem; justify-content: center; max-width: 500px; margin: 0 auto 1.5rem;">
       <input type="text" id="passkey-input" placeholder="Enter Passkey (e.g., SHARV25)" autocomplete="off" style="flex: 1; min-width: 0;">
       <button id="find-invite-btn" style="white-space: nowrap;">Find Invitation →</button>
@@ -105,11 +105,13 @@
   </div>
  
   <div id="rsvp-form-stage">
-    <h2>Your Celebration Party</h2>
-    <p>Please finalize attendance for each guest in your group below.</p>
+    <h2>Kindly Reply</h2>
+    <p>We would be honored to celebrate with you! Please confirm your attendance below. (More details will follow your RSVP).</p>
     <form id="party-rsvp-form">
       <div id="party-members-container"></div>
-      <button type="submit" id="submit-rsvp-btn">Submit Party RSVPs</button>
+      <div style="text-align: center;">
+        <button type="submit" id="submit-rsvp-btn">Submit Party RSVPs</button>
+      </div>
     </form>
   </div>
 
@@ -142,18 +144,18 @@
       const data = await response.json();
  
       if (data && data.length > 0) {
-        // Safe global sync of local permissions context
-        const partyPermissions = {
-          haldi:     data.some(g => (g.haldi_invited     || "").toString().trim().toUpperCase() === "TRUE"),
-          wedding:   data.some(g => (g.wedding_invited   || "").toString().trim().toUpperCase() === "TRUE"),
-          reception: data.some(g => (g.reception_invited || "").toString().trim().toUpperCase() === "TRUE")
-        };
-        localStorage.setItem('weddingPartyPermissions', JSON.stringify(partyPermissions));
-
         // Check if ANYONE in the party has submitted an RSVP already
         const alreadySubmitted = data.some(g => ((g.rsvp_submitted || "").toString().trim().toUpperCase() === "TRUE"));
 
         if (alreadySubmitted) {
+          // If they've already submitted, restore their permissions so they can view the itinerary
+          const partyPermissions = {
+            haldi:     data.some(g => (g.haldi_invited     || "").toString().trim().toUpperCase() === "TRUE"),
+            wedding:   data.some(g => (g.wedding_invited   || "").toString().trim().toUpperCase() === "TRUE"),
+            reception: data.some(g => (g.reception_invited || "").toString().trim().toUpperCase() === "TRUE")
+          };
+          localStorage.setItem('weddingPartyPermissions', JSON.stringify(partyPermissions));
+          
           showChangeConfirm(data);
         } else {
           targetedPartyRows = data;
@@ -191,7 +193,10 @@
         const curHaldi = (guest.haldi_attending || '').trim();
         htmlBlock += `
           <div class="event-row">
-            <span class="event-info-label">Haldi Ceremony</span>
+            <span class="event-info-label" style="display:flex; flex-direction:column;">
+              Haldi
+              <em style="font-size:0.75rem; color:var(--gold); margin-top:0.25rem;">December 5, 2026 - Evening</em>
+            </span>
             <div class="radio-opts">
               <label class="radio-label"><input type="radio" name="haldi_${index}" value="Attending" ${curHaldi === 'Attending' ? 'checked' : ''} required> Accept</label>
               <label class="radio-label"><input type="radio" name="haldi_${index}" value="Declined" ${curHaldi === 'Declined' ? 'checked' : ''}> Decline</label>
@@ -203,7 +208,10 @@
         const curWed = (guest.wedding_attending || '').trim();
         htmlBlock += `
           <div class="event-row">
-            <span class="event-info-label">Wedding Ceremony</span>
+            <span class="event-info-label" style="display:flex; flex-direction:column;">
+              Wedding Ceremony
+              <em style="font-size:0.75rem; color:var(--gold); margin-top:0.25rem;">December 6, 2026 - Morning</em>
+            </span>
             <div class="radio-opts">
               <label class="radio-label"><input type="radio" name="wedding_${index}" value="Attending" ${curWed === 'Attending' ? 'checked' : ''} required> Accept</label>
               <label class="radio-label"><input type="radio" name="wedding_${index}" value="Declined" ${curWed === 'Declined' ? 'checked' : ''}> Decline</label>
@@ -215,7 +223,10 @@
         const curRec = (guest.reception_attending || '').trim();
         htmlBlock += `
           <div class="event-row">
-            <span class="event-info-label">The Reception</span>
+            <span class="event-info-label" style="display:flex; flex-direction:column;">
+              The Reception
+              <em style="font-size:0.75rem; color:var(--gold); margin-top:0.25rem;">December 6, 2026 - Evening</em>
+            </span>
             <div class="radio-opts">
               <label class="radio-label"><input type="radio" name="reception_${index}" value="Attending" ${curRec === 'Attending' ? 'checked' : ''} required> Accept</label>
               <label class="radio-label"><input type="radio" name="reception_${index}" value="Declined" ${curRec === 'Declined' ? 'checked' : ''}> Decline</label>
@@ -323,6 +334,14 @@
       }
  
       localStorage.setItem('weddingGuestResponses', JSON.stringify(guestResponses));
+
+      // Grant itinerary permissions now that RSVP is submitted
+      const partyPermissions = {
+        haldi:     targetedPartyRows.some(g => (g.haldi_invited     || "").toString().trim().toUpperCase() === "TRUE"),
+        wedding:   targetedPartyRows.some(g => (g.wedding_invited   || "").toString().trim().toUpperCase() === "TRUE"),
+        reception: targetedPartyRows.some(g => (g.reception_invited || "").toString().trim().toUpperCase() === "TRUE")
+      };
+      localStorage.setItem('weddingPartyPermissions', JSON.stringify(partyPermissions));
 
       document.getElementById('rsvp-form-stage').innerHTML = `
         <h1>All Done!</h1>
