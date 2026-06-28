@@ -29,7 +29,7 @@
     }
 
     .page-hero {
-      padding: 10rem 2rem 3rem;
+      padding: 8.5rem 2rem 2.5rem;
       text-align: center;
     }
 
@@ -129,8 +129,10 @@
     }
 
     .day-tab .tab-main {
-      font-size: 0.92rem;
-      letter-spacing: 0.08em;
+      font-family: 'Jost', sans-serif;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
       font-weight: 400;
     }
 
@@ -265,6 +267,9 @@
       color: #4e453f;
       line-height: 1.75;
       max-width: 560px;
+    }
+    .expand-icon, .tap-hint {
+      display: none;
     }
 
     .dress-code-block {
@@ -445,22 +450,93 @@
         display: none;
       }
 
+      .page-hero {
+        padding: 6.5rem 1rem 2rem;
+      }
+
       .day-tabs {
         flex-direction: column;
       }
-
       .day-tab {
         border-right: none;
         border-bottom: 1px solid rgba(201, 168, 76, 0.2);
+        padding: 0.75rem 1rem;
+        width: 100%;
+        text-align: center;
       }
-
       .day-tab:last-child {
         border-bottom: none;
+      }
+
+      .timeline {
+        border-left: none;
+        padding-left: 0;
+        margin-left: 0;
+      }
+      .timeline-item {
+        position: relative;
+        padding: 1.2rem;
+        background: var(--sage-bg);
+        border: 1px solid rgba(113, 130, 89, 0.2);
+        border-radius: 8px;
+        margin-bottom: 1rem;
+        box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+      }
+      .timeline-item::before {
+        display: none;
+      }
+      .timeline-title-row {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 0.2rem;
+      }
+      .timeline-title {
+        margin-bottom: 0;
+      }
+      .expand-icon {
+        display: block;
+        font-size: 1.5rem;
+        color: var(--gold);
+        font-weight: 300;
+        transition: transform 0.3s;
+      }
+      .timeline-item.expanded .expand-icon {
+        transform: rotate(45deg);
+      }
+      .tap-hint {
+        display: block;
+        font-size: 0.65rem;
+        color: var(--text-dim);
+        font-style: italic;
+        margin-top: 0;
+        margin-bottom: 0;
+      }
+      .timeline-desc {
+        display: none;
+        margin-top: 1rem;
+        padding-top: 1rem;
+        border-top: 1px solid rgba(201, 168, 76, 0.15);
+      }
+      .timeline-item.expanded .timeline-desc {
+        display: block;
+      }
+      .timeline-item.expanded .tap-hint {
+        display: none;
       }
 
       .hotel-cta-banner {
         flex-direction: column;
         align-items: flex-start;
+      }
+
+      .map-link-btn {
+        padding: 1rem !important;
+        gap: 0.5rem !important;
+      }
+      .map-link-btn svg {
+        width: 20px !important;
+        height: 20px !important;
       }
     }
 
@@ -540,14 +616,14 @@
   <div class="page-hero">
     <h1 class="page-title">Itinerary</h1>
     <p id="page-sub-greeting" class="page-sub">WHERE TO BE AND WHAT TO WEAR</p>
-    <a href="https://www.google.com/maps/search/Ramada+by+Wyndham+Kochi" target="_blank" rel="noopener noreferrer"
+    <a href="https://www.google.com/maps/search/Ramada+by+Wyndham+Kochi" target="_blank" rel="noopener noreferrer" class="map-link-btn"
       style="display: inline-flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 1.5rem; font-family: 'Jost', sans-serif; font-size: 0.75rem; font-weight: 400; letter-spacing: 0.15em; text-transform: uppercase; color: #ffffff; text-decoration: none; background: var(--green-light); border: 1px solid var(--green-light); padding: 1rem 2.5rem; border-radius: 4px; box-shadow: 0 4px 15px rgba(0,0,0,0.1); transition: all 0.3s;"
       onmouseover="this.style.background='var(--gold)'; this.style.borderColor='var(--gold)';"
       onmouseout="this.style.background='var(--green-light)'; this.style.borderColor='var(--green-light)';">
-      <svg width="11" height="11" fill="currentColor" viewBox="0 0 16 16">
+      <svg width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
         <path d="M8 16s6-5.686 6-10A6 6 0 0 0 2 6c0 4.314 6 10 6 10zm0-7a3 3 0 1 1 0-6 3 3 0 0 1 0 6z" />
       </svg>
-      All events held at Ramada by Wyndham Kochi
+      <span>All events held at <span style="white-space: nowrap;">Ramada by Wyndham Kochi</span></span>
     </a>
   </div>
 
@@ -555,15 +631,15 @@
     <div class="itinerary-letter">
       <div class="day-tabs">
         <button class="day-tab active" data-day="haldi" data-requires="haldi">
-          <span class="tab-main">Haldi — Sat Dec 5</span>
+          <span class="tab-main">Haldi</span>
           <span class="tab-sub">(click to see)</span>
         </button>
         <button class="day-tab" data-day="wedding" data-requires="wedding">
-          <span class="tab-main">Wedding — Sun Dec 6 (Morning)</span>
+          <span class="tab-main">Wedding</span>
           <span class="tab-sub">(click to see)</span>
         </button>
         <button class="day-tab" data-day="reception" data-requires="reception">
-          <span class="tab-main">Reception — Sun Dec 6 (Evening)</span>
+          <span class="tab-main">Reception</span>
           <span class="tab-sub">(click to see)</span>
         </button>
       </div>
@@ -599,17 +675,25 @@
           </ul>
         </div>
         <div class="timeline">
-          <div class="timeline-item highlight itinerary-haldi">
+          <div class="timeline-item highlight itinerary-haldi" onclick="this.classList.toggle('expanded')">
             <p class="timeline-time">6:00 PM</p>
-            <h3 class="timeline-title">Evening Haldi</h3>
+            <div class="timeline-title-row">
+              <h3 class="timeline-title">Evening Haldi</h3>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">An intimate evening of tradition to start our wedding weekend. Join us for the
               vibrant turmeric rituals as we share music, laughter, and celebrations.</p>
           </div>
-          <div class="timeline-item itinerary-haldi">
+          <div class="timeline-item itinerary-haldi" onclick="this.classList.toggle('expanded')">
             <p class="timeline-time">8:30 PM</p>
-            <h3 class="timeline-title">Sadhya</h3>
+            <div class="timeline-title-row">
+              <h3 class="timeline-title">Sadhya</h3>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">Traditional Kerala dinner to follow the Haldi. Relax, watch the water, and enjoy
-              dinner while chatting with friends and family.</p>
+              the authentic flavors of the region served on banana leaves.</p>
           </div>
         </div>
       </div>
@@ -643,15 +727,23 @@
 
         </div>
         <div class="timeline">
-          <div class="timeline-item highlight itinerary-wedding">
+          <div class="timeline-item highlight itinerary-wedding" onclick="this.classList.toggle('expanded')">
             <p class="timeline-time">8:30 AM</p>
-            <h3 class="timeline-title">The Muhurtham</h3>
+            <div class="timeline-title-row">
+              <h3 class="timeline-title">The Muhurtham</h3>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">The sacred wedding ceremony begins bright and early. We kindly ask guests to be
               seated by 8:00 AM to witness the traditional rituals, share in the blessings, and celebrate our union.</p>
           </div>
-          <div class="timeline-item itinerary-wedding">
+          <div class="timeline-item itinerary-wedding" onclick="this.classList.toggle('expanded')">
             <p class="timeline-time">11:00 AM</p>
-            <h3 class="timeline-title">Wedding Luncheon &amp; Photos</h3>
+            <div class="timeline-title-row">
+              <h3 class="timeline-title">Sadhya (Lunch)</h3>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">Enjoy a relaxed lunch and mingle with the newlyweds. We invite all our guests to
               stay for group pictures to commemorate the day!</p>
           </div>
@@ -687,15 +779,23 @@
           </ul>
         </div>
         <div class="timeline">
-          <div class="timeline-item itinerary-reception">
+          <div class="timeline-item itinerary-reception" onclick="this.classList.toggle('expanded')">
             <p class="timeline-time">7:00 PM</p>
-            <h3 class="timeline-title">Cocktail Hour</h3>
+            <div class="timeline-title-row">
+              <h3 class="timeline-title">Cocktail Hour</h3>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">A pre-dinner social hour with cocktails and ambient music while guests arrive and
               settle.</p>
           </div>
-          <div class="timeline-item highlight itinerary-reception" style="margin-top:1.5rem;">
+          <div class="timeline-item highlight itinerary-reception" style="margin-top:1.5rem;" onclick="this.classList.toggle('expanded')">
             <p class="timeline-time">8:00 PM</p>
-            <h3 class="timeline-title">Dinner &amp; Dancing</h3>
+            <div class="timeline-title-row">
+              <h3 class="timeline-title">Dinner &amp; Dancing</h3>
+              <span class="expand-icon">+</span>
+            </div>
+            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">Formal dinner, special performances, and an open dance floor. Get ready for an
               unforgettable night!</p>
           </div>

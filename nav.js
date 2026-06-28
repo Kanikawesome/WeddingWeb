@@ -10,7 +10,7 @@
 
   var links = [
     { href: 'itinerary.html', label: 'Itinerary' },
-    { href: 'registry.html',  label: 'Registry' },
+    { href: 'registry.html',  label: 'Gift Registry' },
     { href: 'gallery.html',   label: 'Our Story' },
     { href: 'faq.html',       label: 'FAQ' },
     { href: 'rsvp.html',      label: 'RSVP' }

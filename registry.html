@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Registry — Sharvari &amp; Nikhil</title>
+    <title>Gift Registry — Sharvari &amp; Nikhil</title>
     <meta
       name="description"
       content="Registry options for Sharvari &amp; Nikhil — Experiential honeymoon and future home contributions for our wedding guests."
@@ -472,22 +472,23 @@
 
     <div class="hero-container">
       <header class="page-hero">
-        <h1 class="page-title">Registry</h1>
+        <h1 class="page-title">Gift Registry</h1>
         <p class="page-sub">SUPPORTING OUR NEXT CHAPTERS</p>
-        <p class="page-desc">
-          Your presence at our wedding celebrations in Kochi is the greatest
-          gift we could ask for. Should you wish to honor us with a gesture, we
-          welcome contributions toward our next chapters via the digital avenues
-          below, or traditionally at the venue. If you'd like, please include
-          your name and a little note so we can properly thank you.
-        </p>
+        <div class="page-desc">
+          <p style="margin-bottom: 0;">Your presence at our wedding celebrations in Kochi is the greatest gift we could ask for. <span id="more-text" style="display:none;">Should you wish to honor us with a gesture, we welcome contributions toward our next chapters via the digital avenues below, or traditionally at the venue. If you'd like, please include your name and a little note so we can properly thank you.</span><a href="javascript:void(0);" onclick="document.getElementById('more-text').style.display='inline'; this.style.display='none';" style="color:var(--green-light); text-decoration:underline; margin-left:5px; font-weight:500;">Read More</a></p>
+        </div>
+        
+        <div style="display: flex; gap: 1rem; justify-content: center; margin-top: 1.5rem; flex-wrap: wrap; padding: 0 1rem;">
+          <a href="#card-us" style="display: inline-block; padding: 0.75rem 1.5rem; background: transparent; border: 1px solid var(--green-light); color: var(--green-light); text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 4px; transition: all 0.3s;" onmouseover="this.style.background='var(--green-light)'; this.style.color='var(--green-deep)';" onmouseout="this.style.background='transparent'; this.style.color='var(--green-light)';">US Registry</a>
+          <a href="#card-in" style="display: inline-block; padding: 0.75rem 1.5rem; background: transparent; border: 1px solid var(--green-light); color: var(--green-light); text-decoration: none; font-family: 'Jost', sans-serif; font-size: 0.75rem; letter-spacing: 0.15em; text-transform: uppercase; border-radius: 4px; transition: all 0.3s;" onmouseover="this.style.background='var(--green-light)'; this.style.color='var(--green-deep)';" onmouseout="this.style.background='transparent'; this.style.color='var(--green-light)';">India Registry</a>
+        </div>
       </header>
     </div>
 
     <div class="registry-container">
       <main>
         <div class="registry-split" style="margin-bottom: 4rem">
-          <article class="registry-card" aria-labelledby="card-us-title">
+          <article class="registry-card" id="card-us" aria-labelledby="card-us-title" style="scroll-margin-top: 100px;">
             <p class="card-region">United States &amp; International</p>
             <h2 class="card-title" id="card-us-title">Zelle &amp; Venmo</h2>
             <p class="card-desc">
@@ -539,7 +540,7 @@
             </details>
           </article>
 
-          <article class="registry-card" aria-labelledby="card-in-title">
+          <article class="registry-card" id="card-in" aria-labelledby="card-in-title" style="scroll-margin-top: 100px;">
             <p class="card-region">India</p>
             <h2 class="card-title" id="card-in-title">UPI Registry</h2>
             <p class="card-desc">
