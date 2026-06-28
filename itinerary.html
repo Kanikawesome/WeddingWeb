@@ -29,12 +29,12 @@
     }
 
     .page-hero {
-      padding: 8.5rem 2rem 2.5rem;
+      padding: 8rem 1.5rem 3rem;
       text-align: center;
     }
 
     .page-eyebrow {
-      font-size: 0.65rem;
+      font-size: 0.85rem;
       letter-spacing: 0.3em;
       text-transform: uppercase;
       color: var(--green-light);
@@ -51,7 +51,7 @@
 
     .page-sub {
       margin-top: 1.2rem;
-      font-size: 0.9rem;
+      font-size: 1rem;
       color: var(--text-dim);
       letter-spacing: 0.1em;
     }
@@ -130,18 +130,18 @@
 
     .day-tab .tab-main {
       font-family: 'Jost', sans-serif;
-      font-size: 1rem;
-      letter-spacing: 0.15em;
+      font-size: 1.1rem;
+      font-weight: 300;
+      letter-spacing: 0.2em;
       text-transform: uppercase;
-      font-weight: 400;
     }
 
     .day-tab .tab-sub {
-      font-size: 0.62rem;
+      font-size: 0.85rem;
       color: var(--text-dim);
       letter-spacing: 0.06em;
       text-transform: none;
-      margin-top: 0;
+      margin-top: 0.2rem;
     }
 
     /* Tabs hidden when guest has no events that day */
@@ -169,8 +169,8 @@
     }
 
     .day-header .day-date {
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
+      font-size: 1rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: var(--green-light);
       margin-top: 0.5rem;
@@ -240,8 +240,8 @@
     }
 
     .timeline-time {
-      font-size: 0.68rem;
-      letter-spacing: 0.18em;
+      font-size: 0.85rem;
+      letter-spacing: 0.15em;
       text-transform: uppercase;
       color: #5a6f58;
       margin-bottom: 0.5rem;
@@ -250,20 +250,20 @@
 
     .timeline-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.55rem;
+      font-size: 1.75rem;
       font-weight: 300;
       margin-bottom: 0.5rem;
       color: #2f261f;
     }
 
     .timeline-location {
-      font-size: 0.8rem;
+      font-size: 0.9rem;
       color: #7a623f;
       margin-bottom: 0.6rem;
     }
 
     .timeline-desc {
-      font-size: 0.85rem;
+      font-size: 1rem;
       color: #4e453f;
       line-height: 1.75;
       max-width: 560px;
@@ -281,14 +281,14 @@
 
     .dress-code-title {
       font-family: 'Cormorant Garamond', serif;
-      font-size: 1.3rem;
+      font-size: 1.5rem;
       color: #2f261f;
       margin-bottom: 0.5rem;
       font-style: italic;
     }
 
     .dress-code-text {
-      font-size: 0.85rem;
+      font-size: 1rem;
       color: #4e453f;
       line-height: 1.6;
       margin-bottom: 0.3rem;
@@ -360,15 +360,15 @@
       margin-top: 1rem;
       padding-top: 0.75rem;
       border-top: 1px solid rgba(201, 168, 76, 0.15);
-      font-size: 0.78rem;
+      font-size: 1rem;
       color: #000;
     }
 
     .guest-rsvp-item {
       display: flex;
       justify-content: space-between;
-      padding: 0.3rem 0;
-      font-size: 0.75rem;
+      padding: 0.4rem 0;
+      font-size: 0.9rem;
     }
 
     .guest-rsvp-yes {
@@ -451,7 +451,7 @@
       }
 
       .page-hero {
-        padding: 6.5rem 1rem 2rem;
+        padding: 8rem 1rem 2.5rem;
       }
 
       .day-tabs {
@@ -466,6 +466,11 @@
       }
       .day-tab:last-child {
         border-bottom: none;
+      }
+      .day-header .day-date {
+        font-size: 0.9rem;
+        letter-spacing: 0.05em;
+        white-space: nowrap;
       }
 
       .timeline {
@@ -493,37 +498,9 @@
       }
       .timeline-title {
         margin-bottom: 0;
-      }
-      .expand-icon {
-        display: block;
         font-size: 1.5rem;
-        color: var(--gold);
-        font-weight: 300;
-        transition: transform 0.3s;
       }
-      .timeline-item.expanded .expand-icon {
-        transform: rotate(45deg);
-      }
-      .tap-hint {
-        display: block;
-        font-size: 0.65rem;
-        color: var(--text-dim);
-        font-style: italic;
-        margin-top: 0;
-        margin-bottom: 0;
-      }
-      .timeline-desc {
-        display: none;
-        margin-top: 1rem;
-        padding-top: 1rem;
-        border-top: 1px solid rgba(201, 168, 76, 0.15);
-      }
-      .timeline-item.expanded .timeline-desc {
-        display: block;
-      }
-      .timeline-item.expanded .tap-hint {
-        display: none;
-      }
+
 
       .hotel-cta-banner {
         flex-direction: column;
@@ -675,23 +652,19 @@
           </ul>
         </div>
         <div class="timeline">
-          <div class="timeline-item highlight itinerary-haldi" onclick="this.classList.toggle('expanded')">
+          <div class="timeline-item highlight itinerary-haldi">
             <p class="timeline-time">6:00 PM</p>
             <div class="timeline-title-row">
               <h3 class="timeline-title">Evening Haldi</h3>
-              <span class="expand-icon">+</span>
             </div>
-            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">An intimate evening of tradition to start our wedding weekend. Join us for the
               vibrant turmeric rituals as we share music, laughter, and celebrations.</p>
           </div>
-          <div class="timeline-item itinerary-haldi" onclick="this.classList.toggle('expanded')">
+          <div class="timeline-item itinerary-haldi">
             <p class="timeline-time">8:30 PM</p>
             <div class="timeline-title-row">
               <h3 class="timeline-title">Sadhya</h3>
-              <span class="expand-icon">+</span>
             </div>
-            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">Traditional Kerala dinner to follow the Haldi. Relax, watch the water, and enjoy
               the authentic flavors of the region served on banana leaves.</p>
           </div>
@@ -727,23 +700,19 @@
 
         </div>
         <div class="timeline">
-          <div class="timeline-item highlight itinerary-wedding" onclick="this.classList.toggle('expanded')">
+          <div class="timeline-item highlight itinerary-wedding">
             <p class="timeline-time">8:30 AM</p>
             <div class="timeline-title-row">
               <h3 class="timeline-title">The Muhurtham</h3>
-              <span class="expand-icon">+</span>
             </div>
-            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">The sacred wedding ceremony begins bright and early. We kindly ask guests to be
               seated by 8:00 AM to witness the traditional rituals, share in the blessings, and celebrate our union.</p>
           </div>
-          <div class="timeline-item itinerary-wedding" onclick="this.classList.toggle('expanded')">
+          <div class="timeline-item itinerary-wedding">
             <p class="timeline-time">11:00 AM</p>
             <div class="timeline-title-row">
-              <h3 class="timeline-title">Sadhya (Lunch)</h3>
-              <span class="expand-icon">+</span>
+              <h3 class="timeline-title">Lunch & Photos</h3>
             </div>
-            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">Enjoy a relaxed lunch and mingle with the newlyweds. We invite all our guests to
               stay for group pictures to commemorate the day!</p>
           </div>
@@ -779,23 +748,19 @@
           </ul>
         </div>
         <div class="timeline">
-          <div class="timeline-item itinerary-reception" onclick="this.classList.toggle('expanded')">
+          <div class="timeline-item itinerary-reception">
             <p class="timeline-time">7:00 PM</p>
             <div class="timeline-title-row">
               <h3 class="timeline-title">Cocktail Hour</h3>
-              <span class="expand-icon">+</span>
             </div>
-            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">A pre-dinner social hour with cocktails and ambient music while guests arrive and
               settle.</p>
           </div>
-          <div class="timeline-item highlight itinerary-reception" style="margin-top:1.5rem;" onclick="this.classList.toggle('expanded')">
+          <div class="timeline-item highlight itinerary-reception" style="margin-top:1.5rem;">
             <p class="timeline-time">8:00 PM</p>
             <div class="timeline-title-row">
               <h3 class="timeline-title">Dinner &amp; Dancing</h3>
-              <span class="expand-icon">+</span>
             </div>
-            <p class="tap-hint">Tap to expand details</p>
             <p class="timeline-desc">Formal dinner, special performances, and an open dance floor. Get ready for an
               unforgettable night!</p>
           </div>
@@ -810,7 +775,7 @@
       Sharvari &amp; Nikhil · December 2026<br>
       <span style="display:inline-block; margin-top:0.15rem;">#sharvwentforthekhil</span><br>
       <a href="index.html"
-        style="display:inline-block; margin-top:0.5rem; color:var(--green-light); text-decoration:none; font-family:'Jost',sans-serif; font-style:normal; font-size:0.65rem; letter-spacing:0.2em; text-transform:uppercase;">←
+        style="display:inline-block; margin-top:0.5rem; color:var(--green-light); text-decoration:none; font-family:'Jost',sans-serif; font-style:normal; font-size:0.85rem; letter-spacing:0.2em; text-transform:uppercase;">←
         Back to Home</a>
     </p>
   </footer>
@@ -942,6 +907,16 @@
               item.offsetHeight; // force reflow
               item.style.animation = `slideIn 0.5s ${i * 0.1}s ease forwards`;
             });
+
+            // Smoothly scroll down so the content is fully in view on small screens
+            if (window.innerWidth <= 640) {
+              setTimeout(() => {
+                const tabsContainer = document.querySelector('.day-tabs');
+                if (tabsContainer) {
+                  tabsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+              }, 50);
+            }
           }
         });
       });
