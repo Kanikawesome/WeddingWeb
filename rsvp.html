@@ -128,6 +128,11 @@
             <input type="tel" id="contact-phone" required placeholder="Phone number" style="background: transparent; border: none; padding: 0.85rem; color: #333; font-family: inherit; font-size: 1rem; flex: 1; min-width: 0; outline: none;">
           </div>
         </div>
+        
+        <div class="form-group" style="margin-top:1.25rem;">
+          <label>Leave a note or well wishes for the couple (optional):</label>
+          <input type="text" id="contact-guest-note" style="background: #fcfaf5; border: 1px solid rgba(201,168,76,0.4); padding: 0.85rem; color: #333; font-family: inherit; font-size: 1rem; transition: border-color 0.3s; width: 100%;">
+        </div>
       </div>
       <div style="text-align: center;">
         <button type="submit" id="submit-rsvp-btn">Submit Party RSVPs</button>
@@ -251,6 +256,11 @@
         if (phone.startsWith("'")) phone = phone.substring(1);
         document.getElementById('contact-phone').value = phone;
       }
+      
+      const existingNote = (firstGuest.guest_note || firstGuest.dietary_restrictions || '').trim();
+      if (existingNote && existingNote !== 'None' && existingNote !== 'N/A') {
+        document.getElementById('contact-guest-note').value = existingNote;
+      }
     }
 
     container.innerHTML = '';
@@ -306,16 +316,7 @@
             </div>
           </div>`;
       }
- 
-      const existingDietary = (guest.dietary_restrictions || '').trim();
-      const dietaryVal = (existingDietary !== 'None' && existingDietary !== 'N/A') ? existingDietary : '';
- 
-      htmlBlock += `
-          <div class="form-group" style="margin-top:1.25rem;">
-            <label>Dietary Preferences / Notes</label>
-            <input type="text" id="dietary_${index}" placeholder="Allergies, restrictions, etc." value="${dietaryVal}">
-          </div>
-        </div>`;
+      htmlBlock += `</div>`;
  
       container.innerHTML += htmlBlock;
     });
@@ -373,6 +374,7 @@
       const contactEmail = document.getElementById('contact-email').value.trim();
       const contactCountry = document.getElementById('contact-country-code').value;
       const contactPhoneNum = document.getElementById('contact-phone').value.trim();
+      const contactNote = document.getElementById('contact-guest-note').value.trim() || "None";
 
       const guestResponses = [];
 
@@ -382,7 +384,6 @@
         const haldiVal     = isInvited(guest, 'haldi') ? (document.querySelector(`input[name="haldi_${i}"]:checked`)?.value || "N/A") : "N/A";
         const weddingVal   = isInvited(guest, 'wedding') ? (document.querySelector(`input[name="wedding_${i}"]:checked`)?.value || "N/A") : "N/A";
         const receptionVal = isInvited(guest, 'reception') ? (document.querySelector(`input[name="reception_${i}"]:checked`)?.value || "N/A") : "N/A";
-        const dietaryDetails = document.getElementById(`dietary_${i}`).value.trim() || "None";
  
         guestResponses.push({
           name: guest.name,
@@ -396,7 +397,7 @@
           haldi_attending: haldiVal,
           wedding_attending: weddingVal,
           reception_attending: receptionVal,
-          dietary_restrictions: dietaryDetails,
+          guest_note: contactNote,
           email: contactEmail,
           country_code: "'" + contactCountry,
           phone_number: "'" + contactPhoneNum
