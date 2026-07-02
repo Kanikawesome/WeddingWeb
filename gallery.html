@@ -426,13 +426,6 @@
   </p>
 </footer>
 
-<dialog id="image-modal" class="image-modal">
-  <div class="image-modal-content">
-    <span class="modal-close" aria-label="Close modal">&times;</span>
-    <img id="modal-image" src="" alt="Enlarged gallery view">
-  </div>
-</dialog>
-
 <script src="nav.js" defer></script>
 <script>
   // Scroll reveal for story items
@@ -442,23 +435,6 @@
     });
   }, { threshold: 0.15 });
   document.querySelectorAll('.story-item').forEach(el => observer.observe(el));
-
-  // Image Lightbox Modal logic
-  const modal = document.getElementById('image-modal');
-  const modalImg = document.getElementById('modal-image');
-  const closeBtn = document.querySelector('.modal-close');
-
-  document.querySelectorAll('.gallery-cell img').forEach(img => {
-    img.addEventListener('click', () => {
-      modalImg.src = img.src;
-      modal.showModal();
-    });
-  });
-
-  closeBtn.addEventListener('click', () => modal.close());
-  modal.addEventListener('click', (e) => {
-    if (e.target === modal || e.target === modalImg) modal.close();
-  });
 </script>
 </body>
 </html>
