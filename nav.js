@@ -25,7 +25,7 @@
 
   mount.innerHTML =
     '<nav class="site-nav" aria-label="Main navigation">' +
-      '<a href="home.html" class="nav-logo">S &amp; N</a>' +
+      '<a href="index.html" class="nav-logo">S &amp; N</a>' +
       '<button class="nav-toggle" id="nav-toggle-btn" type="button" aria-expanded="false" aria-controls="nav-menu">Menu</button>' +
       '<ul class="nav-links" id="nav-menu">' + items + '</ul>' +
     '</nav>';
